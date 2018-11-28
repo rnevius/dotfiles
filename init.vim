@@ -3,8 +3,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
 call plug#end()
@@ -14,6 +17,8 @@ call plug#end()
 " NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
+" Fugitive
+set diffopt+=vertical
 
 
 "" Theme (Solarized)
@@ -22,6 +27,7 @@ map <C-n> :NERDTreeToggle<CR>
 colorscheme solarized
 set background=dark
 set number
+set relativenumber
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
