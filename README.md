@@ -4,7 +4,10 @@ Personal neovim installation and configuration instructions to hedge against the
 
 ## Installing
 
-1. Install `neovim` with Homebrew: `brew install neovim`
+1. Install `neovim` and [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) with Homebrew:
+    ```
+    brew install neovim the_silver_searcher
+    ```
 2. Install [vim-plug](https://github.com/junegunn/vim-plug):
     ```
     $ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
