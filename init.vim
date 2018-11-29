@@ -64,10 +64,12 @@ set splitright
 
 
 "" Editing
-set tabstop=2
-set shiftwidth=2
-set shiftround
 set expandtab
+set ignorecase
+set shiftround
+set shiftwidth=2
+set smartcase
+set tabstop=2
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
