@@ -1,10 +1,14 @@
+let mapleader = " "
+
 "" Plugin management via vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fisadev/vim-ctrlp-cmdpalette'
 Plug 'idanarye/vim-merginal'
+Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
 Plug 'tomtom/tcomment_vim'
@@ -38,6 +42,8 @@ if executable('ag')
     nnoremap \ :Ag<SPACE>
   endif
 endif
+" CtrlPCmdPalette
+nnoremap <Leader>p :CtrlPCmdPalette<cr>
 " Fugitive
 set diffopt+=vertical
 " NERDTree
