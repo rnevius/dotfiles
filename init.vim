@@ -66,6 +66,7 @@ set splitright
 "" Editing
 set expandtab
 set ignorecase
+set scrolloff=1
 set shiftround
 set shiftwidth=2
 set smartcase
