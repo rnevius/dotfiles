@@ -1,4 +1,4 @@
-let mapleader = " "
+let mapleader = ","
 
 "" Plugin management via vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
@@ -26,7 +26,7 @@ call plug#end()
 " Airline
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
-let g:airline_section_y=0  " Hide encoding section
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -68,6 +68,7 @@ set splitright
 "" Editing
 set expandtab
 set ignorecase
+set noswapfile
 set scrolloff=1
 set shiftround
 set shiftwidth=2
