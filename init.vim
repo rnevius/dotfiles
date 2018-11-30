@@ -26,6 +26,7 @@ call plug#end()
 " Airline
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
+let g:airline_section_y=0  " Hide encoding section
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
