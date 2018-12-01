@@ -59,6 +59,7 @@ map <C-n> :NERDTreeToggle<CR>
 " http://ethanschoonover.com/solarized
 colorscheme solarized
 set background=light
+set linebreak
 set number
 set relativenumber
 " Open new split panes to right and bottom, which feels more natural
