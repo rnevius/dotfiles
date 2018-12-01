@@ -26,7 +26,7 @@ call plug#end()
 "
 " Airline
 let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
+let g:airline_solarized_bg='light'
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -58,7 +58,7 @@ map <C-n> :NERDTreeToggle<CR>
 " Make sure to import the color profile to your terminal.
 " http://ethanschoonover.com/solarized
 colorscheme solarized
-set background=dark
+set background=light
 set number
 set relativenumber
 " Open new split panes to right and bottom, which feels more natural
