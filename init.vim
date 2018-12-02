@@ -68,6 +68,7 @@ set splitright
 
 "" Editing
 set expandtab
+set inccommand=nosplit
 set ignorecase
 set noswapfile
 set scrolloff=1
