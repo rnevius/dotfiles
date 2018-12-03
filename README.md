@@ -22,4 +22,9 @@ Personal neovim installation and configuration instructions to hedge against the
     $ curl -fLo ~/.config/nvim/init.vim --create-dirs \
     https://raw.githubusercontent.com/rnevius/neovim.conf/master/init.vim
     ```
-5. Start `nvim` and install plugins via `:PlugInstall`
+5. Create an `undo/` directory in the default location, for persistent undo:
+    ```
+    $ mkdir -p ~/.local/share/nvim/undo
+    ```
+6. Start `nvim` and install plugins via `:PlugInstall`
+
