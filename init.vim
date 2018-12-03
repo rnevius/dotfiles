@@ -4,9 +4,9 @@ let mapleader = ","
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fisadev/vim-ctrlp-cmdpalette'
+Plug 'lifepillar/vim-solarized8'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -52,10 +52,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 map <C-n> :NERDTreeToggle<CR>
 
 
-"" Theme (Solarized)
+"" Theme (Solarized 8)
 " Make sure to import the color profile to your terminal.
 " http://ethanschoonover.com/solarized
-colorscheme solarized
+colorscheme solarized8
+let g:solarized_use16=1
+let g:solarized_term_italics=1
 set background=light
 set linebreak
 set number
