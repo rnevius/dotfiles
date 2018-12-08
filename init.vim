@@ -5,6 +5,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dart-lang/dart-vim-plugin'
 Plug 'fisadev/vim-ctrlp-cmdpalette'
 Plug 'lifepillar/vim-solarized8'
 Plug 'mxw/vim-jsx'
@@ -97,4 +98,15 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 
 " Persistent undo, better than 'hidden'
 set undofile
+
+"" User-defined functions
+" Trigger Flutter hot reload
+function! HotReload() abort
+  if !empty(glob("/tmp/flutter.pid"))
+    silent execute '!kill -SIGUSR1 "$(cat /tmp/flutter.pid)"'
+  endif
+endfunction
+autocmd BufWritePost *.dart call HotReload()
+" Run Flutter in :term with hot reloading
+command FlutterRun :sp | :res 8 | :terminal flutter run --pid-file /tmp/flutter.pid
 
