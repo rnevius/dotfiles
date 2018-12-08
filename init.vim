@@ -24,7 +24,7 @@ call plug#end()
 "
 " Airline
 let g:airline_theme='solarized'
-let g:airline_solarized_bg='light'
+let g:airline_solarized_bg='dark'
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " CtrlP
@@ -56,16 +56,16 @@ map <C-n> :NERDTreeToggle<CR>
 "" Theme (Solarized 8)
 " Make sure to import the color profile to your terminal.
 " http://ethanschoonover.com/solarized
-colorscheme solarized8
-let g:solarized_use16=1
+colorscheme solarized8_flat
 let g:solarized_term_italics=1
-set background=light
+set background=dark
 set linebreak
 set number
 set relativenumber
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
+set termguicolors
 
 
 "" Editing
@@ -73,7 +73,7 @@ set expandtab
 set inccommand=nosplit
 set ignorecase
 set noswapfile
-set scrolloff=1
+set scrolloff=5
 set shiftround
 set shiftwidth=2
 set smartcase
@@ -83,11 +83,18 @@ set textwidth=80
 set colorcolumn=+1
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+
 " Quicker window movement
+nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+tnoremap <Esc> <C-\><C-N>
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+
 " Persistent undo, better than 'hidden'
 set undofile
 
