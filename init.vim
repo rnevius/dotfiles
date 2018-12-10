@@ -57,6 +57,7 @@ map <C-n> :NERDTreeToggle<CR>
 " Ultisnips
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+let g:UltiSnipsListSnippets='<c-u>'
 let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips/'
 
 
@@ -65,7 +66,7 @@ let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips/'
 " http://ethanschoonover.com/solarized
 colorscheme solarized8_flat
 let g:solarized_term_italics=1
-set background=dark
+set background=light
 set linebreak
 set number
 set relativenumber
@@ -91,6 +92,7 @@ set tabstop=2
 set colorcolumn=81
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+nnoremap <Leader>n :nohlsearch<CR>
 
 " Quicker window movement
 nnoremap <C-h> <C-w>h
