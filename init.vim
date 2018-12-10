@@ -11,6 +11,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'SirVer/ultisnips'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -20,6 +21,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 
 call plug#end()
+
 
 "" Plugin Settings
 "
@@ -52,6 +54,10 @@ set diffopt+=vertical
 " NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
+" Ultisnips
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips/'
 
 
 "" Theme (Solarized 8)
@@ -67,6 +73,8 @@ set relativenumber
 set splitbelow
 set splitright
 set termguicolors
+nnoremap <Leader>bd :set background=dark<CR>
+nnoremap <Leader>bl :set background=light<CR>
 
 
 "" Editing
@@ -80,8 +88,7 @@ set shiftwidth=2
 set smartcase
 set tabstop=2
 " Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
+set colorcolumn=81
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -108,5 +115,5 @@ function! HotReload() abort
 endfunction
 autocmd BufWritePost *.dart call HotReload()
 " Run Flutter in :term with hot reloading
-command FlutterRun :sp | :res 8 | :terminal flutter run --pid-file /tmp/flutter.pid
+command! FlutterRun :sp | :res 8 | :terminal flutter run --pid-file /tmp/flutter.pid
 
