@@ -10,6 +10,7 @@ Plug 'fisadev/vim-ctrlp-cmdpalette'
 Plug 'lifepillar/vim-solarized8'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree'
 Plug 'SirVer/ultisnips'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
@@ -51,6 +52,9 @@ endif
 nnoremap <Leader>p :CtrlPCmdPalette<cr>
 " Fugitive
 set diffopt+=vertical
+" NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-n> :NERDTreeToggle<CR>
 " Ultisnips
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
@@ -101,6 +105,8 @@ tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
+nnoremap <Leader>t :sp <Bar> :terminal<CR>
+nnoremap <Leader>tv :vs <Bar> :terminal<CR>
 
 " Persistent undo, better than 'hidden'
 set undofile
@@ -114,5 +120,5 @@ function! HotReload() abort
 endfunction
 autocmd BufWritePost *.dart call HotReload()
 " Run Flutter in :term with hot reloading
-command! FlutterRun :sp | :res 8 | :terminal flutter run --pid-file /tmp/flutter.pid
+command! FlutterRun :sp <Bar> :res 8 <Bar> :terminal flutter run --pid-file /tmp/flutter.pid
 
