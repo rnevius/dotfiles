@@ -1,12 +1,14 @@
 let mapleader = ","
 
+"""""""""""""""""""
+""    Plugins
+"""""""""""""""""""
 "" Plugin management via vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'fisadev/vim-ctrlp-cmdpalette'
 Plug 'lifepillar/vim-solarized8'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
@@ -16,7 +18,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
@@ -24,13 +25,82 @@ Plug 'w0rp/ale'
 call plug#end()
 
 
-"" Plugin Settings
-"
-" Airline
+"""""""""""""""""""
+""   Interface
+"""""""""""""""""""
+" Theme (Solarized 8)
+" Make sure to import the color profile to your terminal.
+" http://ethanschoonover.com/solarized
+colorscheme solarized8_flat
+let g:solarized_term_italics=1
+set background=light
+set colorcolumn=81  " Make it obvious where 80 characters is
+set termguicolors
+
+" Airline Plugin
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+
+" Git (via Fugitive)
+set diffopt+=vertical
+
+" Mappings
+nnoremap <Leader>bd :set background=dark<CR>
+nnoremap <Leader>bl :set background=light<CR>
+
+
+"""""""""""""""""""
+""   Editing
+"""""""""""""""""""
+set expandtab
+set foldmethod=indent
+set ignorecase
+set inccommand=nosplit  " Incremental substitution
+set linebreak
+set noswapfile
+set number
+set relativenumber
+set splitbelow
+set splitright
+set scrolloff=4
+set shiftround
+set shiftwidth=2
+set smartcase
+set tabstop=2
+set undofile  " Persistent undo, better than 'hidden'
+
+let g:html_indent_tags = 'li\|p'  " Treat <li> and <p> tags like the block tags they are
+
+" Mappings
+nnoremap <Leader>/ :nohlsearch<CR>
+
+" Ultisnips
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+let g:UltiSnipsListSnippets='<c-u>'
+let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips/'
+
+
+"""""""""""""""""""
+""   Commands
+"""""""""""""""""""
+" Flutter hot reload
+function! HotReload() abort
+  if !empty(glob("/tmp/flutter.pid"))
+    silent execute '!kill -SIGUSR1 "$(cat /tmp/flutter.pid)"'
+  endif
+endfunction
+autocmd BufWritePost *.dart call HotReload()
+" Flutter run in :term with hot reloading
+command! FlutterRun :sp <Bar> :res 8 <Bar> :terminal flutter run --pid-file /tmp/flutter.pid
+
+
+"""""""""""""""""""
+""   Navigation
+"""""""""""""""""""
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -48,54 +118,10 @@ if executable('ag')
     nnoremap \ :Ag<SPACE>
   endif
 endif
-" CtrlPCmdPalette
-nnoremap <Leader>p :CtrlPCmdPalette<cr>
-" Fugitive
-set diffopt+=vertical
 " NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
-" Ultisnips
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-let g:UltiSnipsListSnippets='<c-u>'
-let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips/'
-
-
-"" Theme (Solarized 8)
-" Make sure to import the color profile to your terminal.
-" http://ethanschoonover.com/solarized
-colorscheme solarized8_flat
-let g:solarized_term_italics=1
-set background=light
-set linebreak
-set number
-set relativenumber
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-set termguicolors
-nnoremap <Leader>bd :set background=dark<CR>
-nnoremap <Leader>bl :set background=light<CR>
-
-
-"" Editing
-set expandtab
-set inccommand=nosplit
-set ignorecase
-set noswapfile
-set scrolloff=5
-set shiftround
-set shiftwidth=2
-set smartcase
-set tabstop=2
-" Make it obvious where 80 characters is
-set colorcolumn=81
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-nnoremap <Leader>n :nohlsearch<CR>
-
-" Quicker window movement
+" Buffers / Windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -107,18 +133,5 @@ tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
 nnoremap <Leader>t :sp <Bar> :terminal<CR>
 nnoremap <Leader>tv :vs <Bar> :terminal<CR>
-
-" Persistent undo, better than 'hidden'
-set undofile
-
-"" User-defined functions
-" Trigger Flutter hot reload
-function! HotReload() abort
-  if !empty(glob("/tmp/flutter.pid"))
-    silent execute '!kill -SIGUSR1 "$(cat /tmp/flutter.pid)"'
-  endif
-endfunction
-autocmd BufWritePost *.dart call HotReload()
-" Run Flutter in :term with hot reloading
-command! FlutterRun :sp <Bar> :res 8 <Bar> :terminal flutter run --pid-file /tmp/flutter.pid
+nnoremap <Leader>ls :ls<CR>:b<Space>
 
