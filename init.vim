@@ -68,6 +68,7 @@ nnoremap <Leader>bl :set background=light<CR>
 ""   Editing
 """""""""""""""""""
 set expandtab
+set hidden
 set ignorecase
 set inccommand=nosplit  " Incremental substitution
 set linebreak
@@ -112,6 +113,23 @@ command! FlutterRun :sp <Bar> :res 8 <Bar> :terminal flutter run --pid-file /tmp
 """""""""""""""""""
 ""   Navigation
 """""""""""""""""""
+nnoremap <C-[> <C-t>
+" Buffers / Windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+tnoremap <Esc> <C-\><C-N>
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
+nnoremap <Leader>t :sp <Bar> :terminal<CR>
+nnoremap <Leader>tv :vs <Bar> :terminal<CR>
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+nnoremap <Leader>ls :ls<CR>:b<Space>
+
 " CtrlP
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -132,17 +150,4 @@ endif
 " NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
-" Buffers / Windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-tnoremap <Esc> <C-\><C-N>
-tnoremap <C-h> <C-\><C-N><C-w>h
-tnoremap <C-j> <C-\><C-N><C-w>j
-tnoremap <C-k> <C-\><C-N><C-w>k
-tnoremap <C-l> <C-\><C-N><C-w>l
-nnoremap <Leader>t :sp <Bar> :terminal<CR>
-nnoremap <Leader>tv :vs <Bar> :terminal<CR>
-nnoremap <Leader>ls :ls<CR>:b<Space>
 
