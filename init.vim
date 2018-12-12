@@ -35,13 +35,25 @@ colorscheme solarized8_flat
 let g:solarized_term_italics=1
 set background=light
 set colorcolumn=81  " Make it obvious where 80 characters is
+set list listchars=tab:»·,nbsp:¬
 set termguicolors
 
 " Airline Plugin
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#wordcount#enabled = 0
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.branch='⎇ '
+let g:airline_symbols.linenr=''
+let g:airline_symbols.maxlinenr=''
+let g:airline#extensions#ale#enabled=1
+let g:airline#extensions#default#layout = [
+  \ [ 'a', 'c' ],
+  \ [ 'x', 'y', 'b', 'z', 'error', 'warning' ]
+\ ]
+let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', g:airline_symbols.space.':%3v'])
+let g:airline#extensions#wordcount#enabled=0
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 " Git (via Fugitive)
@@ -56,7 +68,6 @@ nnoremap <Leader>bl :set background=light<CR>
 ""   Editing
 """""""""""""""""""
 set expandtab
-set foldmethod=indent
 set ignorecase
 set inccommand=nosplit  " Incremental substitution
 set linebreak
