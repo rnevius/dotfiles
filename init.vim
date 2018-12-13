@@ -36,6 +36,7 @@ let g:solarized_term_italics=1
 set background=light
 set colorcolumn=81  " Make it obvious where 80 characters is
 set list listchars=tab:»·,nbsp:¬
+set mouse=a
 set termguicolors
 
 " Airline Plugin
