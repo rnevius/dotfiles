@@ -17,6 +17,7 @@ Plug 'SirVer/ultisnips'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -36,7 +37,7 @@ let g:solarized_term_italics=1
 set background=light
 set colorcolumn=81  " Make it obvious where 80 characters is
 set list listchars=tab:»·,nbsp:¬
-set mouse=a
+set mouse=n
 set termguicolors
 
 " Airline Plugin
