@@ -12,6 +12,7 @@ Plug 'dart-lang/dart-vim-plugin'
 Plug 'lifepillar/vim-solarized8'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'rakr/vim-one'
 Plug 'scrooloose/nerdtree'
 Plug 'SirVer/ultisnips'
 Plug 'tomtom/tcomment_vim'
@@ -29,19 +30,22 @@ call plug#end()
 """""""""""""""""""
 ""   Interface
 """""""""""""""""""
-" Theme (Solarized 8)
+" Theme (Solarized 8 or One)
 " Make sure to import the color profile to your terminal.
 " http://ethanschoonover.com/solarized
-colorscheme solarized8_flat
-let g:solarized_term_italics=1
+let g:one_allow_italics = 1
 set background=light
+colorscheme one
+let g:solarized_term_italics=1
 set colorcolumn=81  " Make it obvious where 80 characters is
 set list listchars=tab:»·,nbsp:¬
 set mouse=n
-set termguicolors
+if (has("termguicolors"))
+  set termguicolors
+endif
 
 " Airline Plugin
-let g:airline_theme='solarized'
+let g:airline_theme='one'
 let g:airline_solarized_bg='dark'
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -126,28 +130,18 @@ tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
-nnoremap <Leader>t :sp <Bar> :terminal<CR>
-nnoremap <Leader>tv :vs <Bar> :terminal<CR>
+nnoremap <Leader>t :sp <Bar> :resize 8<CR> <Bar> :terminal<CR>
 nnoremap [b :bprevious<CR>
 nnoremap ]b :bnext<CR>
 nnoremap <Leader>ls :ls<CR>:b<Space>
 
 " CtrlP
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --ignore-dir .git --hidden -g "" %s'
-
-  " ag is fast enough that CtrlP doesn't need to cache
+" Use ripgrep instead of grep, if possible
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  " rg is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
-
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
 endif
 " NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
