@@ -30,7 +30,7 @@ call plug#end()
 """""""""""""""""""
 ""   Interface
 """""""""""""""""""
-" Theme (Solarized 8 or One)
+" Theme (Solarized 8)
 " Make sure to import the color profile to your terminal.
 " http://ethanschoonover.com/solarized
 let g:one_allow_italics = 1
@@ -136,12 +136,21 @@ nnoremap ]b :bnext<CR>
 nnoremap <Leader>ls :ls<CR>:b<Space>
 
 " CtrlP
-" Use ripgrep instead of grep, if possible
-if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  " rg is fast enough that CtrlP doesn't need to cache
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --ignore-dir .git --hidden -g "" %s'
+
+  " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
+
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
+  endif
 endif
 " NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

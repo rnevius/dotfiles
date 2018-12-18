@@ -4,9 +4,9 @@ Personal neovim installation and configuration instructions to hedge against the
 
 ## Installing
 
-1. Install `neovim` and `ripgrep` with Homebrew:
+1. Install `neovim` and [The Silver Searcher](https://github.com/ggreer/the_silver_searcher) with Homebrew:
     ```
-    brew install neovim ripgrep
+    brew install neovim the_silver_searcher
     ```
 2. Make sure that Python 3 is installed and add the `neovim` package for both 2/3:
     ```
