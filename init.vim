@@ -62,6 +62,9 @@ let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', g:airli
 let g:airline#extensions#wordcount#enabled=0
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
+" ALE Linting
+let g:ale_python_auto_pipenv=1
+
 " Git (via Fugitive)
 set diffopt+=vertical
 
