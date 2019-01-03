@@ -23,6 +23,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
+" Development version of vim-transpose
+Plug '~/www/vim-transpose'
 
 call plug#end()
 
@@ -96,6 +98,7 @@ set undofile  " Persistent undo, better than 'hidden'
 let g:html_indent_tags = 'li\|p'  " Treat <li> and <p> tags like the block tags they are
 
 " Mappings
+" inoremap <silent> </ </<C-x><C-o>
 nnoremap <Leader>/ :nohlsearch<CR>
 
 " Ultisnips
@@ -116,7 +119,7 @@ function! HotReload() abort
 endfunction
 autocmd BufWritePost *.dart call HotReload()
 " Flutter run in :term with hot reloading
-command! FlutterRun :sp <Bar> :res 8 <Bar> :terminal flutter run --pid-file /tmp/flutter.pid
+command! FlutterRun :sp <Bar> :resize 8 <Bar> :terminal flutter run --pid-file /tmp/flutter.pid
 
 
 """""""""""""""""""
@@ -133,7 +136,7 @@ tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
-nnoremap <Leader>t :sp <Bar> :resize 8<CR> <Bar> :terminal<CR>
+nnoremap <silent> <Leader>t :sp <Bar> :resize 8 <Bar> :terminal <CR> i
 nnoremap [b :bprevious<CR>
 nnoremap ]b :bnext<CR>
 nnoremap <Leader>ls :ls<CR>:b<Space>
