@@ -146,6 +146,8 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 nnoremap <silent> <Leader>t :sp <Bar> :resize 8 <Bar> :terminal <CR> i
 nnoremap [b :bprevious<CR>
 nnoremap ]b :bnext<CR>
+nnoremap [q :cprevious<CR>
+nnoremap ]q :cnext<CR>
 nnoremap <Leader>ls :ls<CR>:b<Space>
 
 " CtrlP
