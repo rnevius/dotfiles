@@ -132,6 +132,7 @@ command! FlutterRun :sp <Bar> :resize 8 <Bar> :terminal flutter run --pid-file /
 """""""""""""""""""
 ""   Navigation
 """""""""""""""""""
+" Jump to older tag in the stack
 nnoremap <C-[> <C-t>
 " Buffers / Windows
 nnoremap <C-h> <C-w>h
@@ -143,12 +144,19 @@ tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
+" Open a terminal in a horizontal split
 nnoremap <silent> <Leader>t :sp <Bar> :resize 8 <Bar> :terminal <CR> i
+" Cycle through buffers
 nnoremap [b :bprevious<CR>
 nnoremap ]b :bnext<CR>
+" List buffers and get ready to switch
+nnoremap <Leader>ls :ls<CR>:b<Space>
+" Cycle through quickfix list
 nnoremap [q :cprevious<CR>
 nnoremap ]q :cnext<CR>
-nnoremap <Leader>ls :ls<CR>:b<Space>
+" Cycle through location list
+nnoremap [l :lprevious<CR>
+nnoremap ]l :lnext<CR>
 
 " CtrlP
 " Use ripgrep https://github.com/BurntSushi/ripgrep
