@@ -23,6 +23,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
+
 " Development version of vim-transpose
 Plug '~/www/vim-transpose'
 
@@ -47,6 +48,7 @@ if (has("termguicolors"))
 endif
 
 " Airline Plugin
+set noshowmode
 let g:airline_theme='one'
 let g:airline_solarized_bg='dark'
 if !exists('g:airline_symbols')
@@ -58,13 +60,16 @@ let g:airline_symbols.maxlinenr=''
 let g:airline#extensions#ale#enabled=1
 let g:airline#extensions#default#layout = [
   \ [ 'a', 'c' ],
-  \ [ 'x', 'y', 'b', 'z', 'error', 'warning' ]
+  \ [ 'x', 'y', 'b', 'error', 'warning', 'z' ]
 \ ]
 let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', g:airline_symbols.space.':%3v'])
 let g:airline#extensions#wordcount#enabled=0
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 " ALE Linting
+let g:ale_lint_on_text_changed='normal'
+let g:ale_lint_on_insert_leave=1
+let g:ale_lint_delay=0
 let g:ale_python_auto_pipenv=1
 
 " Git (via Fugitive)
@@ -88,7 +93,7 @@ set number
 set relativenumber
 set splitbelow
 set splitright
-set scrolloff=4
+set scrolloff=2
 set shiftround
 set shiftwidth=2
 set smartcase
@@ -100,6 +105,8 @@ let g:html_indent_tags = 'li\|p'  " Treat <li> and <p> tags like the block tags 
 " Mappings
 " inoremap <silent> </ </<C-x><C-o>
 nnoremap <Leader>/ :nohlsearch<CR>
+" Delete to the black hole register
+nnoremap <Leader>d "_d
 
 " Ultisnips
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
@@ -142,20 +149,20 @@ nnoremap ]b :bnext<CR>
 nnoremap <Leader>ls :ls<CR>:b<Space>
 
 " CtrlP
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" Use ripgrep https://github.com/BurntSushi/ripgrep
+if executable('rg')
+  " Use ripgrep over grep
+  set grepprg=rg\ --vimgrep\ --no-heading
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag --literal --files-with-matches --nocolor --ignore-dir .git --hidden -g "" %s'
+  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'rg %s --fixed-strings --files --color=never --hidden --glob "!.git/*"'
 
-  " ag is fast enough that CtrlP doesn't need to cache
+  " rg is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
+  if !exists(":Rg")
+    command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Rg<SPACE>
   endif
 endif
 " NERDTree
