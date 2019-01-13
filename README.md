@@ -10,22 +10,22 @@ Personal neovim installation and configuration instructions to hedge against the
     ```
 2. Make sure that Python 3 is installed and add the `neovim` package for both 2/3:
     ```
-    $ pip2 install --user neovim && pip3 install --user neovim
+    pip2 install --user neovim && pip3 install --user neovim
     ```
 3. Install [vim-plug](https://github.com/junegunn/vim-plug):
     ```
-    $ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     ```
 4. Install [universal-ctags](https://github.com/universal-ctags/ctags)
 5. Clone the `init.vim` file from this repo:
     ```
-    $ curl -fLo ~/.config/nvim/init.vim --create-dirs \
+    curl -fLo ~/.config/nvim/init.vim --create-dirs \
     https://raw.githubusercontent.com/rnevius/neovim.conf/master/init.vim
     ```
 6. Create an `undo/` directory in the default location, for persistent undo:
     ```
-    $ mkdir -p ~/.local/share/nvim/undo
+    mkdir -p ~/.local/share/nvim/undo
     ```
-7. Start `nvim` and install plugins via `:PlugInstall`
+7. Start `nvim` and install plugins: `nvim -c PlugInstall`
 
