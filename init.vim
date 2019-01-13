@@ -102,8 +102,6 @@ set smartcase
 set tabstop=2
 set undofile  " Persistent undo, better than 'hidden'
 
-let g:html_indent_tags = 'li\|p'  " Treat <li> and <p> tags like the block tags they are
-
 " Mappings
 " inoremap <silent> </ </<C-x><C-o>
 nnoremap <Leader>/ :nohlsearch<CR>
