@@ -4,12 +4,14 @@ let mapleader = ","
 ""    Plugins
 """""""""""""""""""
 "" Plugin management via vim-plug
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
+Plug 'andrewradev/splitjoin.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'lifepillar/vim-solarized8'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'rakr/vim-one'
@@ -107,6 +109,8 @@ let g:html_indent_tags = 'li\|p'  " Treat <li> and <p> tags like the block tags 
 nnoremap <Leader>/ :nohlsearch<CR>
 " Delete to the black hole register
 nnoremap <Leader>d "_d
+" Fix the `Y`ank inconsistency
+nnoremap Y y$
 
 " Ultisnips
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
@@ -118,6 +122,15 @@ let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips/'
 """""""""""""""""""
 ""   Commands
 """""""""""""""""""
+if executable('rg')
+  " Use ripgrep over grep
+  set grepprg=rg\ --vimgrep\ --no-heading
+
+  if !exists(":Rg")
+    command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Rg<SPACE>
+  endif
+endif
 " Flutter hot reload
 function! HotReload() abort
   if !empty(glob("/tmp/flutter.pid"))
@@ -161,21 +174,19 @@ nnoremap ]l :lnext<CR>
 " CtrlP
 " Use ripgrep https://github.com/BurntSushi/ripgrep
 if executable('rg')
-  " Use ripgrep over grep
-  set grepprg=rg\ --vimgrep\ --no-heading
-
   " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'rg %s --fixed-strings --files --color=never --hidden --glob "!.git/*"'
 
   " rg is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
-
-  if !exists(":Rg")
-    command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Rg<SPACE>
-  endif
+endif
+" Gutentags
+if executable('rg')
+  let g:gutentags_file_list_command = 'rg --files'
 endif
 " NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 map <C-n> :NERDTreeToggle<CR>
+" Splitjoin
+let g:splitjoin_trailing_comma = 1
 

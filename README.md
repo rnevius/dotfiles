@@ -17,14 +17,15 @@ Personal neovim installation and configuration instructions to hedge against the
     $ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     ```
-4. Clone the `init.vim` file from this repo:
+4. Install [universal-ctags](https://github.com/universal-ctags/ctags)
+5. Clone the `init.vim` file from this repo:
     ```
     $ curl -fLo ~/.config/nvim/init.vim --create-dirs \
     https://raw.githubusercontent.com/rnevius/neovim.conf/master/init.vim
     ```
-5. Create an `undo/` directory in the default location, for persistent undo:
+6. Create an `undo/` directory in the default location, for persistent undo:
     ```
     $ mkdir -p ~/.local/share/nvim/undo
     ```
-6. Start `nvim` and install plugins via `:PlugInstall`
+7. Start `nvim` and install plugins via `:PlugInstall`
 
