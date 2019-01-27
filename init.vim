@@ -122,7 +122,7 @@ let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips/'
 """""""""""""""""""
 if executable('rg')
   " Use ripgrep over grep
-  set grepprg=rg\ --vimgrep\ --no-heading
+  set grepprg=rg\ --vimgrep
 
   if !exists(":Rg")
     command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
@@ -137,12 +137,18 @@ function! HotReload() abort
 endfunction
 autocmd BufWritePost *.dart call HotReload()
 " Flutter run in :term with hot reloading
-command! FlutterRun :sp <Bar> :resize 8 <Bar> :terminal flutter run --pid-file /tmp/flutter.pid
+command! FlutterRun :8split +terminal flutter run --pid-file /tmp/flutter.pid
 
 
 """""""""""""""""""
 ""   Navigation
 """""""""""""""""""
+nnoremap <Leader>f :find *
+set path=.,**
+" Ignore directories and file types
+set wildignore+=*/node_modules/*,*/__pycache__/*,.git/
+set wildignore+=*.sw[ponm],*.gif,*.jpg,*.jpeg,*.png,*.pdf,tags,*.o,*.class,*.java.html,*.pyc,*.pyo
+set wildmode=list:full
 " Jump to older tag in the stack
 nnoremap <C-[> <C-t>
 " Buffers / Windows
@@ -156,7 +162,7 @@ tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
 " Open a terminal in a horizontal split
-nnoremap <silent> <Leader>t :sp <Bar> :resize 8 <Bar> :terminal <CR> i
+nnoremap <silent> <Leader>t :8split +terminal <CR> i
 " Cycle through buffers
 nnoremap [b :bprevious<CR>
 nnoremap ]b :bnext<CR>
