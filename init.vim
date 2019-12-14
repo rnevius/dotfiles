@@ -10,13 +10,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dart-lang/dart-vim-plugin'
-" Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'rakr/vim-one'
-Plug 'scrooloose/nerdtree'
 Plug 'SirVer/ultisnips'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
@@ -78,11 +76,6 @@ let g:ale_python_auto_pipenv=1
 
 " Git (via Fugitive)
 set diffopt+=vertical
-
-" Lightline
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ }
 
 " Mappings
 nnoremap <Leader>bd :set background=dark<CR>
@@ -195,9 +188,6 @@ endif
 if executable('rg')
   let g:gutentags_file_list_command = 'rg --files'
 endif
-" NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-n> :NERDTreeToggle<CR>
 " Splitjoin
 let g:splitjoin_trailing_comma = 1
 
