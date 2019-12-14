@@ -10,6 +10,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dart-lang/dart-vim-plugin'
+" Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mxw/vim-jsx'
@@ -21,6 +22,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -39,8 +41,8 @@ call plug#end()
 " Make sure to import the color profile to your terminal.
 " http://ethanschoonover.com/solarized
 let g:one_allow_italics = 1
-set background=light
 colorscheme one
+set background=dark
 let g:solarized_term_italics=1
 set colorcolumn=81  " Make it obvious where 80 characters is
 set list listchars=tab:»·,nbsp:¬
@@ -77,6 +79,11 @@ let g:ale_python_auto_pipenv=1
 " Git (via Fugitive)
 set diffopt+=vertical
 
+" Lightline
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ }
+
 " Mappings
 nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bl :set background=light<CR>
@@ -92,7 +99,7 @@ set inccommand=nosplit  " Incremental substitution
 set linebreak
 set noswapfile
 set number
-set relativenumber
+" set relativenumber
 set splitbelow
 set splitright
 set scrolloff=2
@@ -122,7 +129,7 @@ let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips/'
 """""""""""""""""""
 if executable('rg')
   " Use ripgrep over grep
-  set grepprg=rg\ --vimgrep
+  set grepprg=rg\ --smart-case\ --vimgrep
 
   if !exists(":Rg")
     command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
@@ -179,7 +186,7 @@ nnoremap ]l :lnext<CR>
 " Use ripgrep https://github.com/BurntSushi/ripgrep
 if executable('rg')
   " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'rg %s --fixed-strings --files --color=never --hidden --glob "!.git/*"'
+  let g:ctrlp_user_command = "rg %s --fixed-strings --files --color=never --smart-case --hidden --glob '!.git/*'"
 
   " rg is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
