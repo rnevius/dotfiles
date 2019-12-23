@@ -80,6 +80,18 @@ set diffopt+=vertical
 " Mappings
 nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bl :set background=light<CR>
+" <M-j>
+nnoremap ∆ :m .+1<CR>==
+" <M-k>
+nnoremap ˚ :m .-2<CR>==
+" <M-j>
+inoremap ∆ <Esc>:m .+1<CR>==gi
+" <M-k>
+inoremap ˚ <Esc>:m .-2<CR>==gi
+" <M-j>
+vnoremap ∆ :m '>+1<CR>gv=gv
+" <M-k>
+vnoremap ˚ :m '<-2<CR>gv=gv
 
 
 """""""""""""""""""
