@@ -80,6 +80,8 @@ let g:ale_python_auto_pipenv=1
 set diffopt+=vertical
 
 " Mappings
+nnoremap ; :
+nnoremap : ;
 nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bl :set background=light<CR>
 " <M-j>
@@ -94,6 +96,11 @@ inoremap ˚ <Esc>:m .-2<CR>==gi
 vnoremap ∆ :m '>+1<CR>gv=gv
 " <M-k>
 vnoremap ˚ :m '<-2<CR>gv=gv
+" 'cd' towards the directory in which the current file is edited
+" but only change the path for the current window
+nnoremap <leader>cd :lcd %:h<CR>
+" Open files located in the same dir in with the current file is edited
+nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
 
 
 """""""""""""""""""
