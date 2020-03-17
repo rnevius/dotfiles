@@ -85,17 +85,17 @@ nnoremap : ;
 nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bl :set background=light<CR>
 " <M-j>
-nnoremap ∆ :m .+1<CR>==
+nnoremap <silent> ∆ :m .+1<CR>==
 " <M-k>
-nnoremap ˚ :m .-2<CR>==
+nnoremap <silent> ˚ :m .-2<CR>==
 " <M-j>
-inoremap ∆ <Esc>:m .+1<CR>==gi
+inoremap <silent> ∆ <Esc>:m .+1<CR>==gi
 " <M-k>
-inoremap ˚ <Esc>:m .-2<CR>==gi
+inoremap <silent> ˚ <Esc>:m .-2<CR>==gi
 " <M-j>
-vnoremap ∆ :m '>+1<CR>gv=gv
+vnoremap <silent> ∆ :m '>+1<CR>gv=gv
 " <M-k>
-vnoremap ˚ :m '<-2<CR>gv=gv
+vnoremap <silent> ˚ :m '<-2<CR>gv=gv
 " 'cd' towards the directory in which the current file is edited
 " but only change the path for the current window
 nnoremap <leader>cd :lcd %:h<CR>
@@ -168,7 +168,7 @@ nnoremap <Leader>f :find *
 set path=.,**
 " Ignore directories and file types
 set wildignore+=*/node_modules/*,*/__pycache__/*,.git/
-set wildignore+=*.sw[ponm],*.gif,*.jpg,*.jpeg,*.png,*.pdf,tags,*.o,*.class,*.java.html,*.pyc,*.pyo
+set wildignore+=*.sw[ponm],*.gif,*.jpg,*.jpeg,*.png,*.pdf,tags,tags.*,*.o,*.class,*.java.html,*.pyc,*.pyo
 set wildmode=list:full
 " Jump to older tag in the stack
 nnoremap <C-[> <C-t>
