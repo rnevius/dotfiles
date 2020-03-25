@@ -8,11 +8,12 @@ call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
 Plug 'andrewradev/splitjoin.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 Plug 'rakr/vim-one'
 Plug 'shumphrey/fugitive-gitlab.vim'
@@ -44,9 +45,11 @@ let g:one_allow_italics = 1
 colorscheme one
 set background=dark
 let g:solarized_term_italics=1
+set cmdheight=2
 set colorcolumn=81  " Make it obvious where 80 characters is
 set list listchars=tab:»·,nbsp:¬
 set mouse=n
+set noemoji
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -82,16 +85,17 @@ set diffopt+=vertical
 " Mappings
 nnoremap ; :
 nnoremap : ;
+vnoremap ; :
 nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bl :set background=light<CR>
 " <M-j>
-nnoremap <silent> ∆ :m .+1<CR>==
+nnoremap <silent> ∆ :m +1<CR>==
 " <M-k>
-nnoremap <silent> ˚ :m .-2<CR>==
+nnoremap <silent> ˚ :m -2<CR>==
 " <M-j>
-inoremap <silent> ∆ <Esc>:m .+1<CR>==gi
+inoremap <silent> ∆ <Esc>:m +1<CR>==gi
 " <M-k>
-inoremap <silent> ˚ <Esc>:m .-2<CR>==gi
+inoremap <silent> ˚ <Esc>:m -2<CR>==gi
 " <M-j>
 vnoremap <silent> ∆ :m '>+1<CR>gv=gv
 " <M-k>
@@ -144,11 +148,6 @@ let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips/'
 if executable('rg')
   " Use ripgrep over grep
   set grepprg=rg\ --smart-case\ --vimgrep
-
-  if !exists(":Rg")
-    command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Rg<SPACE>
-  endif
 endif
 " Flutter hot reload
 function! HotReload() abort
@@ -177,7 +176,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-tnoremap <Esc> <C-\><C-N>
+autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-N>
+autocmd FileType fzf tunmap <buffer> <Esc>
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
@@ -187,8 +187,6 @@ nnoremap <silent> <Leader>t :8split +terminal <CR> i
 " Cycle through buffers
 nnoremap [b :bprevious<CR>
 nnoremap ]b :bnext<CR>
-" List buffers and get ready to switch
-nnoremap <Leader>ls :ls<CR>:b<Space>
 " Cycle through quickfix list
 nnoremap [q :cprevious<CR>
 nnoremap ]q :cnext<CR>
@@ -196,15 +194,13 @@ nnoremap ]q :cnext<CR>
 nnoremap [l :lprevious<CR>
 nnoremap ]l :lnext<CR>
 
-" CtrlP
-" Use ripgrep https://github.com/BurntSushi/ripgrep
-if executable('rg')
-  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = "rg %s --fixed-strings --files --color=never --smart-case --hidden --glob '!.git/*'"
+" FZF
+let g:fzf_preview_window = ''
+nnoremap <C-p> :GFiles<CR>
+nnoremap <Leader>ls :Buffers<CR>
+nnoremap \ :Rg<Space>
+nnoremap <Leader>h :Helptags<CR>
 
-  " rg is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
 " Gutentags
 if executable('rg')
   let g:gutentags_file_list_command = 'rg --files'
