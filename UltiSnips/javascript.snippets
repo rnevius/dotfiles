@@ -1,32 +1,8 @@
-snippet rc "React class component" b
-export default class ${1:`!p snip.rv = snip.basename or 'MyComponent'`} extends React.Component {
-	$2
-
-	render() {
-		return (
-
-		);
-	}
-}
-endsnippet
-
-snippet construct "constructor()" b
-constructor(props) {
-	super(props);
-
-	$1
-}
-endsnippet
-
-snippet cdm "componentDidMount()" b
-componentDidMount() {
-	$1
-}
-endsnippet
-
-snippet rfc "React functional component" b
+snippet rc "React functional component" b
 const ${1:`!p snip.rv = snip.basename or 'MyComponent'`} = ({ $2 }) => {
-	$3
+	return (
+		$3
+	);
 };
 
 export default $1;
