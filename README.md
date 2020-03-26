@@ -4,17 +4,17 @@ Personal neovim installation and configuration instructions to hedge against the
 
 ## Installing
 
-1. Install `tsserver` for [ALE](https://github.com/dense-analysis/ale) definition jumping support:
+1. Install `tsserver` for [:ALEGoToDefinition](https://github.com/dense-analysis/ale) support:
     ```
     npm i -g typescript
     ```
-1. Install [fzf](https://github.com/junegunn/fzf) and set the default command in .zshrc, so that fzf-vim has a more useful `:Files` output:
+1. Install `neovim`, [fd](https://github.com/sharkdp/fd), [fzf](https://github.com/junegunn/fzf), and [ripgrep](https://github.com/BurntSushi/ripgrep) with Homebrew:
+    ```
+    brew install neovim fd fzf ripgrep
+    ```
+1. Set the default FZF command in .zshrc, so that fzf-vim has a more useful `:Files` output:
     ```
     export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
-    ```
-1. Install `neovim` and [ripgrep](https://github.com/BurntSushi/ripgrep) with Homebrew:
-    ```
-    brew install neovim ripgrep
     ```
 1. Make sure that Python 3 is installed and add the `neovim` package for both 2/3:
     ```
