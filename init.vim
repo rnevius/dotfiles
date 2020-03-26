@@ -42,17 +42,18 @@ call plug#end()
 " Make sure to import the color profile to your terminal.
 " http://ethanschoonover.com/solarized
 let g:one_allow_italics = 1
-colorscheme one
-set background=dark
-let g:solarized_term_italics=1
-set cmdheight=2
-set colorcolumn=81  " Make it obvious where 80 characters is
-set list listchars=tab:»·,nbsp:¬
-set mouse=n
-set noemoji
 if (has("termguicolors"))
   set termguicolors
 endif
+set background=dark
+colorscheme one
+let g:solarized_term_italics=1
+set cmdheight=2
+set colorcolumn=81  " Make it obvious where 80 characters is
+set cursorline
+set list listchars=tab:»·,nbsp:¬
+set mouse=n
+set noemoji
 
 " Airline Plugin
 set noshowmode
@@ -73,11 +74,16 @@ let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', g:airli
 let g:airline#extensions#wordcount#enabled=0
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
-" ALE Linting
+" ALE
 let g:ale_lint_on_text_changed='normal'
 let g:ale_lint_on_insert_leave=1
 let g:ale_lint_delay=0
 let g:ale_python_auto_pipenv=1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\ }
+nmap <Leader>gd <Plug>(ale_go_to_definition)
 
 " Git (via Fugitive)
 set diffopt+=vertical
@@ -177,7 +183,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-N>
-autocmd FileType fzf tunmap <buffer> <Esc>
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
@@ -195,8 +200,9 @@ nnoremap [l :lprevious<CR>
 nnoremap ]l :lnext<CR>
 
 " FZF
+autocmd FileType fzf tunmap <buffer> <Esc>
 let g:fzf_preview_window = ''
-nnoremap <C-p> :GFiles<CR>
+nnoremap <silent> <C-p> :Files<CR>
 nnoremap <Leader>ls :Buffers<CR>
 nnoremap \ :Rg<Space>
 nnoremap <Leader>h :Helptags<CR>
