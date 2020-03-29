@@ -2,6 +2,6 @@
 *
 
 # Whitelist
+!README.md
 !nvim/init.vim
-!nvim/README.md
 !nvim/Ultisnips/
