@@ -3,5 +3,10 @@
 
 # Whitelist
 !README.md
+!git/
+!git/ignore
+!kitty/
+!kitty/kitty.conf
+!nvim/
 !nvim/init.vim
 !nvim/Ultisnips/
