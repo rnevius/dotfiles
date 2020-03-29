@@ -1,3 +1,7 @@
-.netrwhist
-tags
-plugged/
+# Ignore everything
+*
+
+# Whitelist
+!nvim/init.vim
+!nvim/README.md
+!nvim/Ultisnips/
