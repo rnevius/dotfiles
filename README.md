@@ -12,6 +12,10 @@ Personal neovim installation and configuration instructions to hedge against the
     ```
     brew install neovim fd fzf ripgrep
     ```
+1. Install [universal-ctags](https://github.com/universal-ctags/ctags):
+    ```
+    brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+    ```
 1. Set the default FZF command in .zshrc, so that fzf-vim has a more useful `:Files` output:
     ```
     export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
@@ -25,15 +29,14 @@ Personal neovim installation and configuration instructions to hedge against the
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     ```
-1. Install [universal-ctags](https://github.com/universal-ctags/ctags)
+1. Create an `undo/` directory in the default location, for persistent undo:
+    ```
+    mkdir -p ~/.local/share/nvim/undo
+    ```
 1. Clone the `init.vim` file from this repo:
     ```
     curl -fLo ~/.config/nvim/init.vim --create-dirs \
     https://raw.githubusercontent.com/rnevius/neovim.conf/master/init.vim
-    ```
-1. Create an `undo/` directory in the default location, for persistent undo:
-    ```
-    mkdir -p ~/.local/share/nvim/undo
     ```
 1. Start `nvim` and install plugins: `nvim -c PlugInstall`
 
