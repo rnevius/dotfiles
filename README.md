@@ -20,9 +20,9 @@ Personal dotfiles and configuration instructions to hedge against the fallout fr
     ```
     export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
     ```
-1. Make sure that Python 3 is installed and add the `neovim` package for both 2/3:
+1. Make sure that Python 3 is installed and add the `neovim` package:
     ```
-    pip2 install --user neovim && pip3 install --user neovim
+    python3 -m pip install --user --upgrade pynvim
     ```
 1. Install [vim-plug](https://github.com/junegunn/vim-plug):
     ```
