@@ -74,6 +74,26 @@ Plug 'tpope/vim-vinegar'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+  set noshowmode
+  let g:airline_theme='one'
+  let g:airline_solarized_bg='dark'
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+  let g:airline_symbols.branch='⎇ '
+  let g:airline_symbols.linenr=''
+  let g:airline_symbols.maxlinenr=''
+  let g:airline#extensions#ale#enabled=1
+  let g:airline#extensions#default#layout = [
+    \ [ 'a', 'c' ],
+    \ [ 'b', 'error', 'warning', 'z' ]
+  \ ]
+  let g:airline#extensions#wordcount#enabled=0
+  let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+  function! AirlineInit()
+    let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', ' :%3v'])
+  endfunction
+  autocmd User AirlineAfterInit call AirlineInit()
 
 call plug#end()
 " }}}
@@ -90,25 +110,6 @@ set colorcolumn=81
 set cursorline
 set diffopt+=vertical
 set list listchars=tab:»·,nbsp:¬
-
-" Airline
-set noshowmode
-let g:airline_theme='one'
-let g:airline_solarized_bg='dark'
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.branch='⎇ '
-let g:airline_symbols.linenr=''
-let g:airline_symbols.maxlinenr=''
-let g:airline#extensions#ale#enabled=1
-let g:airline#extensions#default#layout = [
-  \ [ 'a', 'c' ],
-  \ [ 'b', 'error', 'warning', 'z' ]
-\ ]
-let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', g:airline_symbols.space.':%3v'])
-let g:airline#extensions#wordcount#enabled=0
-let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 " }}}
 
 """""""""""""""""
@@ -116,6 +117,9 @@ let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 """""""""""""""""
 set clipboard=unnamedplus
 set expandtab
+if executable('rg')
+  set grepprg=rg\ --smart-case\ --vimgrep
+endif
 set hidden
 set ignorecase
 set inccommand=nosplit
