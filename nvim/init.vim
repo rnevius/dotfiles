@@ -1,10 +1,8 @@
 " vim: foldmethod=marker
 let mapleader = ","
 
-"""""""""""""""""""
-""    Plugins   {{{
-"""""""""""""""""""
-"" Plugin management via vim-plug
+"    Plugins   {{{
+""""""""""""""""""
 call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
@@ -13,7 +11,6 @@ Plug 'andrewradev/splitjoin.vim'
 
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'dense-analysis/ale'
-  let g:ale_completion_enabled = 1
   let g:ale_lint_on_text_changed='normal'
   let g:ale_lint_on_insert_leave=1
   let g:ale_lint_delay=0
@@ -98,9 +95,8 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " }}}
 
-"""""""""""""""""""
-""   Interface  {{{
-"""""""""""""""""""
+"   Interface  {{{
+""""""""""""""""""
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -109,12 +105,11 @@ set background=light
 set colorcolumn=81
 set cursorline
 set diffopt+=vertical
-set list listchars=tab:»·,nbsp:¬
+set list listchars=tab:»·,trail:¬,nbsp:·
 " }}}
 
-"""""""""""""""""
-""   Editing  {{{
-"""""""""""""""""
+"   Editing  {{{
+""""""""""""""""
 set clipboard=unnamedplus
 set expandtab
 if executable('rg')
@@ -125,9 +120,9 @@ set ignorecase
 set inccommand=nosplit
 set linebreak
 set mouse=n
+set nojoinspaces
 set noswapfile
 set number
-set omnifunc=syntaxcomplete#Complete
 set path=.,**
 set splitbelow
 set splitright
@@ -137,15 +132,15 @@ set shiftwidth=2
 set shortmess+=I
 set smartcase
 set tabstop=2
-set undofile  " Persistent undo, better than 'hidden'
+set undofile
+set updatetime=500
 set wildignore+=*/node_modules/*,*/__pycache__/*,.git/
 set wildignore+=*.sw[ponm],*.gif,*.jpg,*.jpeg,*.png,*.pdf,tags,tags.*,*.o,*.class,*.java.html,*.pyc,*.pyo
 set wildmode=list:full
 " }}}
 
-""""""""""""""""""
-""   Mappings  {{{
-""""""""""""""""""
+"   Mappings  {{{
+"""""""""""""""""
 nnoremap ; :
 nnoremap : ;
 vnoremap ; :
@@ -195,15 +190,16 @@ nnoremap [l :lprevious<CR>
 nnoremap ]l :lnext<CR>
 
 " Leader mappings
+nnoremap <Leader><Leader> <C-^>
 nnoremap <Leader>/ :nohlsearch<CR>
-nnoremap ,= `[v`]=
+nnoremap <Leader>= `[v`]=
 " nnoremap <Leader>bd :set background=dark <Bar> colorscheme one<CR>
 " nnoremap <Leader>bl :set background=light <Bar> colorscheme solarized8_flat<CR>
 nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bl :set background=light<CR>
 " 'cd' towards the directory in which the current file is edited
 " but only change the path for the current window
-nnoremap <leader>cd :lcd %:h<CR>
+nnoremap <Leader>cd :lcd %:h<CR>
 " Open files located in the same dir in with the current file is edited
 " nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
 " nnoremap <Leader>f :find *
@@ -211,9 +207,8 @@ nnoremap <leader>cd :lcd %:h<CR>
 nnoremap <Leader>d "_d
 " }}}
 
-""""""""""""""""""
-""   Commands / Functions  {{{
-""""""""""""""""""
+"   Commands / Functions  {{{
+"""""""""""""""""""""""""""""
 " Flutter hot reload
 function! HotReload() abort
   if !empty(glob("/tmp/flutter.pid"))
@@ -236,3 +231,8 @@ endfunction
 xnoremap * :<C-U>call VisualSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-U>call VisualSearch('?')<CR>?<C-R>=@/<CR><CR>
 " }}}
+
+" Project-specific autocommands
+if filereadable(expand("~/.config/nvim/projects.vim"))
+  source ~/.config/nvim/projects.vim
+endif
