@@ -56,6 +56,7 @@ Plug 'SirVer/ultisnips'
 
 Plug 'tomtom/tcomment_vim'
 
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -110,7 +111,7 @@ set list listchars=tab:»·,trail:¬,nbsp:·
 
 "   Editing  {{{
 """"""""""""""""
-set clipboard=unnamedplus
+set complete+=i
 set expandtab
 if executable('rg')
   set grepprg=rg\ --smart-case\ --vimgrep
@@ -136,6 +137,7 @@ set undofile
 set updatetime=500
 set wildignore+=*/node_modules/*,*/__pycache__/*,.git/
 set wildignore+=*.sw[ponm],*.gif,*.jpg,*.jpeg,*.png,*.pdf,tags,tags.*,*.o,*.class,*.java.html,*.pyc,*.pyo
+set wildignorecase
 set wildmode=list:full
 " }}}
 

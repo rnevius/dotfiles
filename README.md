@@ -40,3 +40,16 @@ Personal dotfiles and configuration instructions to hedge against the fallout fr
     ```
 1. Start `nvim` and install plugins: `nvim -c PlugInstall`
 
+Optional, project-specific settings can be added to `~/.config/nvim/projects.nvim`. For example:
+
+```vim
+augroup ProjectSettings
+  autocmd!
+augroup END
+
+function! SomeProject() abort
+  set makeprg=docker-compose\ exec\ -T\ web\ bundle\ exec\ rake\ spec
+endfunction
+autocmd ProjectSettings BufNewFile,BufRead ~/www/some-project/**/*
+  \ call SomeProject()
+```
