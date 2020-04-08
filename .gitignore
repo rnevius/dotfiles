@@ -8,5 +8,9 @@
 !kitty/
 !kitty/kitty.conf
 !nvim/
+!nvim/after/
+!nvim/after/ftplugin/
+!nvim/after/ftplugin/*
 !nvim/init.vim
 !nvim/Ultisnips/
+!nvim/Ultisnips/*
