@@ -21,6 +21,7 @@ Plug 'dense-analysis/ale'
   \   'ruby': ['rubocop'],
   \ }
 
+Plug 'fatih/vim-go'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
   let g:fzf_preview_window = ''
@@ -167,8 +168,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <Tab> <C-w>w
-nnoremap <S-Tab> <C-w>W
 augroup terminal_escape
   autocmd!
   autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-N>
