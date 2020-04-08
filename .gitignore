@@ -12,5 +12,7 @@
 !nvim/after/ftplugin/
 !nvim/after/ftplugin/*
 !nvim/init.vim
+!nvim/spell/
+!nvim/spell/*
 !nvim/Ultisnips/
 !nvim/Ultisnips/*

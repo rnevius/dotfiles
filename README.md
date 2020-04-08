@@ -1,6 +1,6 @@
 # dotfiles
 
-Personal dotfiles and configuration instructions to hedge against the fallout from a Macbook explosion.
+Personal dotfiles and configuration instructions to hedge against the fallout from a MacBook explosion.
 
 ## Configuring Neovim
 
