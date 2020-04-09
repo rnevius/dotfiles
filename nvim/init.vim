@@ -121,18 +121,19 @@ set hidden
 set ignorecase
 set inccommand=nosplit
 set linebreak
+set modelines=1
 set mouse=n
 set nojoinspaces
 set noswapfile
 set number
 set path=.,**
-set splitbelow
-set splitright
 set scrolloff=2
 set shiftround
 set shiftwidth=2
 set shortmess+=I
 set smartcase
+set splitbelow
+set splitright
 set tabstop=2
 set undofile
 set updatetime=500
@@ -192,6 +193,7 @@ nnoremap ]l :lnext<CR>
 
 " Leader mappings
 nnoremap <Leader><Leader> <C-^>
+nnoremap <Leader>] :vert winc ]<CR>
 nnoremap <Leader>/ :nohlsearch<CR>
 nnoremap <Leader>= `[v`]=
 " nnoremap <Leader>bd :set background=dark <Bar> colorscheme one<CR>
