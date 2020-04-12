@@ -76,6 +76,7 @@ Plug 'vim-airline/vim-airline-themes'
   let g:airline_symbols.branch='⎇ '
   let g:airline_symbols.linenr=''
   let g:airline_symbols.maxlinenr=''
+  let g:airline#extensions#coc#enabled = 1
   let g:airline#extensions#default#layout = [
     \ [ 'a', 'c' ],
     \ [ 'b', 'error', 'warning', 'z' ]
