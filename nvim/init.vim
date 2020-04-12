@@ -10,17 +10,6 @@ Plug 'andrewradev/splitjoin.vim'
   let g:splitjoin_trailing_comma = 1
 
 Plug 'dart-lang/dart-vim-plugin'
-" Plug 'dense-analysis/ale'
-"   let g:ale_lint_on_text_changed='normal'
-"   let g:ale_lint_on_insert_leave=1
-"   let g:ale_lint_delay=0
-"   let g:ale_python_auto_pipenv=1
-"   let g:ale_fixers = {
-"   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-"   \   'javascript': ['prettier', 'eslint'],
-"   \   'ruby': ['rubocop'],
-"   \ }
-
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -87,7 +76,6 @@ Plug 'vim-airline/vim-airline-themes'
   let g:airline_symbols.branch='⎇ '
   let g:airline_symbols.linenr=''
   let g:airline_symbols.maxlinenr=''
-  let g:airline#extensions#ale#enabled=1
   let g:airline#extensions#default#layout = [
     \ [ 'a', 'c' ],
     \ [ 'b', 'error', 'warning', 'z' ]
