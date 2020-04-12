@@ -1,0 +1,6 @@
+{
+	"suggest.autoTrigger": "none",
+	"solargraph.diagnostics": true,
+	"solargraph.definitions": false,
+	"solargraph.formatting": true
+}
