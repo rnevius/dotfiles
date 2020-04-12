@@ -4,10 +4,6 @@ Personal dotfiles and configuration instructions to hedge against the fallout fr
 
 ## Configuring Neovim
 
-1. Install `tsserver` for [`:ALEGoToDefinition`](https://github.com/dense-analysis/ale) support:
-    ```
-    npm i -g typescript
-    ```
 1. Install [neovim](https://neovim.io/), [fd](https://github.com/sharkdp/fd), [fzf](https://github.com/junegunn/fzf), and [ripgrep](https://github.com/BurntSushi/ripgrep) with Homebrew:
     ```
     brew install neovim fd fzf ripgrep

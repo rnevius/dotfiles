@@ -10,16 +10,16 @@ Plug 'andrewradev/splitjoin.vim'
   let g:splitjoin_trailing_comma = 1
 
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'dense-analysis/ale'
-  let g:ale_lint_on_text_changed='normal'
-  let g:ale_lint_on_insert_leave=1
-  let g:ale_lint_delay=0
-  let g:ale_python_auto_pipenv=1
-  let g:ale_fixers = {
-  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \   'javascript': ['prettier', 'eslint'],
-  \   'ruby': ['rubocop'],
-  \ }
+" Plug 'dense-analysis/ale'
+"   let g:ale_lint_on_text_changed='normal'
+"   let g:ale_lint_on_insert_leave=1
+"   let g:ale_lint_delay=0
+"   let g:ale_python_auto_pipenv=1
+"   let g:ale_fixers = {
+"   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+"   \   'javascript': ['prettier', 'eslint'],
+"   \   'ruby': ['rubocop'],
+"   \ }
 
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf'
@@ -40,6 +40,18 @@ Plug 'ludovicchabant/vim-gutentags'
   endif
 
 Plug 'maxmellon/vim-jsx-pretty'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 Plug 'pangloss/vim-javascript'
 Plug 'psliwka/vim-smoothie'
   let g:smoothie_base_speed = 32
@@ -49,14 +61,7 @@ Plug 'rakr/vim-one'
   let g:one_allow_italics = 1
 
 Plug 'shumphrey/fugitive-gitlab.vim'
-Plug 'SirVer/ultisnips'
-  let g:UltiSnipsJumpForwardTrigger="<c-l>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-  let g:UltiSnipsListSnippets='<c-u>'
-  let g:UltiSnipsSnippetsDir='~/.config/nvim/UltiSnips/'
-
 Plug 'tomtom/tcomment_vim'
-
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
@@ -113,7 +118,6 @@ set list listchars=tab:»·,trail:¬,nbsp:·
 "   Editing  {{{
 """"""""""""""""
 set complete+=i
-set expandtab
 if executable('rg')
   set grepprg=rg\ --smart-case\ --vimgrep
 endif
@@ -124,6 +128,7 @@ set linebreak
 set modelines=1
 set mouse=n
 set nojoinspaces
+set nostartofline
 set noswapfile
 set number
 set path=.,**
