@@ -18,6 +18,8 @@ Plug 'dense-analysis/ale'
   \   'javascript': ['prettier', 'eslint'],
   \   'ruby': ['rubocop'],
   \ }
+  let g:ale_sign_error='✘'
+  let g:ale_sign_warning='‼'
   nmap ]a <Plug>(ale_next_wrap)
   nmap [a <Plug>(ale_previous_wrap)
 
