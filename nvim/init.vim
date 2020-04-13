@@ -23,7 +23,6 @@ Plug 'dense-analysis/ale'
   nmap ]a <Plug>(ale_next_wrap)
   nmap [a <Plug>(ale_previous_wrap)
 
-
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -44,6 +43,17 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  let g:coc_global_extensions = [
+    \ "coc-css",
+    \ "coc-eslint",
+    \ "coc-html",
+    \ "coc-json",
+    \ "coc-markdownlint",
+    \ "coc-solargraph",
+    \ "coc-tsserver",
+    \ "coc-yaml",
+  \ ]
+
   function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
