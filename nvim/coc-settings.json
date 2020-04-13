@@ -1,4 +1,5 @@
 {
+	"diagnostic.displayByAle": true,
 	"suggest.autoTrigger": "none",
 	"solargraph.diagnostics": true,
 	"solargraph.definitions": false,

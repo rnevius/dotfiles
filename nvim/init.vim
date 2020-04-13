@@ -10,6 +10,18 @@ Plug 'andrewradev/splitjoin.vim'
   let g:splitjoin_trailing_comma = 1
 
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'dense-analysis/ale'
+  let g:ale_lint_delay=0
+  let g:ale_python_auto_pipenv=1
+  let g:ale_fixers = {
+  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \   'javascript': ['prettier', 'eslint'],
+  \   'ruby': ['rubocop'],
+  \ }
+  nmap ]a <Plug>(ale_next_wrap)
+  nmap [a <Plug>(ale_previous_wrap)
+
+
 Plug 'fatih/vim-go'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -88,6 +100,7 @@ Plug 'vim-airline/vim-airline-themes'
   endfunction
   autocmd User AirlineAfterInit call AirlineInit()
 
+nnoremap <Leader>p :update <Bar> source % <Bar> PlugUpdate --sync <Bar> PlugClean <CR>
 call plug#end()
 " }}}
 
