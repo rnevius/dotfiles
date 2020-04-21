@@ -9,21 +9,20 @@ Plug 'airblade/vim-gitgutter'
 Plug 'andrewradev/splitjoin.vim'
   let g:splitjoin_trailing_comma = 1
 
-Plug 'dart-lang/dart-vim-plugin'
 Plug 'dense-analysis/ale'
   let g:ale_lint_delay=0
-  let g:ale_python_auto_pipenv=1
   let g:ale_fixers = {
   \   '*': ['remove_trailing_lines', 'trim_whitespace'],
   \   'javascript': ['prettier', 'eslint'],
   \   'ruby': ['rubocop'],
   \ }
+  let g:ale_python_auto_pipenv=1
   let g:ale_sign_error='✘'
   let g:ale_sign_warning='‼'
+  nmap <Leader>a <Plug>(ale_fix)
   nmap ]a <Plug>(ale_next_wrap)
   nmap [a <Plug>(ale_previous_wrap)
 
-Plug 'fatih/vim-go'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
   let g:fzf_preview_window = ''
@@ -31,7 +30,6 @@ Plug 'junegunn/fzf.vim'
   nnoremap <silent> <Leader>h :Helptags<CR>
   nnoremap <silent> <Leader>ls :Buffers<CR>
   nnoremap <Leader>f :Rg<Space>
-  nnoremap <Leader>h :Helptags<CR>
   autocmd! FileType fzf set laststatus=0 noruler
     \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
@@ -41,17 +39,17 @@ Plug 'ludovicchabant/vim-gutentags'
     let g:gutentags_file_list_command = 'rg --files'
   endif
 
-Plug 'maxmellon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = [
-    \ "coc-css",
-    \ "coc-eslint",
-    \ "coc-html",
-    \ "coc-json",
-    \ "coc-markdownlint",
-    \ "coc-solargraph",
-    \ "coc-tsserver",
-    \ "coc-yaml",
+    \ 'coc-css',
+    \ 'coc-eslint',
+    \ 'coc-html',
+    \ 'coc-json',
+    \ 'coc-markdownlint',
+    \ 'coc-python',
+    \ 'coc-solargraph',
+    \ 'coc-tsserver',
+    \ 'coc-yaml',
   \ ]
 
   function! s:check_back_space() abort
@@ -65,7 +63,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
       \ coc#refresh()
   inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-Plug 'pangloss/vim-javascript'
+Plug 'pechorin/any-jump.vim'
 Plug 'psliwka/vim-smoothie'
   let g:smoothie_base_speed = 32
   let g:smoothie_update_interval = 10
@@ -73,6 +71,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'rakr/vim-one'
   let g:one_allow_italics = 1
 
+Plug 'sheerun/vim-polyglot'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
@@ -105,6 +104,7 @@ Plug 'vim-airline/vim-airline-themes'
     \ [ 'a', 'c' ],
     \ [ 'b', 'error', 'warning', 'z' ]
   \ ]
+  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
   let g:airline#extensions#wordcount#enabled=0
   let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
   function! AirlineInit()
@@ -112,13 +112,16 @@ Plug 'vim-airline/vim-airline-themes'
   endfunction
   autocmd User AirlineAfterInit call AirlineInit()
 
-nnoremap <Leader>p :update <Bar> source % <Bar> PlugUpdate --sync <Bar> PlugClean <CR>
+" Local Plugs
+Plug '~/.config/nvim/plugged/vim-execution/'
+
+nnoremap <Leader>p :source $MYVIMRC <Bar> PlugUpdate --sync <Bar> PlugClean <CR>
 call plug#end()
 " }}}
 
 "   Interface  {{{
 """"""""""""""""""
-if (has("termguicolors"))
+if (has('termguicolors'))
   set termguicolors
 endif
 colorscheme one
@@ -126,7 +129,8 @@ set background=light
 set colorcolumn=81
 set cursorline
 set diffopt+=vertical
-set list listchars=tab:»·,trail:¬,nbsp:·
+set guifont=MesloLGS_NF:h13
+set list listchars=tab:│\ ,trail:¬,nbsp:·
 " }}}
 
 "   Editing  {{{
@@ -137,7 +141,9 @@ if executable('rg')
 endif
 set hidden
 set ignorecase
-set inccommand=nosplit
+if exists('&inccommand')
+  set inccommand=nosplit
+endif
 set linebreak
 set modelines=1
 set mouse=n
@@ -167,6 +173,7 @@ set wildmode=list:full
 nnoremap ; :
 nnoremap : ;
 vnoremap ; :
+vnoremap : ;
 nnoremap Y y$
 
 " Move lines up and down
@@ -188,9 +195,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+let terminal_event = has('nvim') ? 'TermOpen' : 'TerminalOpen'
 augroup terminal_escape
   autocmd!
-  autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-N>
+  execute 'autocmd ' . terminal_event . ' * tnoremap <buffer> <Esc> <C-\><C-N>'
   autocmd FileType fzf tunmap <buffer> <Esc>
 augroup END
 tnoremap <C-h> <C-\><C-N><C-w>h
@@ -211,21 +219,14 @@ nnoremap [l :lprevious<CR>
 nnoremap ]l :lnext<CR>
 
 " Leader mappings
-nnoremap <Leader><Leader> <C-^>
 nnoremap <Leader>] :vert winc ]<CR>
 nnoremap <Leader>/ :nohlsearch<CR>
 nnoremap <Leader>= `[v`]=
-" nnoremap <Leader>bd :set background=dark <Bar> colorscheme one<CR>
-" nnoremap <Leader>bl :set background=light <Bar> colorscheme solarized8_flat<CR>
 nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bl :set background=light<CR>
-" 'cd' towards the directory in which the current file is edited
-" but only change the path for the current window
 nnoremap <Leader>cd :lcd %:h<CR>
-" Open files located in the same dir in with the current file is edited
 " nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
 " nnoremap <Leader>f :find *
-" Delete to the black hole register
 nnoremap <Leader>d "_d
 " }}}
 
@@ -245,7 +246,7 @@ command! FlutterRun :8split +terminal flutter run --pid-file /tmp/flutter.pid
 " Inspiration: https://github.com/nelstrom/vim-visual-star-search/
 function! VisualSearch(searchcmd)
   let temp = @s
-  norm! gv"sy
+  normal! gv"sy
   let @/ = '\V' . substitute(escape(@s, a:searchcmd.'\'), '\n', '\\n', 'g')
   let @s = temp
 endfunction
