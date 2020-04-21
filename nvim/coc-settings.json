@@ -1,6 +1,8 @@
 {
 	"diagnostic.displayByAle": true,
+	"diagnostic.enable": false,
 	"suggest.autoTrigger": "none",
+	"suggest.enablePreselect": true,
 	"solargraph.diagnostics": true,
 	"solargraph.definitions": false,
 	"solargraph.formatting": true
