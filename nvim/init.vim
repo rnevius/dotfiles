@@ -16,6 +16,9 @@ Plug 'dense-analysis/ale'
   \   'javascript': ['prettier', 'eslint'],
   \   'ruby': ['rubocop'],
   \ }
+  let g:ale_linters = {
+  \   'ruby': ['rubocop'],
+  \ }
   let g:ale_python_auto_pipenv=1
   let g:ale_sign_error='✘'
   let g:ale_sign_warning='‼'
@@ -114,6 +117,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Local Plugs
 Plug '~/.config/nvim/plugged/vim-execution/'
+  xmap @ <Plug>(execution_execute)
 
 nnoremap <Leader>p :source $MYVIMRC <Bar> PlugUpdate --sync <Bar> PlugClean <CR>
 call plug#end()

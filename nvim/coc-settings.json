@@ -3,7 +3,7 @@
 	"diagnostic.enable": false,
 	"suggest.autoTrigger": "none",
 	"suggest.enablePreselect": true,
-	"solargraph.diagnostics": true,
+	"solargraph.diagnostics": false,
 	"solargraph.definitions": false,
 	"solargraph.formatting": true
 }
