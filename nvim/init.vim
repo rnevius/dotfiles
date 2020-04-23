@@ -91,30 +91,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-  set noshowmode
-  let g:airline_theme='one'
-  let g:airline_solarized_bg='dark'
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
-  let g:airline_symbols.branch='⎇ '
-  let g:airline_symbols.linenr=''
-  let g:airline_symbols.maxlinenr=''
-  let g:airline#extensions#coc#enabled = 1
-  let g:airline#extensions#default#layout = [
-    \ [ 'a', 'c' ],
-    \ [ 'b', 'error', 'warning', 'z' ]
-  \ ]
-  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-  let g:airline#extensions#wordcount#enabled=0
-  let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-  function! AirlineInit()
-    let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr', ' :%3v'])
-  endfunction
-  autocmd User AirlineAfterInit call AirlineInit()
-
 " Local Plugs
 Plug '~/.config/nvim/plugged/vim-execution/'
   xmap @ <Plug>(execution_execute)
@@ -135,6 +111,28 @@ set cursorline
 set diffopt+=vertical
 set guifont=MesloLGS_NF:h13
 set list listchars=tab:│\ ,trail:¬,nbsp:·
+
+" Highlights
+function! SetCustomHighlights() abort
+  highlight StatusLineHL guifg=#f0f0f0 guibg=#50a14f
+  highlight StatusLineHLBold cterm=bold gui=bold guifg=#f0f0f0 guibg=#50a14f
+endfunction
+autocmd VimEnter,ColorScheme * call SetCustomHighlights()
+
+" Status Line
+function! GitBranch()
+  let branch = FugitiveHead()
+  return printf('⎇  %s', branch)
+endfunction
+set statusline=\ 
+set statusline+=%f\ %h%m%r\ 
+set statusline+=%{coc#status()}\ 
+" Align the rest to the right
+set statusline+=%=
+set statusline+=%{GitBranch()}\ 
+set statusline+=%#StatusLineHLBold#
+set statusline+=\ %l/%L\ :\ %c
+set statusline+=\ 
 " }}}
 
 "   Editing  {{{
