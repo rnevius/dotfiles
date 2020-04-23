@@ -50,7 +50,7 @@ autocmd ProjectSettings BufNewFile,BufRead ~/www/some-project/**/*
   \ call SomeProject()
 ```
 
-It may also be desirable to use Neovim as the default manpager in .zshrc:
+It may also be desirable to set Neovim as the default manpager in .zshrc:
 
 ```bash
 export MANPAGER='nvim +Man!'
