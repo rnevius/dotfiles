@@ -120,12 +120,14 @@ function! SetCustomHighlights() abort
   highlight StatusLineHLBold cterm=bold gui=bold guifg=#f0f0f0 guibg=#50a14f
 
   let current_scheme = get(g:, 'colors_name', 'default')
-  if &background == 'light' && current_scheme == 'one'
-    call one#highlight('StatusLine', '', 'e0e0e0', 'bold')
-    call one#highlight('StatusLineNC', '494b53', 'f0f0f0', 'none')
-  else
-    call one#highlight('StatusLine', '', '3e4452', 'bold')
-    call one#highlight('StatusLineNC', 'abb2bf', '2b323d', 'none')
+  if current_scheme == 'one'
+    if &background == 'light'
+      call one#highlight('StatusLine', '', 'e0e0e0', 'bold')
+      call one#highlight('StatusLineNC', '494b53', 'f0f0f0', 'none')
+    else
+      call one#highlight('StatusLine', '', '3e4452', 'bold')
+      call one#highlight('StatusLineNC', 'abb2bf', '2b323d', 'none')
+    end
   end
 endfunction
 autocmd VimEnter,ColorScheme * call SetCustomHighlights()
@@ -133,7 +135,7 @@ autocmd VimEnter,ColorScheme * call SetCustomHighlights()
 " Status Line
 function! GitBranch()
   let branch = FugitiveHead()
-  return empty(branch) ? '' : '⎇  ' . branch
+  return empty(branch) ? '' : ' ' . branch
 endfunction
 set statusline=\ 
 set statusline+=%f\ %h%m%r\ 
