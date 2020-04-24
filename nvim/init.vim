@@ -133,8 +133,8 @@ endfunction
 autocmd VimEnter,ColorScheme * call SetCustomHighlights()
 
 " Status Line
-function! GitBranch()
-  let branch = FugitiveHead()
+function! GitBranch() abort
+  let branch = FugitiveHead(7)
   return empty(branch) ? '' : ' ' . branch
 endfunction
 set statusline=\ 
