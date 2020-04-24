@@ -7,6 +7,8 @@ call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
 Plug 'andrewradev/splitjoin.vim'
+  let g:splitjoin_join_mapping = ''
+  let g:splitjoin_split_mapping = ''
   let g:splitjoin_trailing_comma = 1
 
 Plug 'dense-analysis/ale'
@@ -131,7 +133,7 @@ autocmd VimEnter,ColorScheme * call SetCustomHighlights()
 " Status Line
 function! GitBranch()
   let branch = FugitiveHead()
-  return printf('⎇  %s', branch)
+  return empty(branch) ? '' : '⎇  ' . branch
 endfunction
 set statusline=\ 
 set statusline+=%f\ %h%m%r\ 
