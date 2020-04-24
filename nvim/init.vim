@@ -139,12 +139,14 @@ function! GitBranch() abort
 endfunction
 set statusline=\ 
 set statusline+=%f\ %h%m%r\ 
+set statusline+=%<
 set statusline+=%{coc#status()}\ 
 " Align the rest to the right
 set statusline+=%=
+set statusline+=%<
 set statusline+=%{GitBranch()}\ 
 set statusline+=%#StatusLineHLBold#
-set statusline+=\ %l/%L\ :\ %c
+set statusline+=\ %l/%L\ :\ %2c
 set statusline+=\ 
 " }}}
 
