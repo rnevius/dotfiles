@@ -114,8 +114,8 @@ set diffopt+=vertical
 set guifont=MesloLGS_NF:h13
 set list listchars=tab:│\ ,trail:¬,nbsp:·
 
+" Statusline  {{{
 " Highlights
-highlight link User1 Search
 function! SetCustomHighlights() abort
   let current_scheme = get(g:, 'colors_name', 'default')
   if current_scheme == 'one'
@@ -130,34 +130,37 @@ function! SetCustomHighlights() abort
 endfunction
 autocmd VimEnter,ColorScheme * call SetCustomHighlights()
 
-" Status Line
+" ALE
 let s:ale_fixing = 0
-function! ALEFixStatus() abort
-  return s:ale_fixing ? ' ALE Fixing ' : ''
-endfunction
 augroup ALEFixProgress
   autocmd!
   autocmd User ALEFixPre  let s:ale_fixing = 1 | redrawstatus
   autocmd User ALEFixPost let s:ale_fixing = 0 | redrawstatus
 augroup END
+function! ALEFixStatus() abort
+  return s:ale_fixing ? ' ALE Fixing ' : ''
+endfunction
+
+" git
 function! GitBranch() abort
   let branch = FugitiveHead(7)
   return empty(branch) ? '' : ' ' . branch
 endfunction
+
 set statusline=\ 
 set statusline+=%f\ 
 set statusline+=%h%m%r\ 
 set statusline+=%<
 set statusline+=%{coc#status()}\ 
-" Align the rest to the right
 set statusline+=%=
 set statusline+=%<
-set statusline+=%1*
+set statusline+=%#Search#
 set statusline+=%{ALEFixStatus()}
 set statusline+=%*
 set statusline+=%{GitBranch()}\ 
 set statusline+=☰\ \ %l/%L\ :\ %2c
 set statusline+=\ 
+" }}}
 " }}}
 
 "   Editing  {{{
