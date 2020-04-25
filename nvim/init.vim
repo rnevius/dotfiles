@@ -115,10 +115,8 @@ set guifont=MesloLGS_NF:h13
 set list listchars=tab:│\ ,trail:¬,nbsp:·
 
 " Highlights
+highlight link User1 Search
 function! SetCustomHighlights() abort
-  highlight StatusLineHL guifg=#f0f0f0 guibg=#50a14f
-  highlight StatusLineHLBold cterm=bold gui=bold guifg=#f0f0f0 guibg=#50a14f
-
   let current_scheme = get(g:, 'colors_name', 'default')
   if current_scheme == 'one'
     if &background == 'light'
@@ -133,20 +131,32 @@ endfunction
 autocmd VimEnter,ColorScheme * call SetCustomHighlights()
 
 " Status Line
+let s:ale_fixing = 0
+function! ALEFixStatus() abort
+  return s:ale_fixing ? ' ALE Fixing ' : ''
+endfunction
+augroup ALEFixProgress
+  autocmd!
+  autocmd User ALEFixPre  let s:ale_fixing = 1 | redrawstatus
+  autocmd User ALEFixPost let s:ale_fixing = 0 | redrawstatus
+augroup END
 function! GitBranch() abort
   let branch = FugitiveHead(7)
   return empty(branch) ? '' : ' ' . branch
 endfunction
 set statusline=\ 
-set statusline+=%f\ %h%m%r\ 
+set statusline+=%f\ 
+set statusline+=%h%m%r\ 
 set statusline+=%<
 set statusline+=%{coc#status()}\ 
 " Align the rest to the right
 set statusline+=%=
 set statusline+=%<
+set statusline+=%1*
+set statusline+=%{ALEFixStatus()}
+set statusline+=%*
 set statusline+=%{GitBranch()}\ 
-set statusline+=%#StatusLineHLBold#
-set statusline+=\ %l/%L\ :\ %2c
+set statusline+=☰\ \ %l/%L\ :\ %2c
 set statusline+=\ 
 " }}}
 
