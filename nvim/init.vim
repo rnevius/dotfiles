@@ -38,6 +38,9 @@ Plug 'junegunn/fzf.vim'
   autocmd! FileType fzf set laststatus=0 noruler
     \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
+Plug 'lifepillar/vim-colortemplate'
+  let g:colortemplate_creator = 0
+
 Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-gutentags'
   if executable('rg')
@@ -96,6 +99,8 @@ Plug 'tpope/vim-vinegar'
 " Local Plugs
 Plug '~/.config/nvim/plugged/vim-execution/'
   xmap @ <Plug>(execution_execute)
+
+Plug '~/.config/nvim/plugged/vim-groovy-theme/'
 
 nnoremap <Leader>p :source $MYVIMRC <Bar> PlugUpdate --sync <Bar> PlugClean <CR>
 call plug#end()
