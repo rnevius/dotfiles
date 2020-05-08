@@ -1,4 +1,5 @@
 {
+	"coc.preferences.colorSupport": false,
 	"diagnostic.displayByAle": true,
 	"diagnostic.enable": false,
 	"suggest.autoTrigger": "none",

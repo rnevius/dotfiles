@@ -120,37 +120,10 @@ set guifont=MesloLGS_NF:h13
 set list listchars=tab:│\ ,trail:¬,nbsp:·
 
 " Statusline  {{{
-" Highlights
-function! SetCustomHighlights() abort
-  let current_scheme = get(g:, 'colors_name', 'default')
-  if current_scheme == 'one'
-    if &background == 'light'
-      call one#highlight('StatusLine', '', 'e0e0e0', 'bold')
-      call one#highlight('StatusLineNC', '494b53', 'f0f0f0', 'none')
-    else
-      call one#highlight('StatusLine', '', '3e4452', 'bold')
-      call one#highlight('StatusLineNC', 'abb2bf', '2b323d', 'none')
-    end
-  end
-endfunction
-autocmd VimEnter,ColorScheme * call SetCustomHighlights()
-
-" ALE
-let s:ale_fixing = 0
-augroup ALEFixProgress
+augroup CustomColors
   autocmd!
-  autocmd User ALEFixPre  let s:ale_fixing = 1 | redrawstatus
-  autocmd User ALEFixPost let s:ale_fixing = 0 | redrawstatus
+  autocmd VimEnter,ColorScheme * call statusline#SetCustomHighlights()
 augroup END
-function! ALEFixStatus() abort
-  return s:ale_fixing ? ' ALE Fixing ' : ''
-endfunction
-
-" git
-function! GitBranch() abort
-  let branch = FugitiveHead(7)
-  return empty(branch) ? '' : ' ' . branch
-endfunction
 
 set statusline=\ 
 set statusline+=%f\ 
@@ -160,9 +133,10 @@ set statusline+=%{coc#status()}\
 set statusline+=%=
 set statusline+=%<
 set statusline+=%#Search#
-set statusline+=%{ALEFixStatus()}
+set statusline+=%{statusline#ALEFixStatus()}
 set statusline+=%*
-set statusline+=%{GitBranch()}\ 
+set statusline+=%{statusline#GitBranch()}\ 
+set statusline+=%{statusline#SessionStatus()}\ 
 set statusline+=☰\ \ %l/%L\ :\ %2c
 set statusline+=\ 
 " }}}
@@ -183,7 +157,6 @@ set linebreak
 set modelines=1
 set mouse=n
 set nojoinspaces
-set nostartofline
 set noswapfile
 set number
 set path=.,**
@@ -209,21 +182,6 @@ nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
-nnoremap Y y$
-
-" Move lines up and down
-" <M-j>
-nnoremap <silent> ∆ :m +1<CR>==
-" <M-k>
-nnoremap <silent> ˚ :m -2<CR>==
-" <M-j>
-inoremap <silent> ∆ <Esc>:m +1<CR>==gi
-" <M-k>
-inoremap <silent> ˚ <Esc>:m -2<CR>==gi
-" <M-j>
-vnoremap <silent> ∆ :m '>+1<CR>gv=gv
-" <M-k>
-vnoremap <silent> ˚ :m '<-2<CR>gv=gv
 
 " Buffers / Windows
 nnoremap <C-h> <C-w>h
@@ -262,7 +220,6 @@ nnoremap <Leader>bl :set background=light<CR>
 nnoremap <Leader>cd :lcd %:h<CR>
 " nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
 " nnoremap <Leader>f :find *
-nnoremap <Leader>d "_d
 " }}}
 
 "   Commands / Functions  {{{
@@ -288,6 +245,7 @@ endfunction
 
 xnoremap * :<C-U>call VisualSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-U>call VisualSearch('?')<CR>?<C-R>=@/<CR><CR>
+command! -nargs=1 -complete=command -bar -range Redir silent call redir#Redir(<q-args>, <range>, <line1>, <line2>)
 " }}}
 
 " Project-specific autocommands
