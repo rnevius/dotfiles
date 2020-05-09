@@ -47,31 +47,29 @@ Plug 'ludovicchabant/vim-gutentags'
     let g:gutentags_file_list_command = 'rg --files'
   endif
 
-if has('nvim')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    let g:coc_global_extensions = [
-      \ 'coc-css',
-      \ 'coc-eslint',
-      \ 'coc-html',
-      \ 'coc-json',
-      \ 'coc-markdownlint',
-      \ 'coc-python',
-      \ 'coc-solargraph',
-      \ 'coc-tsserver',
-      \ 'coc-yaml',
-    \ ]
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  let g:coc_global_extensions = [
+    \ 'coc-css',
+    \ 'coc-eslint',
+    \ 'coc-html',
+    \ 'coc-json',
+    \ 'coc-markdownlint',
+    \ 'coc-python',
+    \ 'coc-solargraph',
+    \ 'coc-tsserver',
+    \ 'coc-yaml',
+  \ ]
 
-    function! s:check_back_space() abort
-      let col = col('.') - 1
-      return !col || getline('.')[col - 1]  =~# '\s'
-    endfunction
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
 
-    inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ coc#refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-endif
+  inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 Plug 'pechorin/any-jump.vim'
 Plug 'psliwka/vim-smoothie'
@@ -131,9 +129,7 @@ set statusline=\
 set statusline+=%f\ 
 set statusline+=%h%m%r\ 
 set statusline+=%<
-if has('nvim')
-  set statusline+=%{coc#status()}\ 
-endif
+set statusline+=%{coc#status()}\ 
 set statusline+=%=
 set statusline+=%<
 set statusline+=%#Search#
