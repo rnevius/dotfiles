@@ -100,8 +100,6 @@ Plug '~/.config/nvim/plugged/vim-execution/'
   xmap @ <Plug>(execution_execute)
 
 Plug '~/.config/nvim/plugged/vim-groovy-theme/'
-
-nnoremap <Leader>p :source $MYVIMRC <Bar> PlugUpdate --sync <Bar> PlugClean <CR>
 call plug#end()
 " }}}
 
