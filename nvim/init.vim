@@ -32,7 +32,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
   let g:fzf_preview_window = ''
   nnoremap <silent> <Leader>e :Files<CR>
-  nnoremap <silent> <Leader>h :Helptags<CR>
   nnoremap <silent> <Leader>ls :Buffers<CR>
   nnoremap <Leader>f :Rg<Space>
   autocmd! FileType fzf set laststatus=0 noruler
@@ -164,7 +163,6 @@ set linebreak
 set modelines=1
 set mouse=n
 set nojoinspaces
-set nostartofline
 set noswapfile
 set number
 set path=.,**
@@ -177,6 +175,7 @@ set smartcase
 set smarttab
 set splitbelow
 set splitright
+set startofline
 set tabstop=2
 set undofile
 set updatetime=500
@@ -209,8 +208,6 @@ tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
-" Open a terminal in a horizontal split
-nnoremap <silent> <Leader>t :8split +terminal <CR> i
 
 " Cycle through buffers
 nnoremap [b :bprevious<CR>
@@ -235,16 +232,6 @@ nnoremap <Leader>cd :lcd %:h<CR>
 
 "   Commands / Functions  {{{
 """""""""""""""""""""""""""""
-" Flutter hot reload
-function! HotReload() abort
-  if !empty(glob("/tmp/flutter.pid"))
-    silent execute '!kill -SIGUSR1 "$(cat /tmp/flutter.pid)"'
-  endif
-endfunction
-autocmd BufWritePost *.dart call HotReload()
-" Flutter run in :term with hot reloading
-command! FlutterRun :8split +terminal flutter run --pid-file /tmp/flutter.pid
-
 " Search for visual block instances
 " Inspiration: https://github.com/nelstrom/vim-visual-star-search/
 function! VisualSearch(searchcmd)
@@ -253,9 +240,9 @@ function! VisualSearch(searchcmd)
   let @/ = '\V' . substitute(escape(@s, a:searchcmd.'\'), '\n', '\\n', 'g')
   let @s = temp
 endfunction
-
 xnoremap * :<C-U>call VisualSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-U>call VisualSearch('?')<CR>?<C-R>=@/<CR><CR>
+
 command! -nargs=1 -complete=command -bar -range Redir silent
       \ call redir#Redir(<q-args>, <range>, <line1>, <line2>)
 " }}}
