@@ -64,13 +64,26 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
     return !col || getline('.')[col - 1]  =~# '\s'
   endfunction
 
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+
   inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
   inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-Plug 'pechorin/any-jump.vim'
+  nmap <silent> gd <Plug>(coc-definition)
+  nmap <silent> gi <Plug>(coc-implementation)
+  nmap <silent> gr <Plug>(coc-references)
+  nmap <leader>rn <Plug>(coc-rename)
+  nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 Plug 'psliwka/vim-smoothie'
   let g:smoothie_base_speed = 32
   let g:smoothie_update_interval = 10
@@ -232,14 +245,14 @@ nnoremap <Leader>cd :lcd %:h<CR>
 """""""""""""""""""""""""""""
 " Search for visual block instances
 " Inspiration: https://github.com/nelstrom/vim-visual-star-search/
-function! VisualSearch(searchcmd)
+function! s:VisualSearch(searchcmd)
   let temp = @s
   normal! gv"sy
   let @/ = '\V' . substitute(escape(@s, a:searchcmd.'\'), '\n', '\\n', 'g')
   let @s = temp
 endfunction
-xnoremap * :<C-U>call VisualSearch('/')<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-U>call VisualSearch('?')<CR>?<C-R>=@/<CR><CR>
+xnoremap * :<C-U>call <SID>VisualSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-U>call <SID>VisualSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 command! -nargs=1 -complete=command -bar -range Redir silent
       \ call redir#Redir(<q-args>, <range>, <line1>, <line2>)
