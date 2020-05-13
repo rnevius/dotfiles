@@ -107,6 +107,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+  let g:netrw_liststyle= 3
 
 " Local Plugs
 Plug '~/.config/nvim/plugged/vim-execution/'
@@ -178,7 +179,7 @@ if executable('rg')
   augroup END
 endif
 set hidden
-set history=1000
+set history=10000
 set hlsearch
 set ignorecase
 if exists('&inccommand')
@@ -219,6 +220,7 @@ nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
+inoremap <C-r> <C-r><C-o>
 
 " Buffers / Windows
 nnoremap <C-h> <C-w>h
@@ -272,6 +274,9 @@ xnoremap # :<C-U>call <SID>VisualSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 command! -nargs=1 -complete=command -bar -range Redir silent
       \ call redir#Redir(<q-args>, <range>, <line1>, <line2>)
+
+command! FlutterRun call flutter#RunWithPID()
+
 " }}}
 
 " Project-specific autocommands
