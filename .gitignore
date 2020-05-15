@@ -20,3 +20,5 @@ nvim/autoload/plug.vim
 !nvim/spell/*
 !nvim/Ultisnips/
 !nvim/Ultisnips/*
+!tmux/
+!tmux/tmux.conf
