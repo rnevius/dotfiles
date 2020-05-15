@@ -50,6 +50,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
   let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-eslint',
+    \ 'coc-flutter',
     \ 'coc-html',
     \ 'coc-json',
     \ 'coc-markdownlint',
@@ -107,7 +108,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-  let g:netrw_liststyle= 3
 
 " Local Plugs
 Plug '~/.config/nvim/plugged/vim-execution/'
@@ -119,6 +119,9 @@ call plug#end()
 
 "   Interface  {{{
 """"""""""""""""""
+" Fix vim-specific rendering bug in kitty terminal
+" https://sw.kovidgoyal.net/kitty/faq.html#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim
+let &t_ut=''
 if has('termguicolors')
   set termguicolors
 endif
@@ -221,6 +224,8 @@ nnoremap : ;
 vnoremap ; :
 vnoremap : ;
 inoremap <C-r> <C-r><C-o>
+nnoremap c* *Ncgn
+nnoremap Q q
 
 " Buffers / Windows
 nnoremap <C-h> <C-w>h
