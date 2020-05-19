@@ -29,11 +29,6 @@ Personal dotfiles and configuration instructions to hedge against the fallout fr
     ```
     mkdir -p ~/.local/share/nvim/undo
     ```
-1. Clone the `init.vim` file from this repo:
-    ```
-    curl -fLo ~/.config/nvim/init.vim --create-dirs \
-    https://raw.githubusercontent.com/rnevius/neovim.conf/master/init.vim
-    ```
 1. Start `nvim` and install plugins: `nvim -c PlugInstall`
 
 Optional, project-specific settings can be added to `~/.config/nvim/projects.nvim`. For example:
