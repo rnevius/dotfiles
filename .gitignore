@@ -6,6 +6,10 @@
 !git/
 !git/ignore
 !kitty/
+!kitty/kitty-themes/
+!kitty/kitty-themes/themes/
+!kitty/kitty-themes/themes/AtomOneLight.conf
+!kitty/kitty-themes/themes/OneDark.conf
 !kitty/kitty.conf
 !nvim/
 !nvim/coc-settings.json
