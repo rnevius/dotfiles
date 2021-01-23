@@ -6,31 +6,17 @@ let mapleader = ","
 call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
+  let g:gitgutter_sign_priority = 9
+
 Plug 'andrewradev/splitjoin.vim'
   let g:splitjoin_join_mapping = ''
   let g:splitjoin_split_mapping = ''
   let g:splitjoin_trailing_comma = 1
 
-Plug 'dense-analysis/ale'
-  let g:ale_lint_delay=0
-  let g:ale_fixers = {
-  \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \   'javascript': ['prettier', 'eslint'],
-  \   'ruby': ['rubocop'],
-  \ }
-  let g:ale_linters = {
-  \   'ruby': ['rubocop'],
-  \ }
-  let g:ale_python_auto_pipenv=1
-  let g:ale_sign_error='✘'
-  let g:ale_sign_warning='‼'
-  nmap <Leader>a <Plug>(ale_fix)
-  nmap ]a <Plug>(ale_next_wrap)
-  nmap [a <Plug>(ale_previous_wrap)
-
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-  let g:fzf_preview_window = ''
+  let g:fzf_layout = { 'down': '40%' }
+  let g:fzf_preview_window = []
   nnoremap <silent> <Leader>e :Files<CR>
   nnoremap <silent> <Leader>ls :Buffers<CR>
   nnoremap <Leader>f :Rg<Space>
@@ -46,44 +32,7 @@ Plug 'ludovicchabant/vim-gutentags'
     let g:gutentags_file_list_command = 'rg --files'
   endif
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  let g:coc_global_extensions = [
-    \ 'coc-css',
-    \ 'coc-eslint',
-    \ 'coc-flutter',
-    \ 'coc-html',
-    \ 'coc-json',
-    \ 'coc-markdownlint',
-    \ 'coc-python',
-    \ 'coc-solargraph',
-    \ 'coc-tsserver',
-    \ 'coc-yaml',
-  \ ]
-
-  function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
-
-  function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-      execute 'h '.expand('<cword>')
-    else
-      call CocAction('doHover')
-    endif
-  endfunction
-
-  inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-  nmap <Leader>gd <Plug>(coc-definition)
-  nmap <Leader>gi <Plug>(coc-implementation)
-  nmap <Leader>gr <Plug>(coc-references)
-  nmap <Leader>rn <Plug>(coc-rename)
-  nnoremap <silent> K :call <SID>show_documentation()<CR>
+Plug 'neovim/nvim-lspconfig'
 
 Plug 'psliwka/vim-smoothie'
   let g:smoothie_base_speed = 32
@@ -133,6 +82,15 @@ set diffopt+=vertical
 set guifont=MesloLGS_NF:h13
 set list listchars=tab:│\ ,trail:¬,nbsp:·
 
+" Highlights
+highlight link LspDiagnosticsSignError Error
+highlight link LspDiagnosticsSignWarning Error
+highlight link LspDiagnosticsSignInformation ALEWarningSign
+sign define LspDiagnosticsSignError text=✘ texthl=LspDiagnosticsSignError linehl= numhl=
+sign define LspDiagnosticsSignWarning text=‼ texthl=LspDiagnosticsSignWarning linehl= numhl=
+sign define LspDiagnosticsSignInformation text=‼ texthl=LspDiagnosticsSignInformation linehl= numhl=
+sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
+
 " Statusline  {{{
 augroup CustomColors
   autocmd!
@@ -143,7 +101,7 @@ set statusline=\
 set statusline+=%f\ 
 set statusline+=%h%m%r\ 
 set statusline+=%<
-set statusline+=%{coc#status()}\ 
+" set statusline+=%{coc#status()}\ 
 set statusline+=%=
 set statusline+=%<
 set statusline+=%#Search#
@@ -175,12 +133,13 @@ if executable('rg')
   cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
   cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
 
-  augroup quickfix
+  augroup GrepQuickfix
     autocmd!
     autocmd QuickFixCmdPost cgetexpr cwindow
     autocmd QuickFixCmdPost lgetexpr lwindow
   augroup END
 endif
+set expandtab
 set hidden
 set history=10000
 set hlsearch
@@ -287,4 +246,8 @@ command! FlutterRun call flutter#RunWithPID()
 " Project-specific autocommands
 if filereadable(expand("~/.config/nvim/projects.vim"))
   source ~/.config/nvim/projects.vim
+endif
+
+if exists(':luafile') > 1
+  lua require('lsp-config')
 endif

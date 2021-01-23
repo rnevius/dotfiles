@@ -18,6 +18,8 @@
 !nvim/autoload/*
 nvim/autoload/plug.vim
 !nvim/init.vim
+!nvim/lua/
+!nvim/lua/*
 !nvim/spell/
 !nvim/spell/*
 !nvim/Ultisnips/
