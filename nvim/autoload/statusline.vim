@@ -23,6 +23,10 @@ function! statusline#ALEFixStatus() abort
   return s:ale_fixing ? ' ALE Fixing ' : ''
 endfunction
 
+function! statusline#LSPStatus() abort
+  return luaeval('#vim.lsp.buf_get_clients() > 0') ? '[LSP]' : ''
+endfunction
+
 " git
 function! statusline#GitBranch() abort
   if !exists('g:loaded_fugitive') || !exists('b:git_dir')

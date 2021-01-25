@@ -82,14 +82,18 @@ set diffopt+=vertical
 set guifont=MesloLGS_NF:h13
 set list listchars=tab:│\ ,trail:¬,nbsp:·
 
-" Highlights
-highlight link LspDiagnosticsSignError Error
-highlight link LspDiagnosticsSignWarning Error
-highlight link LspDiagnosticsSignInformation ALEWarningSign
+" Signs
 sign define LspDiagnosticsSignError text=✘ texthl=LspDiagnosticsSignError linehl= numhl=
 sign define LspDiagnosticsSignWarning text=‼ texthl=LspDiagnosticsSignWarning linehl= numhl=
 sign define LspDiagnosticsSignInformation text=‼ texthl=LspDiagnosticsSignInformation linehl= numhl=
 sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
+
+" Highlights
+highlight link LspDiagnosticsFloatingInformation NormalFloat
+highlight link LspDiagnosticsSignError Error
+highlight link LspDiagnosticsSignWarning Error
+highlight link LspDiagnosticsSignInformation ALEWarningSign
+highlight link LspDiagnosticsUnderlineInformation LspDiagnosticsUnderlineWarning
 
 " Statusline  {{{
 augroup CustomColors
@@ -101,7 +105,7 @@ set statusline=\
 set statusline+=%f\ 
 set statusline+=%h%m%r\ 
 set statusline+=%<
-" set statusline+=%{coc#status()}\ 
+set statusline+=%{statusline#LSPStatus()}\ 
 set statusline+=%=
 set statusline+=%<
 set statusline+=%#Search#
@@ -155,12 +159,17 @@ set mouse=n
 set nojoinspaces
 set noswapfile
 set number
-set path=.,**
+set path=.
+if executable('fd')
+  let &path = join([&path, system('fd -at d | paste -sd, -')], ',')
+else
+  set path+=**
+endif
 set ruler
 set scrolloff=2
 set shiftround
 set shiftwidth=2
-set shortmess+=I
+set shortmess+=Ic
 set smartcase
 set smarttab
 set splitbelow
