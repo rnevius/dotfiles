@@ -33,6 +33,15 @@ Plug 'ludovicchabant/vim-gutentags'
   endif
 
 Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+"   " let g:completion_enable_auto_popup = 0
+"   let g:completion_chain_complete_list = [
+"     \{'complete_items': ['lsp', 'snippet']},
+"     \{'mode': '<c-p>'},
+"     \{'mode': '<c-n>'}
+"   \]
+"   imap <Tab> <Plug>(completion_smart_tab)
+"   imap <S-Tab> <Plug>(completion_smart_s_tab)
 
 Plug 'psliwka/vim-smoothie'
   let g:smoothie_base_speed = 32
@@ -43,6 +52,7 @@ Plug 'rakr/vim-one'
 
 Plug 'sheerun/vim-polyglot'
 Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'Th3Whit3Wolf/one-nvim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
@@ -74,7 +84,7 @@ let &t_ut=''
 if has('termguicolors')
   set termguicolors
 endif
-colorscheme one
+colorscheme one-nvim
 set background=light
 set colorcolumn=81
 set cursorline
@@ -89,11 +99,12 @@ sign define LspDiagnosticsSignInformation text=‼ texthl=LspDiagnosticsSignInfo
 sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
 
 " Highlights
-highlight link LspDiagnosticsFloatingInformation NormalFloat
-highlight link LspDiagnosticsSignError Error
-highlight link LspDiagnosticsSignWarning Error
-highlight link LspDiagnosticsSignInformation ALEWarningSign
-highlight link LspDiagnosticsUnderlineInformation LspDiagnosticsUnderlineWarning
+" highlight! link SignColumn LineNr
+" highlight link LspDiagnosticsFloatingInformation NormalFloat
+" highlight link LspDiagnosticsSignError Error
+" highlight link LspDiagnosticsSignWarning Error
+" highlight link LspDiagnosticsSignInformation ALEWarningSign
+" highlight link LspDiagnosticsUnderlineInformation LspDiagnosticsUnderlineWarning
 
 " Statusline  {{{
 augroup CustomColors
@@ -250,6 +261,16 @@ command! -nargs=1 -complete=command -bar -range Redir silent
 
 command! FlutterRun call flutter#RunWithPID()
 
+" Remove whitespace on empty lines, on :write
+function! TrimWhitespace()
+  let l:view = winsaveview()
+  keeppatterns %s/^\s\+$//e
+  call winrestview(l:view)
+endfun
+augroup AutoFix
+  autocmd!
+  autocmd BufWritePre * call TrimWhitespace()
+augroup END
 " }}}
 
 " Project-specific autocommands

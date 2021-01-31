@@ -4,30 +4,25 @@ Personal dotfiles and configuration instructions to hedge against the fallout fr
 
 ## Configuring Neovim
 
-1. Install [neovim](https://neovim.io/), [fd](https://github.com/sharkdp/fd), [fzf](https://github.com/junegunn/fzf), and [ripgrep](https://github.com/BurntSushi/ripgrep) with Homebrew:
+1. Install [stow](https://www.gnu.org/software/stow/), [fd](https://github.com/sharkdp/fd), [fzf](https://github.com/junegunn/fzf), and [ripgrep](https://github.com/BurntSushi/ripgrep) with Homebrew:
     ```
-    brew install neovim fd fzf ripgrep
+    brew install fd fzf ripgrep stow
     ```
-1. Install [universal-ctags](https://github.com/universal-ctags/ctags):
+1. Install [universal-ctags](https://github.com/universal-ctags/ctags) and [neovim](https://neovim.io/):
     ```
-    brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-    ```
-1. Set the default FZF command in .zshrc, so that fzf-vim has a more useful `:Files` output:
-    ```
-    export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
+    brew install --HEAD universal-ctags/universal-ctags/universal-ctags neovim
     ```
 1. Make sure that Python 3 is installed and add the `neovim` package:
     ```
     python3 -m pip install --user --upgrade pynvim
     ```
-1. Install [vim-plug](https://github.com/junegunn/vim-plug):
-    ```
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    ```
 1. Create an `undo/` directory in the default location, for persistent undo:
     ```
     mkdir -p ~/.local/share/nvim/undo
+    ```
+1. Generate symlinks with stow:
+    ```
+    stow git kitty nvim tmux zsh
     ```
 1. Start `nvim` and install plugins: `nvim -c PlugInstall`
 
@@ -43,11 +38,4 @@ function! SomeProject() abort
 endfunction
 autocmd ProjectSettings BufNewFile,BufRead ~/www/some-project/**/*
   \ call SomeProject()
-```
-
-It may also be desirable to set Neovim as the default manpager in .zshrc:
-
-```bash
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
 ```
