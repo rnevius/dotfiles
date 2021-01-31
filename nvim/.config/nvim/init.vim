@@ -33,15 +33,6 @@ Plug 'ludovicchabant/vim-gutentags'
   endif
 
 Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
-"   " let g:completion_enable_auto_popup = 0
-"   let g:completion_chain_complete_list = [
-"     \{'complete_items': ['lsp', 'snippet']},
-"     \{'mode': '<c-p>'},
-"     \{'mode': '<c-n>'}
-"   \]
-"   imap <Tab> <Plug>(completion_smart_tab)
-"   imap <S-Tab> <Plug>(completion_smart_s_tab)
 
 Plug 'psliwka/vim-smoothie'
   let g:smoothie_base_speed = 32
@@ -97,14 +88,6 @@ sign define LspDiagnosticsSignError text=✘ texthl=LspDiagnosticsSignError line
 sign define LspDiagnosticsSignWarning text=‼ texthl=LspDiagnosticsSignWarning linehl= numhl=
 sign define LspDiagnosticsSignInformation text=‼ texthl=LspDiagnosticsSignInformation linehl= numhl=
 sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
-
-" Highlights
-" highlight! link SignColumn LineNr
-" highlight link LspDiagnosticsFloatingInformation NormalFloat
-" highlight link LspDiagnosticsSignError Error
-" highlight link LspDiagnosticsSignWarning Error
-" highlight link LspDiagnosticsSignInformation ALEWarningSign
-" highlight link LspDiagnosticsUnderlineInformation LspDiagnosticsUnderlineWarning
 
 " Statusline  {{{
 augroup CustomColors
