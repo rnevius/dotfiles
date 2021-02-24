@@ -68,3 +68,6 @@ for _, lsp in ipairs(servers) do
     on_attach = on_attach
   }
 end
+nvim_lsp.elixirls.setup{
+  cmd = { vim.env.HOME .. "/.elixir-ls/release/language_server.sh" };
+}
