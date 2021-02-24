@@ -24,6 +24,7 @@ export EDITOR="$VISUAL"
 # aliases
 alias asciinema="TERM=xterm-256color asciinema"
 alias k="kitty --session=Session.kitty"
+alias tree="fd --hidden --exclude .git | tree --fromfile "
 alias v="nvim -S Session.vim"
 alias vi="nvim"
 alias vim="nvim"
