@@ -9,8 +9,6 @@ Plug 'airblade/vim-gitgutter'
   let g:gitgutter_sign_priority = 9
 
 Plug 'andrewradev/splitjoin.vim'
-  let g:splitjoin_join_mapping = ''
-  let g:splitjoin_split_mapping = ''
   let g:splitjoin_trailing_comma = 1
 
 Plug 'junegunn/fzf'
