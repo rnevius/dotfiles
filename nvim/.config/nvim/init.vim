@@ -21,10 +21,10 @@ Plug 'junegunn/fzf.vim'
   autocmd! FileType fzf set laststatus=0 noruler
     \| autocmd BufLeave <buffer> set laststatus=2 ruler
 
+Plug 'junegunn/vim-easy-align'
 Plug 'lifepillar/vim-colortemplate'
   let g:colortemplate_creator = 0
 
-Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-gutentags'
   if executable('rg')
     let g:gutentags_file_list_command = 'rg --files'
@@ -35,9 +35,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'psliwka/vim-smoothie'
   let g:smoothie_base_speed = 32
   let g:smoothie_update_interval = 10
-
-Plug 'rakr/vim-one'
-  let g:one_allow_italics = 1
 
 Plug 'sheerun/vim-polyglot'
 Plug 'shumphrey/fugitive-gitlab.vim'
@@ -51,6 +48,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
   nnoremap <Leader>s :Obsession<CR>
 
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
