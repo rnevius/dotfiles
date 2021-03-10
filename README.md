@@ -24,6 +24,10 @@ Personal dotfiles and configuration instructions to hedge against the fallout fr
     ```
     stow git kitty nvim tmux zsh
     ```
+1. Install language servers:
+    ```
+    ./lsp-install.zsh
+    ```
 1. Start `nvim` and install plugins: `nvim -c PlugInstall`
 
 Optional, project-specific settings can be added to `~/.config/nvim/projects.nvim`. For example:
