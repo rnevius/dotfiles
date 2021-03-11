@@ -2,7 +2,15 @@ local actions = require('telescope.actions')
 
 require('telescope').setup {
   defaults = {
-    file_ignore_patterns = { "%w%.lock" },
+    file_ignore_patterns = {
+      "%.gif",
+      "%.git",
+      "%.jpe?g",
+      "%.lock",
+      "%.pdf",
+      "%.png",
+      "%.svg",
+    },
     file_sorter = require('telescope.sorters').get_fzy_sorter,
     mappings = {
       i = {
@@ -27,7 +35,7 @@ require('telescope').setup {
 vim.api.nvim_set_keymap(
   'n',
   '<Leader>e',
-  '<Cmd>lua require("telescope.builtin").find_files({ previewer = false })<CR>',
+  '<Cmd>lua require("telescope.builtin").find_files({ hidden = true, previewer = false })<CR>',
   { noremap = true }
 )
 
