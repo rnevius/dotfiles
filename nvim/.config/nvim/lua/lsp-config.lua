@@ -49,7 +49,7 @@ local servers = {
   "cssls",
   "html",
   "jsonls",
-  "pyls_ms",
+  "pyls",
   "solargraph",
   "tsserver",
   "yamlls"
