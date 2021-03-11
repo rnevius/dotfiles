@@ -17,6 +17,8 @@ source $ZSH/oh-my-zsh.sh
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 
+export BAT_THEME='OneHalfDark'
+
 # editor
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
