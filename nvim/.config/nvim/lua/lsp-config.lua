@@ -47,6 +47,7 @@ end
 -- and map buffer local keybindings when the language server attaches
 local servers = {
   "cssls",
+  "gopls",
   "html",
   "jsonls",
   "pyls",
