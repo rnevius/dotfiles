@@ -14,12 +14,10 @@ require('telescope').setup {
     file_sorter = require('telescope.sorters').get_fzy_sorter,
     mappings = {
       i = {
-        ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
-        ['<C-a>'] = actions.send_to_qflist + actions.open_qflist,
+        ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
       },
       n = {
-        ['<C-q>'] = actions.send_selected_to_qflist + actions.open_qflist,
-        ['<C-a>'] = actions.send_to_qflist + actions.open_qflist,
+        ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
       },
     }
   },
