@@ -11,16 +11,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'andrewradev/splitjoin.vim'
   let g:splitjoin_trailing_comma = 1
 
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-  let g:fzf_layout = { 'down': '40%' }
-  let g:fzf_preview_window = []
-  nnoremap <silent> <Leader>e :Files<CR>
-  nnoremap <silent> <Leader>ls :Buffers<CR>
-  nnoremap <Leader>f :Rg<Space>
-  autocmd! FileType fzf set laststatus=0 noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 ruler
-
 Plug 'junegunn/vim-easy-align'
 Plug 'lifepillar/vim-colortemplate'
   let g:colortemplate_creator = 0
@@ -31,7 +21,10 @@ Plug 'ludovicchabant/vim-gutentags'
   endif
 
 Plug 'neovim/nvim-lspconfig'
-
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'psliwka/vim-smoothie'
   let g:smoothie_base_speed = 32
   let g:smoothie_update_interval = 10
@@ -260,5 +253,5 @@ if filereadable(expand("~/.config/nvim/projects.vim"))
 endif
 
 if exists(':luafile') > 1
-  lua require('lsp-config')
+  lua require('init')
 endif
