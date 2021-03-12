@@ -2,14 +2,15 @@ local actions = require('telescope.actions')
 
 require('telescope').setup {
   defaults = {
+    borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
     file_ignore_patterns = {
-      "%.gif",
-      "%.git",
-      "%.jpe?g",
-      "%.lock",
-      "%.pdf",
-      "%.png",
-      "%.svg",
+      '%.gif',
+      '%.git',
+      '%.jpe?g',
+      '%.lock',
+      '%.pdf',
+      '%.png',
+      '%.svg',
     },
     file_sorter = require('telescope.sorters').get_fzy_sorter,
     mappings = {
