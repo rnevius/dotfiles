@@ -1,14 +1,5 @@
 local nvim_lsp = require('lspconfig')
 
-local system_name
-if vim.fn.has('mac') == 1 then
-  system_name = 'macOS'
-elseif vim.fn.has('unix') == 1 then
-  system_name = 'Linux'
-elseif vim.fn.has('win32') == 1 then
-  system_name = 'Windows'
-end
-
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -83,7 +74,7 @@ nvim_lsp.elixirls.setup{
 
 -- set the path to the sumneko (lua lsp) installation
 local sumneko_root_path = vim.env.HOME .. '/.lua-ls'
-local sumneko_binary = sumneko_root_path .. '/bin/' .. system_name .. '/lua-language-server'
+local sumneko_binary = sumneko_root_path .. '/bin/macOS/lua-language-server'
 
 require'lspconfig'.sumneko_lua.setup {
   cmd = {sumneko_binary, '-E', sumneko_root_path .. '/main.lua'};
