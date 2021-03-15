@@ -53,7 +53,6 @@ Plug 'tpope/vim-vinegar'
 Plug '~/.config/nvim/plugged/vim-execution/'
   xmap @ <Plug>(execution_execute)
 
-Plug '~/.config/nvim/plugged/vim-groovy-theme/'
 call plug#end()
 " }}}
 
@@ -212,9 +211,7 @@ nnoremap <Leader>= `[v`]=
 nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bl :set background=light<CR>
 nnoremap <Leader>cd :lcd %:h<CR>
-nnoremap <Leader>r :registers "+-012345:/.<CR>
-" nnoremap <leader>e :e <C-R>=expand("%:.:h") . "/"<CR>
-" nnoremap <Leader>f :find *
+nnoremap <Leader>reg :registers "+-012345:/.<CR>
 " }}}
 
 "   Commands / Functions  {{{
