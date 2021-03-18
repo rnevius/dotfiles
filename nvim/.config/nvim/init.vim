@@ -142,9 +142,13 @@ set mouse=n
 set nojoinspaces
 set noswapfile
 set number
-set path=.
+set path=.,,
 if executable('fd')
-  let &path = join([&path, system('fd -at d | paste -sd, -')], ',')
+  function! s:setPath(_channel_id, data, _name) abort
+    let &path = &path .. join(filter(a:data, 'v:val != ""'), ',')
+  endfunction
+  let opts = { 'stdout_buffered': 1, 'on_stdout': funcref('s:setPath') }
+  call jobstart(['fd', '-at', 'd'], opts)
 else
   set path+=**
 endif
@@ -170,10 +174,8 @@ set wildmode=list:full
 
 "   Mappings  {{{
 """""""""""""""""
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+noremap ; :
+noremap : ;
 inoremap <C-r> <C-r><C-o>
 nnoremap c* *Ncgn
 nnoremap Q q
@@ -187,7 +189,6 @@ let terminal_event = has('nvim') ? 'TermOpen' : 'TerminalOpen'
 augroup terminal_escape
   autocmd!
   execute 'autocmd ' . terminal_event . ' * tnoremap <buffer> <Esc> <C-\><C-N>'
-  autocmd FileType fzf tunmap <buffer> <Esc>
 augroup END
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
