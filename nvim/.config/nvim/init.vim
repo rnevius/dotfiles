@@ -35,12 +35,16 @@ Plug 'Th3Whit3Wolf/one-nvim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-dispatch'
+  let g:dispatch_compilers = {
+    \ 'yarn test': 'jest'}
+
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
   nnoremap <Leader>s :Obsession<CR>
 
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
