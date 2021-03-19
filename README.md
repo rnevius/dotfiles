@@ -12,10 +12,6 @@ Personal dotfiles and configuration instructions to hedge against the fallout fr
     ```
     brew install --HEAD universal-ctags/universal-ctags/universal-ctags neovim
     ```
-1. Make sure that Python 3 is installed and add the `neovim` package:
-    ```
-    python3 -m pip install --user --upgrade pynvim
-    ```
 1. Create an `undo/` directory in the default location, for persistent undo:
     ```
     mkdir -p ~/.local/share/nvim/undo
