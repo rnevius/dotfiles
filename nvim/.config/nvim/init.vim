@@ -189,10 +189,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-let terminal_event = has('nvim') ? 'TermOpen' : 'TerminalOpen'
-augroup terminal_escape
+augroup TerminalEscape
   autocmd!
-  execute 'autocmd ' . terminal_event . ' * tnoremap <buffer> <Esc> <C-\><C-N>'
+  autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-N>
 augroup END
 tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
