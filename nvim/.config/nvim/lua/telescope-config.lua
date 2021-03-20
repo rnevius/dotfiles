@@ -24,11 +24,12 @@ require('telescope').setup {
   },
   extensions = {
     fzy_native = {
-      override_generic_sorter = false,
+      override_generic_sorter = true,
       override_file_sorter = true,
     }
   }
 }
+require('telescope').load_extension('fzy_native')
 
 -- Mappings
 vim.api.nvim_set_keymap(
