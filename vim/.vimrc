@@ -16,7 +16,6 @@ set belloff=all
 set colorcolumn=81
 set complete-=i
 set cursorline
-set diffopt+=vertical
 set display+=lastline
 if &encoding ==# 'latin1' && has('gui_running')
   set encoding=utf-8
