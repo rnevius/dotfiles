@@ -1,17 +1,16 @@
 " vim: foldmethod=marker
-let mapleader = ","
+let mapleader = "\<Space>"
 
 "    Plugins   {{{
 """"""""""""""""""
 call plug#begin()
 
-Plug 'airblade/vim-gitgutter'
-  let g:gitgutter_sign_priority = 9
-
 Plug 'andrewradev/splitjoin.vim'
   let g:splitjoin_trailing_comma = 1
 
 Plug 'junegunn/vim-easy-align'
+
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'lifepillar/vim-colortemplate'
   let g:colortemplate_creator = 0
 
@@ -32,8 +31,8 @@ Plug 'psliwka/vim-smoothie'
 Plug 'sheerun/vim-polyglot'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'Th3Whit3Wolf/one-nvim'
-Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
   let g:dispatch_compilers = {
     \ 'yarn test': 'jest'}
