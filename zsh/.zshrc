@@ -13,6 +13,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git poetry zsh-nvm z)
 source $ZSH/oh-my-zsh.sh
 
+# kitty completion
+kitty + complete setup zsh | source /dev/stdin
+
 # man
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
