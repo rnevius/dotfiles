@@ -17,13 +17,15 @@ source $ZSH/oh-my-zsh.sh
 kitty + complete setup zsh | source /dev/stdin
 
 # man
-export MANPAGER='nvim +Man!'
+export MANPAGER="nvim +Man!"
 export MANWIDTH=999
 
-export BAT_THEME='OneHalfDark'
+export BAT_PAGER="less --"
+export BAT_STYLE="plain"
+export BAT_THEME="OneHalfDark"
 
 # editor
-export VISUAL='nvim'
+export VISUAL="nvim"
 export EDITOR="$VISUAL"
 
 # aliases
