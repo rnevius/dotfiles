@@ -11,9 +11,6 @@ Plug 'andrewradev/splitjoin.vim'
 Plug 'junegunn/vim-easy-align'
 
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'lifepillar/vim-colortemplate'
-  let g:colortemplate_creator = 0
-
 Plug 'ludovicchabant/vim-gutentags'
   if executable('rg')
     let g:gutentags_file_list_command = 'rg --files'
@@ -26,7 +23,6 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'psliwka/vim-smoothie'
-  let g:smoothie_base_speed = 32
   let g:smoothie_update_interval = 10
 
 Plug 'sheerun/vim-polyglot'

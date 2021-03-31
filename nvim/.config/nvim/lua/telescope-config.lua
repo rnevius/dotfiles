@@ -52,5 +52,3 @@ vim.api.nvim_set_keymap(
   '<Cmd>lua require("telescope.builtin").buffers()<CR>',
   { noremap = true }
 )
-
-require('telescope').load_extension('fzy_native')
