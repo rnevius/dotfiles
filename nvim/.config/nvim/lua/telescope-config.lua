@@ -20,11 +20,17 @@ require('telescope').setup {
       n = {
         ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
       },
-    }
+    },
+    vimgrep_arguments = {
+      'rg',
+      '--hidden',
+      '--smart-case',
+      '--vimgrep'
+    },
   },
   extensions = {
     fzy_native = {
-      override_generic_sorter = true,
+      override_generic_sorter = false,
       override_file_sorter = true,
     }
   }
