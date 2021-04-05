@@ -185,8 +185,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-augroup TerminalEscape
+augroup TermOptions
   autocmd!
+  autocmd TermOpen * setlocal nonumber
   autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-N>
 augroup END
 tnoremap <C-h> <C-\><C-N><C-w>h
