@@ -42,6 +42,12 @@ gopen() {
   open $(git config --get remote.origin.url | sed -e 's/:/\//g' | sed -e 's/ssh\/\/\///g' | sed -e 's/git@/https:\/\//g')
 }
 
+# use fzf+jq as a quasi-repl for any command that outputs JSON
+# e.g. `jqrepl 'cat some.json'`
+jqrepl() {
+  echo '' | fzf --print-query --preview "$@ | jq {q}"
+}
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
