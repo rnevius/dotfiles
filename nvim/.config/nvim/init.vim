@@ -9,7 +9,6 @@ Plug 'andrewradev/splitjoin.vim'
   let g:splitjoin_trailing_comma = 1
 
 Plug 'junegunn/vim-easy-align'
-
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ludovicchabant/vim-gutentags'
   if executable('rg')
@@ -17,8 +16,8 @@ Plug 'ludovicchabant/vim-gutentags'
   endif
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -107,6 +106,7 @@ set autoindent
 set backspace=indent,eol,start
 set belloff=all
 set complete+=i
+set confirm
 if executable('rg')
   set grepprg=rg\ --smart-case\ --vimgrep
   " From https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
