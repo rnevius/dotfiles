@@ -15,6 +15,7 @@ Plug 'ludovicchabant/vim-gutentags'
     let g:gutentags_file_list_command = 'rg --files'
   endif
 
+Plug 'MTDL9/vim-log-highlighting'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
@@ -24,7 +25,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'psliwka/vim-smoothie'
   let g:smoothie_update_interval = 10
 
-Plug 'sheerun/vim-polyglot'
 Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'Th3Whit3Wolf/one-nvim'
 Plug 'tpope/vim-abolish'
