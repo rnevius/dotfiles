@@ -43,7 +43,7 @@ git clone https://github.com/sumneko/lua-language-server $HOME/.lua-ls
 cd $HOME/.lua-ls
 git submodule update --init --recursive
 cd 3rd/luamake
-ninja -f ninja/macos.ninja
+compile/install.sh
 cd ../..
 ./3rd/luamake/luamake rebuild
 
