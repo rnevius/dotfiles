@@ -18,6 +18,10 @@ else
   brew install gopls
 fi
 
+# GraphQL
+echo "\n Installing GraphQL server...\n"
+npm install -g graphql-language-service-cli
+
 # HTML
 echo "\n Installing HTML server...\n"
 npm install -g vscode-html-languageserver-bin

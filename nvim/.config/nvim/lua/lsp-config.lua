@@ -45,6 +45,7 @@ end
 local servers = {
   "cssls",
   "gopls",
+  "graphql",
   "html",
   "jsonls",
   "pyls",
