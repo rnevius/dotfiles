@@ -2,7 +2,7 @@
 
 # CSS
 echo "\n Installing CSS server...\n"
-npm install -g vscode-css-languageserver-bin
+yarn global add vscode-css-languageserver-bin
 
 # Elixir
 echo "\n Installing Elixir server...\n"
@@ -20,19 +20,19 @@ fi
 
 # GraphQL
 echo "\n Installing GraphQL server...\n"
-npm install -g graphql-language-service-cli
+yarn global add graphql-language-service-cli
 
 # HTML
 echo "\n Installing HTML server...\n"
-npm install -g vscode-html-languageserver-bin
+yarn global add vscode-html-languageserver-bin
 
 # JavaScript / TypeScript
 echo "\n Installing TypeScript server...\n"
-npm install -g typescript typescript-language-server
+yarn global add typescript typescript-language-server
 
 # JSON
 echo "\n Installing JSON server...\n"
-npm install -g vscode-json-languageserver
+yarn global add vscode-json-languageserver
 
 # Lua
 echo "\n Installing Lua server...\n"
@@ -61,4 +61,4 @@ gem install --user-install solargraph
 
 # YAML
 echo "\n Installing YAML server...\n"
-npm install -g yaml-language-server
+yarn global add yaml-language-server
