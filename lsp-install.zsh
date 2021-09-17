@@ -53,7 +53,8 @@ cd ../..
 
 # Python
 echo "\n Installing Python server...\n"
-pip3 install 'python-lsp-server[all]'
+pip3 install 'python-lsp-black'
+pip3 install 'python-lsp-server'
 
 # Ruby
 echo "\n Installing Ruby server...\n"
