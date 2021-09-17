@@ -1,6 +1,13 @@
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
+  require('lspsaga').init_lsp_saga {
+    code_action_icon = '🔧',
+  }
+  require("trouble").setup {
+    icons = false,
+  }
+
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -8,23 +15,27 @@ local on_attach = function(client, bufnr)
 
   -- General mappings
   local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<Leader>gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<Leader>gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<Leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', 'K',          '<Cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', opts)
+  buf_set_keymap('n', '<Leader>la', '<Cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
+  buf_set_keymap('n', 'gd',         '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<Leader>lf', '<Cmd>lua require("lspsaga.provider").lsp_finder()<CR>', opts)
+  buf_set_keymap('n', '<Leader>li', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<Leader>lp', '<Cmd>lua require("lspsaga.provider").preview_definition()<CR>', opts)
+  buf_set_keymap('n', '<Leader>lr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<Leader>lk', '<Cmd>lua require("lspsaga.signaturehelp").signature_help()<CR>', opts)
+  buf_set_keymap('n', '<Leader>rn', '<Cmd>lua require("lspsaga.rename").rename()<CR>', opts)
 
   -- Diagnostics mappings
-  buf_set_keymap('n', '<Leader>gd', '<Cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '<Leader>gl', '<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '[d', '<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<Leader>ll', '<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<Leader>ld', '<Cmd>lua require("lspsaga.diagnostic").show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d',         '<Cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<CR>', opts)
+  buf_set_keymap('n', ']d',         '<Cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>a", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    buf_set_keymap("n", "<Leader>a", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("n", "<leader>a", "<Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+    buf_set_keymap("n", "<Leader>a", "<Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
   -- Set autocommands conditional on server_capabilities
@@ -37,6 +48,7 @@ local on_attach = function(client, bufnr)
       augroup END
     ]], false)
   end
+
   print("[" .. client.name .. "] client loaded!")
 end
 
@@ -48,7 +60,7 @@ local servers = {
   "graphql",
   "html",
   "jsonls",
-  "pyls",
+  "pylsp",
   "solargraph",
   "tsserver",
   "yamlls"
@@ -102,4 +114,3 @@ nvim_lsp.sumneko_lua.setup {
   },
   on_attach = on_attach
 }
-

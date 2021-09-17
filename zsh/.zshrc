@@ -57,8 +57,16 @@ export PATH="$PATH:$HOME/.flutter/bin"
 # FZF
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git"
 
+# Go
+export GOPATH="$HOME/go"
+PATH="$GOPATH/bin:$PATH"
+
 # Homebrew
 export HOMEBREW_GITHUB_API_TOKEN=$(security find-generic-password -s 'Homebrew GitHub Token' -w)
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
 # Poetry
 export PATH="$HOME/.poetry/bin:$PATH"
@@ -69,8 +77,7 @@ eval "$(rbenv init -)"
 export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-# `fuck` command
-eval $(thefuck --alias)
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
+
+alias luamake=/Users/rnevius/.lua-ls/3rd/luamake/luamake

@@ -24,7 +24,7 @@ yarn global add graphql-language-service-cli
 
 # HTML
 echo "\n Installing HTML server...\n"
-yarn global add vscode-html-languageserver-bin
+yarn global add vscode-langservers-extracted
 
 # JavaScript / TypeScript
 echo "\n Installing TypeScript server...\n"
@@ -53,7 +53,7 @@ cd ../..
 
 # Python
 echo "\n Installing Python server...\n"
-pip3 install python-language-server pyls-black
+pip3 install 'python-lsp-server[all]'
 
 # Ruby
 echo "\n Installing Ruby server...\n"
