@@ -8,6 +8,12 @@ call plug#begin()
 Plug 'andrewradev/splitjoin.vim'
   let g:splitjoin_trailing_comma = 1
 
+" Plug 'dstein64/vim-startuptime'
+Plug 'folke/trouble.nvim'
+Plug 'github/copilot.vim'
+  imap <silent><script><expr> <C-J> copilot#Accept("")
+  let g:copilot_no_tab_map = v:true
+Plug 'hrsh7th/nvim-compe'
 Plug 'junegunn/vim-easy-align'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ludovicchabant/vim-gutentags'
@@ -21,11 +27,15 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
+Plug 'phaazon/hop.nvim'
+  nnoremap s <Cmd>HopChar2<CR>
+
 Plug 'psliwka/vim-smoothie'
   let g:smoothie_update_interval = 10
 
 Plug 'shumphrey/fugitive-gitlab.vim'
+Plug 'tami5/lspsaga.nvim'
 Plug 'Th3Whit3Wolf/one-nvim'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -47,6 +57,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'tversteeg/registers.nvim'
 
 " Local Plugs
 Plug '~/.config/nvim/plugged/vim-execution/'
@@ -77,12 +88,14 @@ sign define LspDiagnosticsSignWarning text=‼ texthl=LspDiagnosticsSignWarning 
 sign define LspDiagnosticsSignInformation text=‼ texthl=LspDiagnosticsSignInformation linehl= numhl=
 sign define LspDiagnosticsSignHint text= texthl=LspDiagnosticsSignHint linehl= numhl=
 
-" Statusline  {{{
+" Highlights
 augroup CustomColors
   autocmd!
+  autocmd VimEnter,ColorScheme one-nvim highlight! link TSError Normal
   autocmd VimEnter,ColorScheme * call statusline#SetCustomHighlights()
 augroup END
 
+" Statusline  {{{
 set statusline=\ 
 set statusline+=%f\ 
 set statusline+=%h%m%r\ 
@@ -252,4 +265,5 @@ endif
 
 if exists(':luafile') > 1
   lua require('init')
+  lua require'hop'.setup()
 endif
