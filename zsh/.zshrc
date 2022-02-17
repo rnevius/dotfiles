@@ -47,6 +47,9 @@ gopen() {
 jqrepl() {
   echo '' | fzf --print-query --preview "$@ | jq {q}"
 }
+#
+# direnv
+eval "$(direnv hook zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -70,6 +73,7 @@ eval "$(jenv init -)"
 
 # Poetry
 export PATH="$HOME/.poetry/bin:$PATH"
+export PATH="/Users/rnevius/Library/Python/3.9/bin:$PATH"
 
 # Ruby
 eval "$(rbenv init -)"
@@ -81,3 +85,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/usr/local/sbin:$PATH"
 
 alias luamake=/Users/rnevius/.lua-ls/3rd/luamake/luamake
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/rnevius/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
