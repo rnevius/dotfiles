@@ -1,4 +1,7 @@
 .DS_Store
+.direnv
+.env
+.envrc
 Session.kitty
 Session.vim
 tags
