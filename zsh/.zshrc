@@ -81,6 +81,10 @@ eval "$(rbenv init -)"
 export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
+# Stripe
+fpath=(~/.stripe $fpath)
+autoload -Uz compinit && compinit -i
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="/usr/local/sbin:$PATH"
 
