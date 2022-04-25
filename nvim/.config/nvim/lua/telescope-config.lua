@@ -12,7 +12,7 @@ require('telescope').setup {
       '%.png',
       '%.svg',
     },
-    file_sorter = require('telescope.sorters').get_fzy_sorter,
+    -- file_sorter = require('telescope.sorters').get_fzy_sorter,
     mappings = {
       i = {
         ['<C-q>'] = actions.smart_send_to_qflist + actions.open_qflist,
@@ -28,14 +28,8 @@ require('telescope').setup {
       '--vimgrep'
     },
   },
-  extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
-      override_file_sorter = true,
-    }
-  }
 }
-require('telescope').load_extension('fzy_native')
+require('telescope').load_extension('fzf')
 
 -- Mappings
 vim.api.nvim_set_keymap(

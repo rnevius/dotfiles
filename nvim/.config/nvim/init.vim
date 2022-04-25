@@ -3,7 +3,7 @@ let mapleader = "\<Space>"
 
 "    Plugins   {{{
 """"""""""""""""""
-call plug#begin()
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'andrewradev/splitjoin.vim'
   let g:splitjoin_trailing_comma = 1
@@ -15,6 +15,7 @@ Plug 'github/copilot.vim'
   let g:copilot_no_tab_map = v:true
 Plug 'hrsh7th/nvim-compe'
 Plug 'junegunn/vim-easy-align'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'ludovicchabant/vim-gutentags'
   if executable('rg')
@@ -26,8 +27,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'branch': '0.5-compat', 'do': ':TSUpdate'}
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'phaazon/hop.nvim'
   nnoremap s <Cmd>HopChar2<CR>
 
