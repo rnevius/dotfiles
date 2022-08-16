@@ -10,7 +10,7 @@ export PATH=/usr/local/bin:/usr/local/opt/ruby/bin:$PATH
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git poetry zsh-nvm z)
+plugins=(git poetry z)
 source $ZSH/oh-my-zsh.sh
 
 # kitty completion
@@ -48,8 +48,6 @@ jqrepl() {
   echo '' | fzf --print-query --preview "$@ | jq {q}"
 }
 #
-# direnv
-eval "$(direnv hook zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -74,12 +72,6 @@ eval "$(jenv init -)"
 # Poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/Users/rnevius/Library/Python/3.9/bin:$PATH"
-
-# Ruby
-eval "$(rbenv init -)"
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Stripe
 fpath=(~/.stripe $fpath)
