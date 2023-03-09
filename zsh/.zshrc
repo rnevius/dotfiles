@@ -30,6 +30,7 @@ export EDITOR="$VISUAL"
 
 # aliases
 alias asciinema="TERM=xterm-256color asciinema"
+alias gmod="git status --porcelain | awk '{ print \$2 }'"
 alias k="kitty --session=Session.kitty"
 alias tree="fd --hidden --exclude .git | tree --fromfile "
 alias v="nvim -S Session.vim"
@@ -69,6 +70,12 @@ export HOMEBREW_GITHUB_API_TOKEN=$(security find-generic-password -s 'Homebrew G
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
+# lvim
+export PATH="$PATH:$HOME/.local/bin"
+
+# OpenAI
+export OPENAI_API_KEY=$(security find-generic-password -s 'OpenAI API Key' -w)
+
 # Poetry
 export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/Users/rnevius/Library/Python/3.9/bin:$PATH"
@@ -84,3 +91,5 @@ alias luamake=/Users/rnevius/.lua-ls/3rd/luamake/luamake
 
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/rnevius/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh

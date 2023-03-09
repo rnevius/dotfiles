@@ -76,7 +76,7 @@ if has('termguicolors')
   set termguicolors
 endif
 colorscheme one-nvim
-set background=light
+set background=dark
 set colorcolumn=81
 set cursorline
 set diffopt+=vertical
