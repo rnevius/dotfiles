@@ -198,11 +198,20 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
+-- Copilot settings
+vim.g.copilot_no_tab_map = true
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Confirm potentially destructive commands
+vim.o.confirm = true
+
 -- Set highlight on search
 vim.o.hlsearch = false
+
+-- Make additional lines of context visible above/below cursor
+vim.o.scrolloff = 2
 
 -- Make line numbers default
 vim.wo.number = true
@@ -260,6 +269,11 @@ vim.keymap.set({ 'n' }, '<C-l>', '<C-w>l')
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- copilot
+vim.keymap.set('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.keymap.set('i', '<C-h>', 'copilot#Previous()', { silent = true, expr = true })
+vim.keymap.set('i', '<C-k>', 'copilot#Next()', { silent = true, expr = true })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -308,7 +322,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'help', 'ruby', 'vim' },
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
   auto_install = false,
