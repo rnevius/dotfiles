@@ -70,6 +70,7 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
+  'tpope/vim-endwise',
   'tpope/vim-surround',
   'tpope/vim-rails',
   'tpope/vim-repeat',
@@ -226,6 +227,12 @@ vim.wo.number = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
+
+-- Indentation defaults
+vim.o.expandtab = true
+vim.o.shiftround = true
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
