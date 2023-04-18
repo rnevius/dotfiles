@@ -74,6 +74,7 @@ require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-rails',
   'tpope/vim-repeat',
+  'tpope/vim-vinegar',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
