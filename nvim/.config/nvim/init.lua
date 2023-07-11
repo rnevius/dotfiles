@@ -223,9 +223,14 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
+-- Copilot settings
+vim.g.copilot_no_tab_map = true
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
--- NOTE: You can change these options as you wish!
+
+-- Confirm potentially destructive commands
+vim.o.confirm = true
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -296,7 +301,7 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- copilot
-vim.keymap.set('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.keymap.set('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
 vim.keymap.set('i', '<C-h>', 'copilot#Previous()', { silent = true, expr = true })
 vim.keymap.set('i', '<C-k>', 'copilot#Next()', { silent = true, expr = true })
 
