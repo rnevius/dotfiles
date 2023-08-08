@@ -236,6 +236,9 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- Hide intro message and `ins-completion-menu` messages
+vim.o.shortmess = vim.o.shortmess .. 'Ic'
+
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
 
