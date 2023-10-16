@@ -136,17 +136,24 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      char = '┊',
-      show_trailing_blankline_indent = false,
-    },
+    main = 'ibl',
+    opts = {},
   },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
 
   -- AI
-  { 'dpayne/CodeGPT.nvim', dependencies = { 'nvim-lua/plenary.nvim', 'MunifTanjim/nui.nvim' } },
+  {
+      "dpayne/CodeGPT.nvim",
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+        'MunifTanjim/nui.nvim',
+      },
+      config = function()
+        require("codegpt.config")
+      end
+  },
   { 'github/copilot.vim' },
 
   -- Fuzzy Finder (files, lsp, etc)
