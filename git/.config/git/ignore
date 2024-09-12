@@ -1,4 +1,5 @@
 .DS_Store
+.bruno
 .direnv
 .env
 .envrc
