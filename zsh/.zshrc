@@ -94,3 +94,10 @@ alias luamake=/Users/rnevius/.lua-ls/3rd/luamake/luamake
 HEROKU_AC_ZSH_SETUP_PATH=/Users/rnevius/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# bun completions
+[ -s "/Users/rnevius/.bun/_bun" ] && source "/Users/rnevius/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
