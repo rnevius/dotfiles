@@ -74,6 +74,8 @@ eval "$(jenv init -)"
 # lvim
 export PATH="$PATH:$HOME/.local/bin"
 
+# Anthropic
+export ANTHROPIC_API_KEY=$(security find-generic-password -s 'Anthropic API Key' -w)
 # OpenAI
 export OPENAI_API_KEY=$(security find-generic-password -s 'OpenAI API Key' -w)
 
