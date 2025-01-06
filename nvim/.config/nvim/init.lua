@@ -298,13 +298,38 @@ require('lazy').setup({
 
   -- AI
   {
-    'dpayne/CodeGPT.nvim',
+    'olimorris/codecompanion.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
+      'nvim-treesitter/nvim-treesitter',
     },
     config = function()
-      require 'codegpt.config'
+      require('codecompanion').setup {
+        adapters = {
+          anthropic = function()
+            return require('codecompanion.adapters').extend('anthropic', {
+              env = {
+                api_key = 'cmd:echo $ANTHROPIC_API_KEY',
+              },
+            })
+          end,
+          openai = function()
+            return require('codecompanion.adapters').extend('openai', {
+              env = {
+                api_key = 'cmd:echo $OPENAI_API_KEY',
+              },
+            })
+          end,
+        },
+        strategies = {
+          chat = {
+            adapter = 'openai',
+          },
+          inline = {
+            adapter = 'copilot',
+          },
+        },
+      }
     end,
   },
   { 'github/copilot.vim' },
@@ -804,6 +829,7 @@ require('lazy').setup({
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
             group_index = 0,
           },
+          { name = 'codecompanion' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
