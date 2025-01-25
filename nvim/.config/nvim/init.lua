@@ -187,7 +187,6 @@ require('lazy').setup({
   'tpope/vim-rails',
   'tpope/vim-repeat',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-vinegar',
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -205,6 +204,20 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+  },
+
+  {
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = {},
+    lazy = false,
+    config = function()
+      require('oil').setup {}
+
+      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+    end,
   },
 
   {
