@@ -343,13 +343,16 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter',
       'hrsh7th/nvim-cmp',
     },
+    keys = {
+      { '<leader>cc', '<CMD>CodeCompanionChat Toggle<CR>', desc = 'Toggle Code Companion' },
+    },
     opts = {
       strategies = {
         chat = {
           adapter = 'anthropic',
         },
         inline = {
-          adapter = 'anthropic',
+          adapter = 'copilot',
         },
       },
     },
@@ -652,7 +655,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
