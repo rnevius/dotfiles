@@ -36,6 +36,11 @@ vim.opt.breakindent = true
 -- Save undo history
 vim.opt.undofile = true
 
+-- Folds
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldenable = false
+
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -76,7 +81,10 @@ vim.opt.shortmess:append 'Ic'
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', '<CMD>nohlsearch<CR>')
+
+-- Themes
+vim.keymap.set('n', '<leader>tc', '<CMD>lua require("onedark").toggle()<CR>', { desc = '[T]oggle between theme [C]olors' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
@@ -88,12 +96,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -127,13 +129,18 @@ vim.keymap.set('i', '<C-k>', 'copilot#Next()', { silent = true, expr = true })
 --  See `:help lua-guide-autocommands`
 
 -- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "codecompanion",
+  callback = function()
+    vim.cmd("set syntax=markdown")
   end,
 })
 
@@ -202,7 +209,18 @@ require('lazy').setup({
       -- refer to the configuration section below
       bigfile = { enabled = true },
       -- dashboard = { enabled = true },
-      -- indent = { enabled = true },
+      indent = {
+        enabled = true,
+        indent = {
+          hl = 'IblIndent',
+        },
+        scope = {
+          hl = 'IblScope',
+        },
+        animate = {
+          enabled = false,
+        },
+      },
       -- input = { enabled = true },
       -- notifier = { enabled = true },
       quickfile = { enabled = true },
@@ -240,15 +258,6 @@ require('lazy').setup({
     init = function()
       require('leap').add_default_mappings()
     end,
-  },
-
-  -- Indentation
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
-    main = 'ibl',
-    opts = {},
   },
 
   {
@@ -344,9 +353,17 @@ require('lazy').setup({
       'hrsh7th/nvim-cmp',
     },
     keys = {
-      { '<leader>cc', '<CMD>CodeCompanionChat Toggle<CR>', desc = 'Toggle Code Companion' },
+      { '<leader>cc', '<CMD>CodeCompanionChat<CR>', desc = 'New Code Companion Session' },
+      { '<leader>cm', '<CMD>CodeCompanionActions<CR>', desc = 'Code Companion Actions' },
+      { '<leader>ct', '<CMD>CodeCompanionChat Toggle<CR>', desc = 'Toggle Code Companion' },
     },
+    lazy = false,
     opts = {
+      display = {
+        diff = {
+          provider = 'mini_diff',
+        },
+      },
       strategies = {
         chat = {
           adapter = 'anthropic',
@@ -354,6 +371,9 @@ require('lazy').setup({
         inline = {
           adapter = 'copilot',
         },
+      },
+      opts = {
+        -- log_level = "DEBUG",
       },
     },
   },
@@ -755,7 +775,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        -- python = { "isort", "black" },
+        python = { 'ruff' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettier', stop_after_first = true },
@@ -886,6 +906,17 @@ require('lazy').setup({
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
     priority = 1000,
+    opts = {
+      style = 'cool',  -- or 'dark'
+      toggle_style_list = {'cool', 'light'},
+      highlights = {
+        CodeCompanionChatTokens = { fg = '#98c379', fmt = 'italic' },
+        CodeCompanionChatSeparator = { fg = '$grey' },
+        CodeCompanionChatAgent = { fg = '$bg0', bg = '$orange' },
+        CodeCompanionChatTool = { fg = '$bg0', bg = '$green' },
+        CodeCompanionChatVariable = { fg = '$bg0', bg = '$blue' },
+      },
+    },
     init = function()
       vim.cmd.colorscheme 'onedark'
     end,
@@ -906,6 +937,9 @@ require('lazy').setup({
       require('mini.ai').setup { n_lines = 500 }
 
       require('mini.comment').setup()
+
+      -- Better diffing in CodeCompanion
+      require('mini.diff').setup()
 
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
