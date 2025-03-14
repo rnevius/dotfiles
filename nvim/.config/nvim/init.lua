@@ -137,13 +137,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "codecompanion",
-  callback = function()
-    vim.cmd("set syntax=markdown")
-  end,
-})
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -360,6 +353,9 @@ require('lazy').setup({
     lazy = false,
     opts = {
       display = {
+        chat = {
+          show_header_separator = true,
+        },
         diff = {
           provider = 'mini_diff',
         },
@@ -371,9 +367,6 @@ require('lazy').setup({
         inline = {
           adapter = 'copilot',
         },
-      },
-      opts = {
-        -- log_level = "DEBUG",
       },
     },
   },
@@ -907,8 +900,8 @@ require('lazy').setup({
     'navarasu/onedark.nvim',
     priority = 1000,
     opts = {
-      style = 'cool',  -- or 'dark'
-      toggle_style_list = {'cool', 'light'},
+      style = 'cool', -- or 'dark'
+      toggle_style_list = { 'cool', 'light' },
       highlights = {
         CodeCompanionChatTokens = { fg = '#98c379', fmt = 'italic' },
         CodeCompanionChatSeparator = { fg = '$grey' },
