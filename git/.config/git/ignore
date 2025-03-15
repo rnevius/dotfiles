@@ -1,4 +1,5 @@
 .aider*
+!.aider.conf.yml
 .DS_Store
 .bruno
 .direnv
