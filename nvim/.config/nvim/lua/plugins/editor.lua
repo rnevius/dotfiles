@@ -6,11 +6,16 @@ return {
 
   -- Utility plugins
   'tpope/vim-endwise',
-  'tpope/vim-eunuch',
   'tpope/vim-surround',
   'tpope/vim-rails',
   'tpope/vim-repeat',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+
+  {
+    'folke/ts-comments.nvim',
+    opts = {},
+    event = 'VeryLazy',
+  },
 
   {
     'lewis6991/gitsigns.nvim',
