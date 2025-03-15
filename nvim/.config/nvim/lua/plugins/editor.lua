@@ -95,11 +95,11 @@ return {
       spec = {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
+        { '<leader>l', group = '[L]azy' },
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -189,7 +189,7 @@ return {
         function()
           require('snacks').lazygit()
         end,
-        desc = 'Lazygit',
+        desc = 'Lazy[g]it',
       },
       -- Pickers & Explorer
       {
@@ -271,6 +271,13 @@ return {
           require('snacks').picker.help()
         end,
         desc = '[S]earch [H]elp Pages',
+      },
+      {
+        '<leader>sk',
+        function()
+          require('snacks').picker.keymaps()
+        end,
+        desc = '[S]earch [K]eymaps',
       },
       {
         '<leader>su',
