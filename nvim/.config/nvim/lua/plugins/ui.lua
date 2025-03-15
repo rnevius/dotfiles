@@ -8,7 +8,7 @@ return {
       style = 'cool', -- or 'dark'
       toggle_style_list = { 'cool', 'light' },
       highlights = {
-        CodeCompanionChatTokens = { fg = '#98c379', fmt = 'italic' },
+        CodeCompanionChatTokens = { fg = '$green', fmt = 'italic' },
         CodeCompanionChatSeparator = { fg = '$grey' },
         CodeCompanionChatAgent = { fg = '$bg0', bg = '$orange' },
         CodeCompanionChatTool = { fg = '$bg0', bg = '$green' },
@@ -18,37 +18,6 @@ return {
     init = function()
       vim.cmd.colorscheme 'onedark'
     end,
-  },
-
-  {
-    'folke/snacks.nvim',
-    priority = 1000,
-    lazy = false,
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-      bigfile = { enabled = true },
-      -- dashboard = { enabled = true },
-      indent = {
-        enabled = true,
-        indent = {
-          hl = 'IblIndent',
-        },
-        scope = {
-          hl = 'IblScope',
-        },
-        animate = {
-          enabled = false,
-        },
-      },
-      -- input = { enabled = true },
-      -- notifier = { enabled = true },
-      quickfile = { enabled = true },
-      scroll = { enabled = true },
-      -- statuscolumn = { enabled = true },
-      -- words = { enabled = true },
-    },
   },
 
   { -- Collection of various small independent plugins/modules
