@@ -42,7 +42,7 @@ return {
   {
     -- Navigation
     'ggandor/leap.nvim',
-    init = function()
+    config = function()
       require('leap').add_default_mappings()
     end,
   },
@@ -239,17 +239,11 @@ return {
       --  - ci'  - [C]hange [I]nside [']quote
       require('mini.ai').setup { n_lines = 500 }
 
-      require('mini.comment').setup()
-
       -- Better diffing in CodeCompanion
       require('mini.diff').setup()
 
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
-      --
-      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- - sd'   - [S]urround [D]elete [']quotes
-      -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      -- Autopairs
+      require('mini.pairs').setup()
     end,
   },
 
@@ -257,6 +251,7 @@ return {
     'luckasRanarison/tailwind-tools.nvim',
     name = 'tailwind-tools',
     build = ':UpdateRemotePlugins',
+    event = 'VeryLazy',
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'nvim-telescope/telescope.nvim',
