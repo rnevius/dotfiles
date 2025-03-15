@@ -14,7 +14,9 @@ plugins=(git poetry z)
 source $ZSH/oh-my-zsh.sh
 
 # kitty completion
-kitty + complete setup zsh | source /dev/stdin
+if command -v kitty > /dev/null 2>&1; then
+  kitty + complete setup zsh | source /dev/stdin
+fi
 
 # man
 export MANPAGER="nvim +Man!"
@@ -74,10 +76,10 @@ eval "$(jenv init -)"
 # lvim
 export PATH="$PATH:$HOME/.local/bin"
 
-# Anthropic
-export ANTHROPIC_API_KEY=$(security find-generic-password -s 'Anthropic API Key' -w)
 # OpenAI
 export OPENAI_API_KEY=$(security find-generic-password -s 'OpenAI API Key' -w)
+# OpenRouter
+export OPENROUTER_API_KEY=$(security find-generic-password -s 'OpenRouter API Key' -w)
 
 # Poetry
 export PATH="$HOME/.poetry/bin:$PATH"
