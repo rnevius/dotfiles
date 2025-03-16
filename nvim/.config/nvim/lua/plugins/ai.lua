@@ -11,12 +11,12 @@ return {
       'nvim-treesitter/nvim-treesitter',
       'hrsh7th/nvim-cmp',
     },
+    event = 'VeryLazy',
     keys = {
       { '<leader>cc', '<CMD>CodeCompanionChat<CR>', desc = 'New Code Companion Session' },
       { '<leader>cm', '<CMD>CodeCompanionActions<CR>', desc = 'Code Companion Actions' },
       { '<leader>ct', '<CMD>CodeCompanionChat Toggle<CR>', desc = 'Toggle Code Companion' },
     },
-    lazy = false,
     opts = {
       adapters = {
         openrouter_claude = function()
