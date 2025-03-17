@@ -213,6 +213,7 @@ return {
       vim.list_extend(ensure_installed, {
         'erb-lint',
         'markdownlint',
+        'prettier',
         'rubocop',
         'stylua',
       })
@@ -271,7 +272,9 @@ return {
         -- You can use 'stop_after_first' to run the first available formatter from the list
         lua = { 'stylua' },
         python = { 'ruff', 'pyright' },
-        javascript = { 'eslint', 'prettier' },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        typescriptreact = { 'prettier' },
         ruby = { 'rubocop' },
       },
     },
