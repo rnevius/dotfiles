@@ -12,22 +12,20 @@ return {
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   {
-    'folke/ts-comments.nvim',
-    opts = {},
+    'folke/flash.nvim',
     event = 'VeryLazy',
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    },
   },
 
   {
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
+    'folke/ts-comments.nvim',
+    opts = {},
+    event = 'VeryLazy',
   },
 
   {
@@ -37,14 +35,6 @@ return {
     keys = {
       { '-', '<CMD>Oil<CR>', desc = 'Open parent directory' },
     },
-  },
-
-  {
-    -- Navigation
-    'ggandor/leap.nvim',
-    config = function()
-      require('leap').add_default_mappings()
-    end,
   },
 
   {
@@ -153,22 +143,14 @@ return {
       bigfile = { enabled = true },
       indent = { -- indent guides
         enabled = true,
-        indent = {
-          hl = 'IblIndent',
-        },
-        scope = {
-          hl = 'IblScope',
-        },
-        animate = {
-          enabled = false,
-        },
+        indent = { hl = 'IblIndent' },
+        scope = { hl = 'IblScope' },
+        animate = { enabled = false },
       },
       image = {}, -- image previews / buffers
       lazygit = {}, -- lazygit integration
       picker = { -- picker
-        layout = {
-          preset = 'telescope',
-        },
+        layout = { preset = 'telescope' },
         win = {
           preview = {
             wo = {
@@ -183,126 +165,43 @@ return {
       scroll = {},
       words = {},
     },
+    -- stylua: ignore
     keys = {
-      {
-        '<leader>lz',
-        function()
-          require('snacks').lazygit()
-        end,
-        desc = 'Lazy[g]it',
-      },
-      -- Pickers & Explorer
-      {
-        '<leader>e',
-        function()
-          require('snacks').picker.files()
-        end,
-        desc = 'Find Files',
-      },
-      {
-        '<leader><leader>',
-        function()
-          require('snacks').picker.buffers()
-        end,
-        desc = 'Find Buffers',
-      },
-      { -- 👹 for pairing
-        '<leader><Tab>',
-        function()
-          require('snacks').explorer()
-        end,
-        desc = 'File Explorer',
-      },
-      {
-        '<leader>s:',
-        function()
-          require('snacks').picker.command_history()
-        end,
-        desc = '[S]earch Command History',
-      },
-      {
-        '<leader>sg',
-        function()
-          require('snacks').picker.grep()
-        end,
-        desc = '[S]earch [G]rep',
-      },
-      {
-        '<leader>sw',
-        function()
-          require('snacks').picker.grep_word()
-        end,
-        desc = 'Visual [S]election or [W]ord',
-        mode = { 'n', 'x' },
-      },
+      -- Lazygit
+      { '<leader>lz', function() require('snacks').lazygit() end, desc = 'Lazy[g]it' },
 
-      -- search
-      {
-        '<leader>s"',
-        function()
-          require('snacks').picker.registers()
-        end,
-        desc = '[S]earch Registers',
-      },
-      {
-        '<leader>s/',
-        function()
-          require('snacks').picker.search_history()
-        end,
-        desc = '[S]earch History',
-      },
-      {
-        '<leader>sd',
-        function()
-          require('snacks').picker.diagnostics()
-        end,
-        desc = '[S]earch [D]iagnostics',
-      },
-      {
-        '<leader>sD',
-        function()
-          require('snacks').picker.diagnostics_buffer()
-        end,
-        desc = 'Search Buffer [D]iagnostics',
-      },
-      {
-        '<leader>sh',
-        function()
-          require('snacks').picker.help()
-        end,
-        desc = '[S]earch [H]elp Pages',
-      },
-      {
-        '<leader>sk',
-        function()
-          require('snacks').picker.keymaps()
-        end,
-        desc = '[S]earch [K]eymaps',
-      },
-      {
-        '<leader>su',
-        function()
-          require('snacks').picker.undo()
-        end,
-        desc = '[S]earch [U]ndo History',
-      },
+      -- Pickers & Explorer
+      { '<leader>e', function() require('snacks').picker.files() end, desc = 'Find Files' },
+      { '<leader><leader>', function() require('snacks').picker.buffers() end, desc = 'Find Buffers' },
+      { '<leader><Tab>', function() require('snacks').explorer() end, desc = 'File Explorer' },  -- 👹 for pairing
+      { '<leader>s:', function() require('snacks').picker.command_history() end, desc = '[S]earch Command History' },
+      { '<leader>sg', function() require('snacks').picker.grep() end, desc = '[S]earch [G]rep' },
+      { '<leader>sw', function() require('snacks').picker.grep_word() end, desc = 'Visual [S]election or [W]ord', mode = { 'n', 'x' } },
+
+      -- Search
+      { '<leader>s"', function() require('snacks').picker.registers() end, desc = '[S]earch Registers' },
+      { '<leader>s/', function() require('snacks').picker.search_history() end, desc = '[S]earch History' },
+      { '<leader>sd', function() require('snacks').picker.diagnostics() end, desc = '[S]earch [D]iagnostics' },
+      { '<leader>sD', function() require('snacks').picker.diagnostics_buffer() end, desc = 'Search Buffer [D]iagnostics' },
+      { '<leader>sh', function() require('snacks').picker.help() end, desc = '[S]earch [H]elp Pages' },
+      { '<leader>sk', function() require('snacks').picker.keymaps() end, desc = '[S]earch [K]eymaps' },
+      { '<leader>su', function() require('snacks').picker.undo() end, desc = '[S]earch [U]ndo History' },
     },
   },
 
-  { -- Collection of various small independent plugins/modules
-    'echasnovski/mini.nvim',
-    config = function()
-      -- Better Around/Inside textobjects
-      --
-      -- Examples:
-      --  - va)  - [V]isually select [A]round [)]paren
-      --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-      --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
+  { -- Extend and create a/i textobjects
+    'echasnovski/mini.ai',
+    opts = { n_lines = 500 },
+  },
 
-      -- Better diffing in CodeCompanion
-      require('mini.diff').setup()
-    end,
+  { -- Better diffs
+    'echasnovski/mini.diff',
+    opts = {
+      view = {
+        style = 'sign',
+        signs = { add = '+', change = '~', delete = '-' },
+      },
+    },
   },
 
   {

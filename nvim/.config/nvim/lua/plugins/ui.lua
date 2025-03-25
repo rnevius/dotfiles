@@ -20,21 +20,27 @@ return {
     end,
   },
 
-  { -- Collection of various small independent plugins/modules
-    'echasnovski/mini.nvim',
-    config = function()
-      -- Simple and easy statusline.
+  {
+    'echasnovski/mini.statusline',
+    opts = { use_icons = vim.g.have_nerd_font },
+    config = function(_, opts)
       local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
 
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-      ---@diagnostic disable-next-line: duplicate-set-field
+      -- Too noisy
+      statusline.section_diff = function()
+        return ''
+      end
+      statusline.section_diagnostics = function()
+        return ''
+      end
+      statusline.section_lsp = function()
+        return ''
+      end
       statusline.section_location = function()
         return '%2l:%-2v'
       end
+
+      statusline.setup(opts)
     end,
   },
 
