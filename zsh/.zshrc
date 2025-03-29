@@ -18,6 +18,9 @@ if command -v kitty > /dev/null 2>&1; then
   kitty + complete setup zsh | source /dev/stdin
 fi
 
+# Colima + Docker
+export COMPOSE_BAKE=true
+export DOCKER_HOST=$(colima status --json | jq -r '.docker_socket')
 # man
 export MANPAGER="nvim +Man!"
 export MANWIDTH=999
@@ -31,10 +34,9 @@ export VISUAL="nvim"
 export EDITOR="$VISUAL"
 
 # aliases
-alias asciinema="TERM=xterm-256color asciinema"
 alias gmod="git status --porcelain | awk '{ print \$2 }'"
-alias k="kitty --session=Session.kitty"
 alias lz="lazygit"
+alias lzd="lazydocker"
 alias tree="fd --hidden --exclude .git | tree --fromfile "
 alias v="nvim -S Session.vim"
 alias vi="nvim"
@@ -83,7 +85,6 @@ export OPENROUTER_API_KEY=$(security find-generic-password -s 'OpenRouter API Ke
 
 # Poetry
 export PATH="$HOME/.poetry/bin:$PATH"
-export PATH="/Users/rnevius/Library/Python/3.9/bin:$PATH"
 
 # Stripe
 fpath=(~/.stripe $fpath)
@@ -105,3 +106,4 @@ HEROKU_AC_ZSH_SETUP_PATH=/Users/rnevius/Library/Caches/heroku/autocomplete/zsh_s
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
