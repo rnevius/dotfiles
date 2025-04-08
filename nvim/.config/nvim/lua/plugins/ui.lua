@@ -6,13 +6,15 @@ return {
     priority = 1000,
     opts = {
       style = 'cool', -- or 'dark'
-      toggle_style_list = { 'cool', 'light' },
+      toggle_style_list = { 'light', 'cool' },
       highlights = {
         CodeCompanionChatTokens = { fg = '$green', fmt = 'italic' },
         CodeCompanionChatSeparator = { fg = '$grey' },
         CodeCompanionChatAgent = { fg = '$bg0', bg = '$orange' },
         CodeCompanionChatTool = { fg = '$bg0', bg = '$green' },
         CodeCompanionChatVariable = { fg = '$bg0', bg = '$blue' },
+
+        MiniStatuslineInactive = { fg = '$grey', bg = '$bg1' }, -- Temporary until PR is merged
       },
     },
     init = function()

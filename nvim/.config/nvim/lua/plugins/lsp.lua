@@ -58,7 +58,7 @@ return {
           end, '[G]oto [D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', function()
+          map('grr', function()
             require('snacks').picker.lsp_references()
           end, '[G]oto [R]eferences')
 
@@ -89,7 +89,7 @@ return {
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
@@ -171,6 +171,7 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        -- basedpyright = {},
         eslint = {},
         pyright = {},
         ruff = {},
@@ -269,7 +270,7 @@ return {
       formatters_by_ft = {
         -- You can use 'stop_after_first' to run the first available formatter from the list
         lua = { 'stylua' },
-        python = { 'pyright' },
+        python = { 'pyright', stop_after_first = true },
         javascript = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
