@@ -30,6 +30,19 @@ return {
       'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
+      -- Temporary fish lsp, until Mason PR for `fish_lsp` is merged
+      -- Requires manual install of fish lsp:
+      -- https://github.com/ndonfris/fish-lsp
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'fish',
+        callback = function()
+          vim.lsp.start {
+            name = 'fish-lsp',
+            cmd = { 'fish-lsp', 'start' },
+            cmd_env = { fish_lsp_show_client_popups = false },
+          }
+        end,
+      })
       --  This function gets run when an LSP attaches to a particular buffer.
       --    That is to say, every time a new file is opened that is associated with
       --    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -180,9 +193,6 @@ return {
         tailwindcss = {},
 
         lua_ls = {
-          -- cmd = { ... },
-          -- filetypes = { ... },
-          -- capabilities = {},
           settings = {
             Lua = {
               completion = {
