@@ -15,3 +15,5 @@ Personal dotfiles and configuration instructions to hedge against the fallout fr
     ```bash
     stow git kitty nvim tmux fish share
     ```
+
+1. Add environment variables to `~/.config/fish/conf.d/env.fish`
