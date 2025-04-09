@@ -1,11 +1,16 @@
 eval "$(/opt/homebrew/bin/brew shellenv)" # add brew to PATH
 
+# Variables
 set -g fish_greeting # hide the welcome message
+set -gx BAT_PAGER 'less -RF'
+set -gx BAT_STYLE plain
+set -gx BAT_THEME OneHalfDark
 set -gx EDITOR nvim
+set -gx MANPAGER 'nvim +Man!'
 set -gx VISUAL nvim
 
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    # Commands to run in interactive sessions
 end
 
 # Abbreviations / Aliases
