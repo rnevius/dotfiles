@@ -7,11 +7,11 @@ Personal dotfiles and configuration instructions to hedge against the fallout fr
 1. Install most commonly used packages:
 
     ```bash
-    brew install asdf fd fzf git lazygit node neovim ripgrep stow tree
+    brew install fd fzf git lazygit node neovim ripgrep stow eza
     ```
 
 1. Generate symlinks with stow:
 
     ```bash
-    stow git kitty nvim tmux zsh
+    stow git kitty nvim tmux fish share
     ```
