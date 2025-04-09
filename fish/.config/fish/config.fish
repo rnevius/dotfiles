@@ -1,6 +1,6 @@
-eval "$(/opt/homebrew/bin/brew shellenv)"  # add brew to PATH
+eval "$(/opt/homebrew/bin/brew shellenv)" # add brew to PATH
 
-set -U fish_greeting  # hide the welcome message
+set -g fish_greeting # hide the welcome message
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 
@@ -9,8 +9,11 @@ if status is-interactive
 end
 
 # Abbreviations / Aliases
+## Docker
+abbr -a dce 'docker compose exec'
+
 ## Git
-abbr -a g 'git'
+abbr -a g git
 abbr -a ga 'git add'
 abbr -a gaa 'git add --all'
 abbr -a gau 'git add --update'
@@ -40,14 +43,14 @@ abbr -a gpsup 'git push --set-upstream origin $(git_current_branch)'
 abbr -a gst 'git status'
 
 ## Lazy
-abbr -a lz "lazygit"
-abbr -a lzd "lazydocker"
+abbr -a lz lazygit
+abbr -a lzd lazydocker
 
-abbr -a ls "eza"
-abbr -a tree "eza --tree"
-abbr -a vi "nvim"
-abbr -a vim "nvim"
-abbr -a vimdiff "nvim -d"
+abbr -a ls eza
+abbr -a tree 'eza --tree'
+abbr -a vi nvim
+abbr -a vim nvim
+abbr -a vimdiff 'nvim -d'
 
 starship init fish | source
 fzf --fish | source
