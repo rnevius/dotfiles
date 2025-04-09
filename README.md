@@ -7,7 +7,7 @@ Personal dotfiles and configuration instructions to hedge against the fallout fr
 1. Install most commonly used packages:
 
     ```bash
-    brew install fd fzf git lazygit node neovim ripgrep stow eza
+    brew install fd fzf git lazygit lazydocker node neovim ripgrep stow eza
     ```
 
 1. Generate symlinks with stow:
