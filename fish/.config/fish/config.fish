@@ -71,5 +71,6 @@ if test -S $HOME/.colima/default/docker.sock
 end
 
 starship init fish | source
+mise activate fish | source
 fzf --fish | source
 zoxide init fish | source
