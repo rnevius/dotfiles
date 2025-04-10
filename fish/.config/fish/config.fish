@@ -51,11 +51,20 @@ abbr -a gst 'git status'
 abbr -a lz lazygit
 abbr -a lzd lazydocker
 
+# ls / eza
 abbr -a ls eza
+abbr -a lsa 'eza --all'
+abbr -a lsl 'eza -lha --no-permissions --smart-group --time-style "relative"'
 abbr -a tree 'eza --tree'
 abbr -a vi nvim
 abbr -a vim nvim
 abbr -a vimdiff 'nvim -d'
+
+# Colima
+if test -S $HOME/.colima/default/docker.sock
+    set -gx DOCKER_HOST unix://$HOME/.colima/default/docker.sock
+    set -gx COMPOSE_BAKE true
+end
 
 starship init fish | source
 fzf --fish | source
