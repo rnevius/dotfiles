@@ -1,4 +1,8 @@
-eval "$(/opt/homebrew/bin/brew shellenv)" # add brew to PATH
+if test -x /opt/homebrew/bin/brew
+    eval "$(/opt/homebrew/bin/brew shellenv)" # add brew to PATH
+end
+
+fish_add_path ~/.local/bin
 
 # Variables
 set -g fish_greeting # hide the welcome message
