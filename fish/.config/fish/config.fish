@@ -6,9 +6,6 @@ fish_add_path ~/.local/bin
 
 # Variables
 set -g fish_greeting # hide the welcome message
-set -gx BAT_PAGER 'less -RF'
-set -gx BAT_STYLE plain
-set -gx BAT_THEME OneHalfDark
 set -gx EDITOR nvim
 set -gx MANPAGER 'nvim +Man!'
 set -gx VISUAL nvim
