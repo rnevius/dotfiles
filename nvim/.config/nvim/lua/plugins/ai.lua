@@ -9,7 +9,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
-      'hrsh7th/nvim-cmp',
+      'saghen/blink.cmp',
     },
     event = 'VeryLazy',
     keys = {
@@ -29,6 +29,7 @@ return {
             schema = {
               model = {
                 default = 'anthropic/claude-3.7-sonnet',
+                gemini = 'google/gemini-2.5-pro-exp-03-25:free',
               },
             },
           })

@@ -19,15 +19,15 @@ return {
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
-      { 'williamboman/mason.nvim', opts = {} },
-      'williamboman/mason-lspconfig.nvim', -- Mason support for nvim-lspconfig (i.e. use lspconfig names with Mason)
+      { 'mason-org/mason.nvim', opts = {} },
+      'mason-org/mason-lspconfig.nvim', -- Mason support for nvim-lspconfig (i.e. use lspconfig names with Mason)
       'WhoIsSethDaniel/mason-tool-installer.nvim', -- Automatically install tools for Mason
 
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
 
-      -- Allows extra capabilities provided by nvim-cmp
-      'hrsh7th/cmp-nvim-lsp',
+      -- Allows extra capabilities provided by blink.cmp
+      'saghen/blink.cmp',
     },
     config = function()
       -- Temporary fish lsp, until Mason PR for `fish_lsp` is merged
@@ -169,10 +169,9 @@ return {
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
+      --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -184,9 +183,9 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- basedpyright = {},
+        basedpyright = {},
         eslint = {},
-        pyright = {},
+        -- pyright = {},
         ruff = {},
         solargraph = {},
         ts_ls = {},
@@ -280,7 +279,7 @@ return {
       formatters_by_ft = {
         -- You can use 'stop_after_first' to run the first available formatter from the list
         lua = { 'stylua' },
-        python = { 'pyright', stop_after_first = true },
+        python = { 'basedpyright', 'pyright', stop_after_first = true },
         javascript = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },

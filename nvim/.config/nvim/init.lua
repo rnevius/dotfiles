@@ -8,9 +8,9 @@ require 'plugins'
 
 -- Neovide specific settings
 if vim.g.neovide then
-  vim.opt.guifont = 'MesloLGS NF:h13.5'
-  vim.opt.guifontwide = 'MesloLGS NF:h13.5'
-  vim.opt.linespace = 2
+  vim.o.guifont = 'MesloLGS NF:h13.5'
+  vim.o.guifontwide = 'MesloLGS NF:h13.5'
+  vim.o.linespace = 2
 
   vim.g.neovide_cursor_animation_length = 0.03
 end
