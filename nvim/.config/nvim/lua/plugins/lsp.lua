@@ -183,9 +183,9 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        basedpyright = {},
+        -- basedpyright = {},
         eslint = {},
-        -- pyright = {},
+        pyright = {},
         ruff = {},
         solargraph = {},
         ts_ls = {},
@@ -279,7 +279,7 @@ return {
       formatters_by_ft = {
         -- You can use 'stop_after_first' to run the first available formatter from the list
         lua = { 'stylua' },
-        python = { 'basedpyright', 'pyright', stop_after_first = true },
+        python = { 'pyright', stop_after_first = true },
         javascript = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },

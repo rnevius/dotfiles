@@ -19,21 +19,23 @@ return {
     },
     opts = {
       adapters = {
-        openrouter_claude = function()
-          return require('codecompanion.adapters').extend('openai_compatible', {
-            env = {
-              url = 'https://openrouter.ai/api',
-              api_key = 'OPENROUTER_API_KEY',
-              chat_url = '/v1/chat/completions',
-            },
-            schema = {
-              model = {
-                default = 'anthropic/claude-3.7-sonnet',
-                gemini = 'google/gemini-2.5-pro-exp-03-25:free',
+        http = {
+          openrouter_claude = function()
+            return require('codecompanion.adapters').extend('openai_compatible', {
+              env = {
+                url = 'https://openrouter.ai/api',
+                api_key = 'OPENROUTER_API_KEY',
+                chat_url = '/v1/chat/completions',
               },
-            },
-          })
-        end,
+              schema = {
+                model = {
+                  default = 'anthropic/claude-3.7-sonnet',
+                  gemini = 'google/gemini-2.5-pro-exp-03-25:free',
+                },
+              },
+            })
+          end,
+        },
       },
       display = {
         chat = {

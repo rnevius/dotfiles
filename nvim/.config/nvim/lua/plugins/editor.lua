@@ -201,17 +201,4 @@ return {
       },
     },
   },
-
-  {
-    'luckasRanarison/tailwind-tools.nvim',
-    name = 'tailwind-tools',
-    build = ':UpdateRemotePlugins',
-    event = 'VeryLazy',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'folke/snacks.nvim',
-      'neovim/nvim-lspconfig',
-    },
-    opts = {},
-  },
 }
