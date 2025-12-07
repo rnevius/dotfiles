@@ -1,8 +1,10 @@
+archarchive
 brave-bin
 btop
 cameractrls
 docker
 docker-compose
+downgrade
 fastfetch
 firefox
 fuse2
