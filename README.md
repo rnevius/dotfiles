@@ -1,19 +1,27 @@
 # dotfiles
 
-Personal dotfiles and configuration instructions to hedge against the fallout from a laptop explosion 💥.
-
 ## General Instructions
 
-1. Install most commonly used packages:
+Generate symlinks with stow:
 
-    ```bash
-    brew install fd fzf git lazygit lazydocker node neovim ripgrep stow eza
-    ```
+```bash
+stow bat fastfetch fish git kitty nvim paru share
+```
 
-1. Generate symlinks with stow:
+Add environment variables to `~/.config/fish/conf.d/env.fish`
 
-    ```bash
-    stow git kitty nvim tmux fish share
-    ```
+## Brew
 
-1. Add environment variables to `~/.config/fish/conf.d/env.fish`
+Installed brew packages are occasionally exported to [brew_packages.txt](./brew_packages.txt) with `brew leaves`. Install them with `xargs`:
+
+```bash
+xargs brew install < brew_packages.txt
+```
+
+## Paru
+
+Installed pacman packages are occasionally exported to [paru_packages.txt](./paru_packages.txt) with `pacman -Qe`. Install them with `paru`:
+
+```bash
+paru -S --needed - < paru_packages.txt
+```
