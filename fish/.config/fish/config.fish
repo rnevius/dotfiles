@@ -1,24 +1,66 @@
-if test -x /opt/homebrew/bin/brew
-    eval "$(/opt/homebrew/bin/brew shellenv)" # add brew to PATH
+## Done - https://github.com/franciscolourenco/done
+if test -f /usr/share/cachyos-fish-config/conf.d/done.fish
+    source /usr/share/cachyos-fish-config/conf.d/done.fish
 end
 
+## Path
 fish_add_path ~/.local/bin
 
-# Variables
 set -g fish_greeting # hide the welcome message
-set -gx EDITOR nvim
-set -gx MANPAGER 'nvim +Man!'
-set -gx VISUAL nvim
-
-if status is-interactive
-    # Commands to run in interactive sessions
+## Functions
+# Show time in fish command history
+function history
+    builtin history --show-time='%F %T '
 end
 
-# Abbreviations / Aliases
-## Docker
-abbr -a dce 'docker compose exec'
+# !! and !$ for fish - https://github.com/oh-my-fish/plugin-bang-bang
+function __history_previous_command
+  switch (commandline -t)
+  case "!"
+    commandline -t $history[1]; commandline -f repaint
+  case "*"
+    commandline -i !
+  end
+end
 
-## Git
+function __history_previous_command_arguments
+  switch (commandline -t)
+  case "!"
+    commandline -t ""
+    commandline -f history-token-search-backward
+  case "*"
+    commandline -i '$'
+  end
+end
+
+if [ "$fish_key_bindings" = fish_vi_key_bindings ];
+  bind -Minsert ! __history_previous_command
+  bind -Minsert '$' __history_previous_command_arguments
+else
+  bind ! __history_previous_command
+  bind '$' __history_previous_command_arguments
+end
+
+## Variables
+set -gx EDITOR nvim
+# set -gx MANPAGER 'nvim +Man!'
+set -gx VISUAL nvim
+set -x MANROFFOPT "-c"
+set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+
+# Set settings for done
+set -U __done_min_cmd_duration 10000
+set -U __done_notification_urgency_level low
+
+## Abbreviations / Aliases
+alias ...='cd ../..'
+alias ....='cd ../../..'
+abbr -a jctl="journalctl -p 3 -xb"
+alias wget='wget -c '
+
+alias grep='grep --color=auto'
+
+# Git
 abbr -a g git
 abbr -a ga 'git add'
 abbr -a gaa 'git add --all'
@@ -48,7 +90,7 @@ abbr -a gpr 'git pull --rebase'
 abbr -a gpsup 'git push --set-upstream origin $(git_current_branch)'
 abbr -a gst 'git status'
 
-## Lazy
+# Lazy
 abbr -a lz lazygit
 abbr -a lzd lazydocker
 
@@ -57,16 +99,25 @@ abbr -a ls eza
 abbr -a lsa 'eza --all'
 abbr -a lsl 'eza -lha --no-permissions --smart-group --time-style "relative"'
 abbr -a tree 'eza --tree'
+
+# Neovim
 abbr -a vi nvim
 abbr -a vim nvim
 abbr -a vimdiff 'nvim -d'
 
-# Colima
+# Pacman
+abbr -a cleanup='sudo pacman -Rns (pacman -Qtdq)'
+
+## Colima
 if test -S $HOME/.colima/default/docker.sock
     set -gx DOCKER_HOST unix://$HOME/.colima/default/docker.sock
     set -gx COMPOSE_BAKE true
 end
 
+## Homebrew
+if test -x /opt/homebrew/bin/brew
+    eval "$(/opt/homebrew/bin/brew shellenv)" # add brew to PATH
+end
 starship init fish | source
 mise activate fish | source
 fzf --fish | source
