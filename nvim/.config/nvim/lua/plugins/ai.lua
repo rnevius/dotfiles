@@ -45,6 +45,7 @@ return {
           provider = 'mini_diff',
         },
       },
+      ignore_warnings = true,
       strategies = {
         chat = {
           adapter = 'openrouter_claude',
