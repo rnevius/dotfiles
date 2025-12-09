@@ -1,12 +1,8 @@
-## Done - https://github.com/franciscolourenco/done
-if test -f /usr/share/cachyos-fish-config/conf.d/done.fish
-    source /usr/share/cachyos-fish-config/conf.d/done.fish
-end
-
 ## Path
 fish_add_path ~/.local/bin
 
 set -g fish_greeting # hide the welcome message
+
 ## Functions
 # Show time in fish command history
 function history
