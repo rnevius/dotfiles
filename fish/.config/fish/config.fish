@@ -31,10 +31,10 @@ end
 
 ## Variables
 set -gx EDITOR nvim
-# set -gx MANPAGER 'nvim +Man!'
 set -gx VISUAL nvim
 set -x MANROFFOPT "-c"
-set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+set -gx MANPAGER 'nvim +Man!'
+# set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Set settings for done
 set -g __done_min_cmd_duration 10000
