@@ -1,13 +1,13 @@
 ## Path
 fish_add_path ~/.local/bin
 
-# set -g fish_greeting # hide the welcome message
+set -g fish_greeting # hide the welcome message
 
 ## Functions
 # Show the cached weather from wttr.in on fish startup
-function fish_greeting
-    cat $HOME/.cache/wttr/current
-end
+# function fish_greeting
+#     cat $HOME/.cache/wttr/current
+# end
 
 # Show time in fish command history
 function history
