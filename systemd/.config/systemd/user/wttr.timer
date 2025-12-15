@@ -1,0 +1,9 @@
+[Unit]
+Description=Update cached weather from wttr.in
+
+[Timer]
+OnBootSec=30s
+OnUnitActiveSec=30m
+
+[Install]
+WantedBy=default.target

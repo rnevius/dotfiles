@@ -1,0 +1,6 @@
+[Unit]
+Description=Fetch weather from wttr.in
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/curl -s 'https://wttr.in/Perchtoldsdorf?AFq' -o %h/.cache/wttr/current
