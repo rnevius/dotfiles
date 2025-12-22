@@ -73,6 +73,9 @@ if status is-interactive
 
     alias grep='grep --color=auto'
 
+    # Aider
+    alias aider='cecli'
+
     # Git
     abbr -a g git
     abbr -a ga 'git add'
