@@ -2,13 +2,17 @@ archarchive
 brave-bin
 btop
 cameractrls
+csvlens
+dconf-editor
 docker
 docker-compose
 downgrade
 fastfetch
 firefox
 fuse2
+ghostty
 git
+github-cli
 kitty
 lazydocker
 lazygit
@@ -18,6 +22,7 @@ mullvad-vpn
 neovim
 onlyoffice-bin
 pavucontrol
+ripgrep
 s5cmd-bin
 signal-desktop
 snapd
