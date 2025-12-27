@@ -1,0 +1,288 @@
+[Bluetooth-Battery-Meter]
+circle-widget-custom-colors=['#ff7800', '#ff7800', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931']
+device-list=['{"path":"/org/bluez/hci0/dev_CA_21_69_F4_A6_11","icon":"input-mouse","alias":"MX Anywhere 3","paired":true,"battery-reported":true,"qs-level":true,"indicator-mode":2,"enhanced-device":null,"connected-time":1766846851,"disconnected-time":1766839279}', '{"path":"/org/bluez/hci0/dev_6C_FB_ED_0C_49_EC","icon":"audio-headset","alias":"Jabra Elite 8 Active Gen 2","paired":true,"battery-reported":true,"qs-level":true,"indicator-mode":2,"enhanced-device":null,"connected-time":1766522959,"disconnected-time":1766511756}', '{"path":"/org/bluez/hci0/dev_70_BF_92_38_42_58","icon":"audio-headset","alias":"Jabra Elite 85h","paired":true,"battery-reported":true,"qs-level":true,"indicator-mode":2,"enhanced-device":null,"connected-time":1766059627,"disconnected-time":1766073431}', '{"path":"/org/bluez/hci0/dev_50_5E_5C_83_28_74","icon":"audio-headset","alias":"WONDERBOOM 4","paired":true,"battery-reported":null,"qs-level":null,"indicator-mode":0,"enhanced-device":null,"connected-time":1765982203,"disconnected-time":1765983225}']
+enable-battery-level-icon=true
+enable-battery-level-text=true
+enable-multi-indicator-mode=false
+indicator-type=0
+level-indicator-custom-colors=['#ff7800', '#ff7800', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931', '#15c931']
+panel-button-single-indicator=false
+popup-in-quick-settings=false
+swap-icon-text=false
+
+[blur-my-shell]
+settings-version=2
+
+[blur-my-shell/appfolder]
+brightness=0.59999999999999998
+sigma=30
+
+[blur-my-shell/applications]
+blur=false
+dynamic-opacity=false
+enable-all=false
+opacity=203
+sigma=13
+whitelist=['com.mitchellh.ghostty']
+
+[blur-my-shell/coverflow-alt-tab]
+pipeline='pipeline_default'
+
+[blur-my-shell/dash-to-dock]
+blur=false
+brightness=0.59999999999999998
+pipeline='pipeline_default_rounded'
+sigma=30
+static-blur=false
+style-dash-to-dock=0
+
+[blur-my-shell/dash-to-panel]
+blur-original-panel=true
+
+[blur-my-shell/hidetopbar]
+compatibility=false
+
+[blur-my-shell/lockscreen]
+pipeline='pipeline_default'
+
+[blur-my-shell/overview]
+pipeline='pipeline_default'
+
+[blur-my-shell/panel]
+blur=true
+brightness=0.59999999999999998
+force-light-text=false
+override-background=true
+pipeline='pipeline_default'
+sigma=30
+static-blur=true
+
+[blur-my-shell/screenshot]
+pipeline='pipeline_default'
+
+[blur-my-shell/window-list]
+brightness=0.59999999999999998
+sigma=30
+
+[dash-to-dock]
+apply-custom-theme=false
+background-color='rgb(0,0,0)'
+background-opacity=0.29999999999999999
+click-action='focus-minimize-or-appspread'
+custom-background-color=true
+custom-theme-shrink=false
+dash-max-icon-size=46
+dock-position='BOTTOM'
+height-fraction=0.90000000000000002
+intellihide-mode='ALL_WINDOWS'
+middle-click-action='launch'
+multi-monitor=true
+preferred-monitor=-2
+preferred-monitor-by-connector='HDMI-2'
+require-pressure-to-show=false
+shift-click-action='minimize'
+shift-middle-click-action='launch'
+show-apps-always-in-the-edge=true
+show-delay=0.20000000000000001
+show-show-apps-button=false
+transparency-mode='FIXED'
+
+[dim-completed-calendar-events]
+hide-past-events=true
+hide-past-events-grace-period=30
+
+[focus-follows-workspace]
+move-cursor=false
+
+[just-perfection]
+accessibility-menu=true
+activities-button=true
+background-menu=true
+clock-menu=true
+controls-manager-spacing-size=0
+dash=true
+dash-icon-size=0
+double-super-to-appgrid=true
+osd=true
+overlay-key=true
+panel=true
+panel-in-overview=true
+power-icon=true
+ripple-box=true
+search=true
+show-apps-button=true
+startup-status=1
+support-notifier-type=0
+theme=false
+type-to-search=true
+window-demands-attention-focus=false
+window-picker-icon=true
+window-preview-caption=true
+window-preview-close-button=true
+workspace=true
+workspace-background-corner-size=0
+workspace-peek=true
+workspace-popup=true
+workspace-switcher-should-show=false
+workspaces-in-app-grid=true
+
+[openbar]
+accent-color=['0', '0.75', '0.75']
+accent-override=true
+autofg-bar=true
+autohg-bar=true
+autotheme-refresh=false
+balpha=0.84999999999999998
+bartype='Floating'
+bcolor=['1.0', '1.0', '1.0']
+bg-change=true
+bgalpha=0.90000000000000002
+bgcolor=['0.125', '0.125', '0.125']
+bgcolor-wmax=['0.125', '0.125', '0.125']
+bgcolor2=['0', '0.7', '0.75']
+bguri='file:///home/rnevius/.config/background'
+boxcolor=['0.125', '0.125', '0.125']
+bwidth=1.0
+candybar=false
+color-scheme='default'
+dark-accent-color=['1.000', '0.639', '0.282']
+dark-bcolor=['0.141', '0.122', '0.192']
+dark-bguri='file:///home/rnevius/.config/background'
+default-font='Sans 12'
+fgcolor=['1.0', '1.0', '1.0']
+fitts-widgets=true
+hcolor=['0', '0.7', '0.9']
+height=32.0
+hscd-color=['0', '0.7', '0.75']
+import-export=false
+iscolor=['0.125', '0.125', '0.125']
+light-bguri='file:///home/rnevius/.config/background'
+margin=6.5
+mbcolor=['1.0', '1.0', '1.0']
+mbgcolor=['0.125', '0.125', '0.125']
+menustyle=false
+mfgcolor=['1.0', '1.0', '1.0']
+mhcolor=['0', '0.7', '0.9']
+monitor-height=1440
+monitor-width=2560
+mscolor=['0', '0.7', '0.75']
+mshcolor=['1.0', '1.0', '1.0']
+neon=true
+palette1=['100', '100', '100']
+palette10=['100', '100', '100']
+palette11=['100', '100', '100']
+palette12=['100', '100', '100']
+palette2=['100', '100', '100']
+palette3=['100', '100', '100']
+palette4=['100', '100', '100']
+palette5=['100', '100', '100']
+palette6=['100', '100', '100']
+palette7=['100', '100', '100']
+palette8=['100', '100', '100']
+palette9=['100', '100', '100']
+pause-reload=false
+position='Top'
+reloadstyle=true
+set-notif-position=false
+set-overview=false
+shcolor=['0', '0', '0']
+smbgcolor=['0.125', '0.125', '0.125']
+trigger-reload=true
+vw-color=['0', '0.7', '0.75']
+winbcolor=['0', '0.7', '0.75']
+
+[panel-date-format]
+format='%d  |  %H:%M'
+
+[paperwm]
+animation-time=0.14999999999999999
+disable-topbar-styling=false
+edge-preview-timeout=6300
+gesture-enabled=false
+gesture-horizontal-fingers=4
+horizontal-margin=20
+last-used-display-server='Wayland'
+open-window-position=0
+restore-attach-modal-dialogs='true'
+restore-edge-tiling='true'
+restore-keybinds='{"toggle-tiled-left":{"bind":"[\\"<Super>Left\\"]","schema_id":"org.gnome.mutter.keybindings"},"toggle-tiled-right":{"bind":"[\\"<Super>Right\\"]","schema_id":"org.gnome.mutter.keybindings"},"cancel-input-capture":{"bind":"[\\"<Super><Shift>Escape\\"]","schema_id":"org.gnome.mutter.keybindings"},"restore-shortcuts":{"bind":"[\\"<Super>Escape\\"]","schema_id":"org.gnome.mutter.wayland.keybindings"},"switch-to-workspace-last":{"bind":"[\\"<Super>End\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"switch-panels":{"bind":"[\\"<Control><Alt>Tab\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"switch-group-backward":{"bind":"[\\"<Shift><Super>Above_Tab\\",\\"<Shift><Alt>Above_Tab\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"unmaximize":{"bind":"[\\"<Super>Down\\",\\"<Alt>F5\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"switch-to-workspace-1":{"bind":"[\\"<Super>Home\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"move-to-monitor-left":{"bind":"[\\"<Super><Shift>Left\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"move-to-monitor-down":{"bind":"[\\"<Super><Shift>Down\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"switch-to-workspace-left":{"bind":"[\\"<Super>Page_Up\\",\\"<Super>KP_Prior\\",\\"<Super><Alt>Left\\",\\"<Control><Alt>Left\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"switch-group":{"bind":"[\\"<Super>Above_Tab\\",\\"<Alt>Above_Tab\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"move-to-workspace-left":{"bind":"[\\"<Super><Shift>Page_Up\\",\\"<Super><Shift>KP_Prior\\",\\"<Super><Shift><Alt>Left\\",\\"<Control><Shift><Alt>Left\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"move-to-workspace-right":{"bind":"[\\"<Super><Shift>Page_Down\\",\\"<Super><Shift>KP_Next\\",\\"<Super><Shift><Alt>Right\\",\\"<Control><Shift><Alt>Right\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"switch-panels-backward":{"bind":"[\\"<Shift><Control><Alt>Tab\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"move-to-workspace-up":{"bind":"[\\"<Control><Shift><Alt>Up\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"switch-to-workspace-right":{"bind":"[\\"<Super>Page_Down\\",\\"<Super>KP_Next\\",\\"<Super><Alt>Right\\",\\"<Control><Alt>Right\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"move-to-workspace-down":{"bind":"[\\"<Control><Shift><Alt>Down\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"switch-applications":{"bind":"[\\"<Super>Tab\\",\\"<Alt>Tab\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"maximize":{"bind":"[\\"<Super>Up\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"move-to-monitor-right":{"bind":"[\\"<Super><Shift>Right\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"switch-applications-backward":{"bind":"[\\"<Shift><Super>Tab\\",\\"<Shift><Alt>Tab\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"move-to-monitor-up":{"bind":"[\\"<Super><Shift>Up\\"]","schema_id":"org.gnome.desktop.wm.keybindings"},"toggle-message-tray":{"bind":"[\\"<Super>v\\",\\"<Super>m\\"]","schema_id":"org.gnome.shell.keybindings"},"shift-overview-up":{"bind":"[\\"<Super><Alt>Up\\"]","schema_id":"org.gnome.shell.keybindings"},"shift-overview-down":{"bind":"[\\"<Super><Alt>Down\\"]","schema_id":"org.gnome.shell.keybindings"},"focus-active-notification":{"bind":"[\\"<Super>n\\"]","schema_id":"org.gnome.shell.keybindings"},"rotate-video-lock-static":{"bind":"[\\"<Super>o\\",\\"XF86RotationLockToggle\\"]","schema_id":"org.gnome.settings-daemon.plugins.media-keys"}}'
+restore-workspaces-only-on-primary='true'
+selection-border-radius-bottom=12
+selection-border-radius-top=12
+selection-border-size=6
+show-window-position-bar=false
+show-workspace-indicator=false
+use-default-background=true
+vertical-margin=15
+vertical-margin-bottom=15
+window-gap=20
+winprops=['{"wm_class":"*","preferredWidth":"50%"}', '{"wm_class":"zoom","scratch_layer":true}']
+
+[paperwm/keybindings]
+center-vertically=['']
+toggle-scratch=['<Control><Super>Escape', '<Super>v']
+
+[paperwm/workspaces]
+list=['a5edf19e-7f03-4bac-9c32-a46b2acb5072', '1513a647-3bc7-48a3-98de-b89eb0d42127', '5f2a7194-fec8-4dc7-95d4-47bd3ec02a00', '7a931168-8999-47ef-b404-1673377911fa', '674a22db-fd3b-4cb3-9270-3f8ed2461832']
+
+[paperwm/workspaces/1513a647-3bc7-48a3-98de-b89eb0d42127]
+index=1
+show-position-bar=true
+show-top-bar=true
+
+[paperwm/workspaces/5f2a7194-fec8-4dc7-95d4-47bd3ec02a00]
+index=3
+
+[paperwm/workspaces/674a22db-fd3b-4cb3-9270-3f8ed2461832]
+index=2
+
+[paperwm/workspaces/7a931168-8999-47ef-b404-1673377911fa]
+index=4
+
+[paperwm/workspaces/a5edf19e-7f03-4bac-9c32-a46b2acb5072]
+index=0
+show-position-bar=true
+show-top-bar=true
+
+[switcher]
+activate-immediately=false
+font-size=uint32 14
+icon-size=uint32 26
+launcher-stats='{"com.mitchellh.ghostty.desktop":15,"org.gnome.Terminal.desktop":1,"org.freedesktop.MalcontentControl.desktop":1,"it.mijorus.gearlever.desktop":1,"signal-desktop.desktop":4,"org.gnome.Settings.desktop":1,"com.mattjakeman.ExtensionManager.desktop":7,"beekeeper_studio.appimage_5_4_12.desktop":2,"btop.desktop":1,"gnome-universal-access-panel.desktop":2,"org.shotcut.Shotcut.desktop":1,"brave-browser.desktop":3,"gnome-background-panel.desktop":1,"com.microsoft.Edge.flextop.msedge-ejblcnnpkbcfbfapkpmaiigaadlmidoe-Default.desktop":3,"slack_slack.desktop":1,"brave-pjibgclleladliembfgfagdaldikeohf-Default.desktop":2,"Zoom.desktop":1}'
+max-width-percentage=uint32 25
+show-switcher=['<Super>D']
+
+[tilingshell]
+enable-autotiling=true
+enable-blur-selected-tilepreview=false
+enable-blur-snap-assistant=false
+enable-smart-window-border-radius=true
+enable-window-border=false
+inner-gaps=uint32 8
+last-version-name-installed='17.1'
+layouts-json='[{"id":"Layout 3","tiles":[{"x":0,"y":0,"width":0.33,"height":1,"groups":[1]},{"x":0.33,"y":0,"width":0.67,"height":1,"groups":[1]}]},{"id":"Layout 4","tiles":[{"x":0,"y":0,"width":0.67,"height":1,"groups":[1]},{"x":0.67,"y":0,"width":0.33,"height":1,"groups":[1]}]},{"id":"Layout 2","tiles":[{"x":0,"y":0,"width":0.22,"height":1,"groups":[1]},{"x":0.22,"y":0,"width":0.56,"height":1,"groups":[1,2]},{"x":0.78,"y":0,"width":0.22,"height":1,"groups":[2]}]},{"id":"6906449","tiles":[{"x":0,"y":0,"width":0.5,"height":1,"groups":[2]},{"x":0.5,"y":0,"width":0.4999999999999999,"height":1,"groups":[2]}]}]'
+move-window-center=['<Super>c']
+outer-gaps=uint32 8
+overridden-settings='{}'
+override-alt-tab=true
+quarter-tiling-threshold=uint32 6
+selected-layouts=[['6906449'], ['6906449']]
+show-indicator=true
+snap-assistant-threshold=12
+top-edge-maximize=true
+window-border-color='rgb(198,70,0)'
+window-border-width=uint32 2
+window-use-custom-border-color=false
+
+[vitals]
+alphabetize=true
+fixed-widths=true
+hide-zeros=false
+hot-sensors=['_memory_usage_', '__temperature_avg__', '_processor_usage_', '_gpu#1_utilization_', '_fan_gpu_']
+icon-style=0
+position-in-panel=0
+show-gpu=true
+show-network=false
+show-storage=false
+show-system=false
+show-voltage=false

@@ -31,3 +31,17 @@ Install them with `paru`:
 ```bash
 ❯ paru -S --needed - < paru_packages.txt
 ```
+
+## GNOME Shell Extensions
+
+This could be automatically updated on a schedule, but for now:
+
+```bash
+❯ dconf dump /org/gnome/shell/extensions/ > gnome-shell-extension-settings.dconf
+```
+
+To restore:
+
+```bash
+❯ dconf load /org/gnome/shell/extensions/ < gnome-shell-extension-settings.dconf
+```
