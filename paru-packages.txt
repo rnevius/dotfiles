@@ -16,7 +16,6 @@ github-cli
 kitty
 lazydocker
 lazygit
-mise
 mkcert
 mullvad-vpn
 neovim
