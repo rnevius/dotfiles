@@ -6,8 +6,6 @@ $git_branch\
 $git_status\
 $character"""
 
-right_format = """$all"""
-
 [character]
 success_symbol = "[❯](bright-green)"
 error_symbol = "[❯](red)"
