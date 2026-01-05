@@ -1,5 +1,7 @@
 .aider*
+.cecli*
 !.aider.conf.yml
+!.cecli.conf.yml
 .DS_Store
 .bruno
 .direnv
