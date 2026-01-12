@@ -185,6 +185,7 @@ return {
       local servers = {
         -- basedpyright = {},
         eslint = {},
+        marksman = {},
         pyright = {},
         ruff = {},
         solargraph = {},
