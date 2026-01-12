@@ -16,28 +16,29 @@ end
 
 # !! and !$ for fish - https://github.com/oh-my-fish/plugin-bang-bang
 function __history_previous_command
-  switch (commandline -t)
-  case "!"
-    commandline -t $history[1]; commandline -f repaint
-  case "*"
-    commandline -i !
-  end
+    switch (commandline -t)
+        case "!"
+            commandline -t $history[1]
+            commandline -f repaint
+        case "*"
+            commandline -i !
+    end
 end
 
 function __history_previous_command_arguments
-  switch (commandline -t)
-  case "!"
-    commandline -t ""
-    commandline -f history-token-search-backward
-  case "*"
-    commandline -i '$'
-  end
+    switch (commandline -t)
+        case "!"
+            commandline -t ""
+            commandline -f history-token-search-backward
+        case "*"
+            commandline -i '$'
+    end
 end
 
 ## Variables
 set -gx EDITOR nvim
 set -gx VISUAL nvim
-set -x MANROFFOPT "-c"
+set -x MANROFFOPT -c
 set -gx MANPAGER 'nvim +Man!'
 # set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
@@ -58,11 +59,11 @@ end
 
 if status is-interactive
     if test "$fish_key_bindings" = fish_vi_key_bindings
-      bind -Minsert ! __history_previous_command
-      bind -Minsert '$' __history_previous_command_arguments
+        bind -Minsert ! __history_previous_command
+        bind -Minsert '$' __history_previous_command_arguments
     else
-      bind ! __history_previous_command
-      bind '$' __history_previous_command_arguments
+        bind ! __history_previous_command
+        bind '$' __history_previous_command_arguments
     end
 
     ## Abbreviations / Aliases
@@ -72,9 +73,6 @@ if status is-interactive
     alias wget='wget -c '
 
     alias grep='grep --color=auto'
-
-    # Aider
-    alias aider='cecli'
 
     # Git
     abbr -a g git
@@ -131,3 +129,6 @@ if status is-interactive
     fzf --fish | source
     zoxide init fish | source
 end
+
+# opencode
+fish_add_path ~/.opencode/bin
