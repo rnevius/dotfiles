@@ -347,7 +347,7 @@ window-rule {
 
 // Enable rounded corners for all windows (recommended by Noctalia)
 window-rule {
-    geometry-corner-radius 20
+    geometry-corner-radius 15
     clip-to-geometry true
 }
 
@@ -632,3 +632,4 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+include "./noctalia.kdl"
