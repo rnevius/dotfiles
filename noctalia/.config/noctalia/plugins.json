@@ -8,7 +8,7 @@
     ],
     "states": {
         "mini-docker": {
-            "enabled": true,
+            "enabled": false,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
         "privacy-indicator": {
