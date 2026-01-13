@@ -1,7 +1,13 @@
 -- AI tools configuration
 return {
   -- Copilot
-  'github/copilot.vim',
+  {
+    'zbirenbaum/copilot.lua',
+    event = 'InsertEnter',
+    opts = {
+      copilot_node_command = { 'mise', 'exec', 'node@lts', '--', 'node' },
+    },
+  },
 
   -- CodeCompanion
   {
