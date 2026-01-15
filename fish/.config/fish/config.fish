@@ -74,6 +74,9 @@ if status is-interactive
 
     alias grep='grep --color=auto'
 
+    # Bluetooth
+    abbr -a bt bluetoothctl
+
     # Git
     abbr -a g git
     abbr -a ga 'git add'
