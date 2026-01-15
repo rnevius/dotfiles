@@ -23,7 +23,7 @@ Installed brew packages are occasionally exported to [brew-packages.txt](./brew-
 Installed pacman packages are occasionally exported to [paru-packages.txt](./paru-packages.txt) with:
 
 ```bash
-❯ pacman -Qe | awk '{ print $1 }' > paru-packages.txt
+❯ pacman -Qqe > paru-packages.txt
 ```
 
 Install them with `paru`:
