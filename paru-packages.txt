@@ -49,5 +49,4 @@ wl-clipboard
 xdg-desktop-portal-gnome
 xwayland-satellite
 yt-dlp
-zoom
 zoxide

@@ -312,5 +312,4 @@ xwayland-satellite
 yazi
 yelp
 yt-dlp
-zoom
 zoxide
