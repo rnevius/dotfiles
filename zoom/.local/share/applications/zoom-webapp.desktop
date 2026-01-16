@@ -1,0 +1,11 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Zoom
+Comment=Zoom Web App
+Exec=zoom-webapp-handler %u
+Terminal=false
+Type=Application
+Icon=zoom-webapp
+StartupWMClass=zoom-webapp
+MimeType=x-scheme-handler/zoommtg;x-scheme-handler/zoomus

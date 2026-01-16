@@ -1,0 +1,14 @@
+[Default Applications]
+x-scheme-handler/http=firefox.desktop
+application/xhtml+xml=firefox.desktop
+text/html=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/bruno=bruno.desktop
+x-scheme-handler/zoommtg=zoom-webapp.desktop
+x-scheme-handler/zoomus=zoom-webapp.desktop
+
+[Added Associations]
+x-scheme-handler/http=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+text/html=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
