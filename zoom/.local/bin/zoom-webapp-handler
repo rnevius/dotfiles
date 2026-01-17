@@ -17,5 +17,5 @@ if [[ $url =~ ^zoom(mtg|us):// ]]; then
   fi
 fi
 
-# Launch using Microsoft Edge Flatpak in app mode
-exec flatpak run com.microsoft.Edge --app="$web_url"
+# Launch using brave in app mode
+exec brave --app="$web_url"
