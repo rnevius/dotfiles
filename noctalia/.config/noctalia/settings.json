@@ -94,8 +94,9 @@
                         "copyToClipboard": false,
                         "directory": "",
                         "filenamePattern": "recording_yyyyMMdd_HHmmss",
-                        "frameRate": "30",
+                        "frameRate": "60",
                         "quality": "very_high",
+                        "resolution": "original",
                         "showCursor": true,
                         "videoCodec": "h264",
                         "videoSource": "portal"
@@ -180,13 +181,6 @@
                     "middleClickCommand": "pwvucontrol || pavucontrol"
                 },
                 {
-                    "defaultSettings": {
-                        "hideInactive": false,
-                        "removeMargins": false
-                    },
-                    "id": "plugin:privacy-indicator"
-                },
-                {
                     "deviceNativePath": "hidpp_battery_0",
                     "displayMode": "alwaysShow",
                     "hideIfNotDetected": true,
@@ -203,6 +197,13 @@
                     "icon": "noctalia",
                     "id": "ControlCenter",
                     "useDistroLogo": false
+                },
+                {
+                    "defaultSettings": {
+                        "hideInactive": false,
+                        "removeMargins": false
+                    },
+                    "id": "plugin:privacy-indicator"
                 }
             ]
         }
