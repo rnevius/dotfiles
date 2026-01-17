@@ -1,5 +1,19 @@
-noctalia/.config/noctalia/plugins/
-nvim/.config/nvim/plugged/
+.cache/
+
 fish/.config/fish/conf.d/env.fish
 fish_variables
-.cache/
+
+noctalia/.config/noctalia/plugins/
+nvim/.config/nvim/plugged/
+
+# Ignore everything under zoom/.local by default
+zoom/.local/*
+
+# Allow Zoom desktop file
+!zoom/.local/share/applications/
+!zoom/.local/share/applications/zoom-webapp.desktop
+
+# Allow Zoom icons only
+!zoom/.local/share/icons/
+!zoom/.local/share/icons/hicolor/
+!zoom/.local/share/icons/hicolor/**/apps/zoom-webapp.png
