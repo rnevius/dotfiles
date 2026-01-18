@@ -1,5 +1,6 @@
 ## Path
 fish_add_path ~/.local/bin
+fish_add_path ~/.opencode/bin
 
 set -g fish_greeting # hide the welcome message
 
@@ -133,5 +134,8 @@ if status is-interactive
     zoxide init fish | source
 end
 
-# opencode
-fish_add_path ~/.opencode/bin
+if status is-login
+    if test -z "$WAYLAND_DISPLAY" -a "$XDG_VTNR" = 1
+        exec niri-session -l
+    end
+end
