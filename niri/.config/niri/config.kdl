@@ -261,7 +261,6 @@ layout {
 // See the binds section below for more spawn examples.
 
 // Startup
-spawn-at-startup "qs" "-c" "noctalia-shell"
 // https://github.com/imvaskel/soteria/issues/23#issuecomment-3753238556
 spawn-at-startup "/usr/lib/soteria-polkit/soteria"
 
