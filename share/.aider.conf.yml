@@ -1,7 +1,7 @@
 #############
 # Main model:
 # model: openrouter/anthropic/claude-3.7-sonnet
-model: openrouter/google/gemini-3-pro-preview
+model: gemini/gemini-3-pro-preview
 
 ## Specify the api base url
 #openai-api-base: xxx
