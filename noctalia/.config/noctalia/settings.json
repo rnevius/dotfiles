@@ -38,6 +38,7 @@
         "marginHorizontal": 5,
         "marginVertical": 5,
         "monitors": [
+            "HDMI-A-2"
         ],
         "outerCorners": true,
         "position": "top",
@@ -106,7 +107,7 @@
                     "id": "plugin:screen-recorder"
                 },
                 {
-                    "compactMode": true,
+                    "compactMode": false,
                     "diskPath": "/",
                     "id": "SystemMonitor",
                     "showCpuTemp": true,
@@ -200,13 +201,6 @@
                     "icon": "noctalia",
                     "id": "ControlCenter",
                     "useDistroLogo": false
-                },
-                {
-                    "defaultSettings": {
-                        "hideInactive": false,
-                        "removeMargins": false
-                    },
-                    "id": "plugin:privacy-indicator"
                 }
             ]
         }
@@ -388,7 +382,8 @@
         "location": "top_right",
         "lowUrgencyDuration": 3,
         "monitors": [
-            "HDMI-A-3"
+            "HDMI-A-3",
+            "HDMI-A-2"
         ],
         "normalUrgencyDuration": 6,
         "overlayLayer": true,
@@ -420,6 +415,7 @@
         ],
         "location": "top_right",
         "monitors": [
+            "HDMI-A-2"
         ],
         "overlayLayer": true
     },
@@ -532,7 +528,7 @@
         "wifiDetailsViewMode": "grid"
     },
     "wallpaper": {
-        "directory": "/home/rnevius/Pictures/Wallpapers",
+        "directory": "/home/rnevius/Pictures",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "fillColor": "#000000",
