@@ -3,6 +3,10 @@
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
 
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
@@ -282,7 +286,7 @@ hotkey-overlay {
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path "~/Pictures/Screenshots/screenshot_%Y-%m-%d_%H-%M-%S.png"
 
 // Hide the noctalia bar for meetings
 layer-rule {
@@ -342,7 +346,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+Backspace hotkey-overlay-title=null { close-window; }
-    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
+    // https://ghostty.org/docs/linux/systemd#scripting-new-windows
+    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty" "+new-window"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
 
@@ -579,8 +584,9 @@ binds {
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Alt+Shift+4 { screenshot; }
-    Alt+Shift+5 { screenshot-window; }
-    Print { screenshot; }
+    // Quickly record the screen with `gpu-screen-recorder` (`slurp` for region, 30 fps)
+    Alt+Shift+5 { spawn "record-region"; }
+    Print { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
