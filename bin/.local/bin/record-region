@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Record a region with `gpu-screen-recorder` if it's not already recording
+# otherwise, stop a running recording.
+
+# If already recording, stop it and exit
+if killall -SIGINT -q gpu-screen-recorder; then
+    qs -c noctalia-shell ipc call toast send '{ "title": "Recording Stopped", "body": "Video saved", "icon": "capture-filled" }'
+    xdg-open "$HOME/Videos/"
+    exit 0
+fi
+
+AREA=$(slurp -f "%wx%h+%x+%y")
+# If AREA is empty (we pressed Escape), exit script
+[ -z "$AREA" ] && exit 1
+
+# Start Recording
+VIDEO_PATH="$HOME/Videos/recording_$(date +%Y-%m-%d_%H%M%S).mp4"
+gpu-screen-recorder -w "$AREA" -f 30 -o "$VIDEO_PATH" &
+
+sleep 0.5
+if pgrep -f "gpu-screen-recorder" > /dev/null; then
+    qs -c noctalia-shell ipc call toast send '{"title": "Recording Started", "icon": "capture-filled" }'
+else
+    qs -c noctalia-shell ipc call toast send '{"title": "Error", "body": "Failed to start recorder", "type": "error" }'
+fi
