@@ -6,6 +6,8 @@ fish_variables
 noctalia/.config/noctalia/plugins/
 nvim/.config/nvim/plugged/
 
+*.wants/
+
 # Ignore everything under zoom/.local by default
 zoom/.local/*
 
