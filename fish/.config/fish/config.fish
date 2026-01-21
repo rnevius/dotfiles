@@ -1,8 +1,25 @@
+## Environment
+set -g fish_greeting # hide the welcome message
+
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+set -x MANROFFOPT -c
+set -gx MANPAGER 'nvim +Man!'
+
 ## Path
 fish_add_path ~/.local/bin
 fish_add_path ~/.opencode/bin
 
-set -g fish_greeting # hide the welcome message
+if status is-login
+    if test -z "$WAYLAND_DISPLAY" -a "$XDG_VTNR" = 1
+        set -x QT_AUTO_SCREEN_SCALE_FACTOR 1
+        set -x QT_ENABLE_HIGHDPI_SCALING 1
+        set -x QT_QPA_PLATFORM wayland
+        set -x QT_QPA_PLATFORMTHEME gtk3
+
+        exec niri-session -l
+    end
+end
 
 ## Functions
 # Show the cached weather from wttr.in on fish startup
@@ -35,13 +52,6 @@ function __history_previous_command_arguments
             commandline -i '$'
     end
 end
-
-## Variables
-set -gx EDITOR nvim
-set -gx VISUAL nvim
-set -x MANROFFOPT -c
-set -gx MANPAGER 'nvim +Man!'
-# set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Set settings for done
 set -g __done_min_cmd_duration 10000
@@ -132,10 +142,4 @@ if status is-interactive
     mise activate fish | source
     fzf --fish | source
     zoxide init fish | source
-end
-
-if status is-login
-    if test -z "$WAYLAND_DISPLAY" -a "$XDG_VTNR" = 1
-        exec niri-session -l
-    end
 end
