@@ -139,6 +139,8 @@ layout {
     // If you leave the brackets empty, the windows themselves will decide their initial width.
     // default-column-width {}
 
+    empty-workspace-above-first
+
     // By default focus ring and border are rendered as a solid background rectangle
     // behind windows. That is, they will show up through semitransparent windows.
     // This is because windows using client-side decorations can have an arbitrary shape.
@@ -303,6 +305,12 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
+}
+
+gestures {
+    hot-corners {
+        off
+    }
 }
 
 // Window rules let you adjust behavior for individual windows.
