@@ -12,11 +12,6 @@ fish_add_path ~/.opencode/bin
 
 if status is-login
     if test -z "$WAYLAND_DISPLAY" -a "$XDG_VTNR" = 1
-        set -x QT_AUTO_SCREEN_SCALE_FACTOR 1
-        set -x QT_ENABLE_HIGHDPI_SCALING 1
-        set -x QT_QPA_PLATFORM wayland
-        set -x QT_QPA_PLATFORMTHEME gtk3
-
         exec niri-session -l
     end
 end
