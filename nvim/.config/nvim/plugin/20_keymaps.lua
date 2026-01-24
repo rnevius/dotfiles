@@ -45,3 +45,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
 vim.keymap.set('i', '<C-h>', 'copilot#Previous()', { silent = true, expr = true })
 vim.keymap.set('i', '<C-k>', 'copilot#Next()', { silent = true, expr = true })
+
+
+-- Plugins ===================================================
+vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })

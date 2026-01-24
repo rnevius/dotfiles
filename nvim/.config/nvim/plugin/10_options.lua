@@ -1,11 +1,17 @@
--- [[ Setting options ]]
+-- General ====================================================================
 -- See `:help vim.o`
+vim.g.mapleader      = ' ' -- Use `<Space>` as the leader key
+vim.g.maplocalleader = ' '
 
--- Make line numbers default
-vim.o.number = true
+vim.o.mouse       = 'a'      -- Enable mouse mode, can be useful for resizing splits for example!
+vim.o.switchbuf   = 'usetab' -- Use already opened buffers when switching
+vim.o.undofile    = true     -- Save undo history
 
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
+-- UI =========================================================================
+
+vim.o.breakindent = true -- Indent wrapped lines to match line start
+vim.o.number = true -- Make line numbers default
+
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
@@ -17,16 +23,13 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
+vim.o.colorcolumn = '+1'
+vim.o.termguicolors = true
 
 -- Folds
-vim.o.foldmethod = 'expr'
+vim.o.foldenable = false -- Disable folding by default
 vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-vim.o.foldenable = false
+vim.o.foldmethod = 'expr'
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
@@ -67,3 +70,7 @@ vim.o.tabstop = 2
 
 -- Hide intro message and `ins-completion-menu` messages
 vim.opt.shortmess:append 'Ic'
+vim.o.pummaxwidth = 100 -- Limit maximum width of popup menu
+vim.o.completetimeout = 100
+
+vim.o.pumborder = 'bold' -- Use border in built-in completion menu
