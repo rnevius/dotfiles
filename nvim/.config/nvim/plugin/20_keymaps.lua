@@ -1,4 +1,8 @@
--- Remap ';' to ':' in normal and visual modes
+local nmap_leader = function(suffix, rhs, desc)
+  vim.keymap.set('n', '<Leader>' .. suffix, rhs, { desc = desc })
+end
+
+-- Remap ';' to ':' in normal and visual mode
 vim.keymap.set({ 'n', 'v' }, ';', ':')
 -- Remap ':' to ';' in normal and visual modes
 vim.keymap.set({ 'n', 'v' }, ':', ';')
@@ -11,10 +15,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<Esc>', '<CMD>nohlsearch<CR>')
 
 -- Themes
-vim.keymap.set('n', '<leader>tc', '<CMD>lua require("onedark").toggle()<CR>', { desc = '[T]oggle between theme [C]olors' })
+nmap_leader('tc', '<CMD>lua require("onedark").toggle()<CR>', '[T]oggle between theme [C]olors')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+nmap_leader('q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -38,8 +42,8 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+nmap_leader('d', vim.diagnostic.open_float, 'Open floating diagnostic message')
+nmap_leader('q', vim.diagnostic.setloclist, 'Open diagnostics list')
 
 -- copilot
 vim.keymap.set('i', '<C-j>', 'copilot#Accept("<CR>")', { silent = true, expr = true, replace_keycodes = false })
@@ -48,4 +52,21 @@ vim.keymap.set('i', '<C-k>', 'copilot#Next()', { silent = true, expr = true })
 
 
 -- Plugins ===================================================
-vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+-- Flash
+vim.keymap.set({ "n", "x", "o" }, 's', function() require("flash").jump() end, { desc = "Flash" })
+vim.keymap.set({ "n", "x", "o" }, 'S', function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
+
+-- Mini Pick
+nmap_leader('e', '<Cmd>Pick files<CR>', 'Pick Files')
+nmap_leader('<Leader>', '<Cmd>Pick buffers<CR>', 'Pick Buffer')
+nmap_leader('s:', '<Cmd>Pick history scope=":"<CR>', '[S]earch Command History')
+nmap_leader('sg', '<Cmd>Pick grep_live<CR>', '[S]earch [G]rep')
+nmap_leader('sG', '<Cmd>Pick grep pattern="<cword>"<CR>', '[S]earch for Word')
+nmap_leader('sd','<Cmd>Pick disgnostic scope="current"<CR>', 'Search Buffer [D]iagnostics')
+nmap_leader('sD','<Cmd>Pick disgnostic scope="all"<CR>', 'Search [D]iagnostics')
+
+-- Oil
+-- vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+local explore_at_file = '<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>'
+vim.keymap.set('n', '-', explore_at_file, { desc = 'Explore' })
+
