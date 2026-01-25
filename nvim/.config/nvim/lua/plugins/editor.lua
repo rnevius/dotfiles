@@ -139,66 +139,69 @@ return {
     lazy = false,
     opts = {
       bigfile = { enabled = true },
-      indent = { -- indent guides
-        enabled = true,
-        indent = { hl = 'IblIndent' },
-        scope = { hl = 'IblScope' },
-        animate = { enabled = false },
-      },
+      -- indent = { -- indent guides
+      --   enabled = true,
+      --   indent = { hl = 'IblIndent' },
+      --   scope = { hl = 'IblScope' },
+      --   animate = { enabled = false },
+      -- },
       image = {}, -- image previews / buffers
       lazygit = {}, -- lazygit integration
-      picker = { -- picker
-        layout = { preset = 'telescope' },
-        win = {
-          preview = {
-            wo = {
-              number = false,
-              relativenumber = false,
-              signcolumn = 'no',
-            },
-          },
-        },
-      },
+      -- picker = { -- picker
+      --   layout = { preset = 'telescope' },
+      --   win = {
+      --     preview = {
+      --       wo = {
+      --         number = false,
+      --         relativenumber = false,
+      --         signcolumn = 'no',
+      --       },
+      --     },
+      --   },
+      -- },
       quickfile = {},
-      scroll = {},
+      -- scroll = {},
       words = {},
     },
     -- stylua: ignore
     keys = {
       -- Lazygit
-      { '<leader>lz', function() require('snacks').lazygit() end, desc = 'Lazy[g]it' },
+      -- { '<leader>lz', function() require('snacks').lazygit() end, desc = 'Lazy[g]it' },
 
       -- Pickers & Explorer
-      { '<leader>e', function() require('snacks').picker.files() end, desc = 'Find Files' },
-      { '<leader><leader>', function() require('snacks').picker.buffers() end, desc = 'Find Buffers' },
-      { '<leader><Tab>', function() require('snacks').explorer() end, desc = 'File Explorer' },  -- 👹 for pairing
-      { '<leader>s:', function() require('snacks').picker.command_history() end, desc = '[S]earch Command History' },
-      { '<leader>sg', function() require('snacks').picker.grep() end, desc = '[S]earch [G]rep' },
-      { '<leader>sw', function() require('snacks').picker.grep_word() end, desc = 'Visual [S]election or [W]ord', mode = { 'n', 'x' } },
+      -- { '<leader>e', function() require('snacks').picker.files() end, desc = 'Find Files' },
+      -- { '<leader><leader>', function() require('snacks').picker.buffers() end, desc = 'Find Buffers' },
+      -- { '<leader><Tab>', function() require('snacks').explorer() end, desc = 'File Explorer' },  -- 👹 for pairing
+      -- { '<leader>s:', function() require('snacks').picker.command_history() end, desc = '[S]earch Command History' },
+      -- { '<leader>sg', function() require('snacks').picker.grep() end, desc = '[S]earch [G]rep' },
+      -- { '<leader>sw', function() require('snacks').picker.grep_word() end, desc = 'Visual [S]election or [W]ord', mode = { 'n', 'x' } },
 
       -- Search
-      { '<leader>s"', function() require('snacks').picker.registers() end, desc = '[S]earch Registers' },
-      { '<leader>s/', function() require('snacks').picker.search_history() end, desc = '[S]earch History' },
-      { '<leader>sd', function() require('snacks').picker.diagnostics() end, desc = '[S]earch [D]iagnostics' },
-      { '<leader>sD', function() require('snacks').picker.diagnostics_buffer() end, desc = 'Search Buffer [D]iagnostics' },
-      { '<leader>sh', function() require('snacks').picker.help() end, desc = '[S]earch [H]elp Pages' },
-      { '<leader>sk', function() require('snacks').picker.keymaps() end, desc = '[S]earch [K]eymaps' },
-      { '<leader>su', function() require('snacks').picker.undo() end, desc = '[S]earch [U]ndo History' },
+      -- { '<leader>s"', function() require('snacks').picker.registers() end, desc = '[S]earch Registers' },
+      -- { '<leader>s/', function() require('snacks').picker.search_history() end, desc = '[S]earch History' },
+      -- { '<leader>sd', function() require('snacks').picker.diagnostics() end, desc = '[S]earch [D]iagnostics' },
+      -- { '<leader>sD', function() require('snacks').picker.diagnostics_buffer() end, desc = 'Search Buffer [D]iagnostics' },
+      -- { '<leader>sh', function() require('snacks').picker.help() end, desc = '[S]earch [H]elp Pages' },
+      -- { '<leader>sk', function() require('snacks').picker.keymaps() end, desc = '[S]earch [K]eymaps' },
+      -- { '<leader>su', function() require('snacks').picker.undo() end, desc = '[S]earch [U]ndo History' },
     },
   },
 
-  { -- Extend and create a/i textobjects
-    'echasnovski/mini.ai',
-    opts = { n_lines = 500 },
-  },
+  -- { -- Extend and create a/i textobjects
+  --   'echasnovski/mini.ai',
+  --   opts = { n_lines = 500 },
+  -- },
 
-  { -- Better diffs
-    'echasnovski/mini.diff',
-    opts = {
-      view = {
-        style = 'sign',
-        signs = { add = '+', change = '~', delete = '-' },
-      },
-    },
-  },
+  -- { -- Better diffs
+  --   'echasnovski/mini.diff',
+  --   opts = {
+  --     view = {
+  --       style = 'sign',
+  --       signs = { add = '+', change = '~', delete = '-' },
+  --     },
+  --   },
+  -- },
 }
+
+-- Ensure enabled
+local filetypes = vim.iter(ensure_languages):map(vim.treesitter.language.get_filetypes):flatten():totable()
