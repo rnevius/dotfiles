@@ -255,3 +255,18 @@ vim.lsp.enable({
   'ts_ls',
   'tailwindcss',
 })
+
+vim.pack.add({ 'https://github.com/nvim-mini/mini.completion' })
+local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
+local process_items = function(items, base)
+  return MiniCompletion.default_process_items(items, base, process_items_opts)
+end
+require('mini.completion').setup({
+  lsp_completion = { source_func = 'omnifunc', auto_setup = false, process_items = process_items },
+})
+
+-- Set up LSP part of completion
+local on_attach = function(args) vim.bo[args.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp' end
+local gr = vim.api.nvim_create_augroup('custom-config', {});
+vim.api.nvim_create_autocmd('LspAttach', { group = gr, pattern = '*', callback = on_attach, desc = 'Custom `on_attach`' })
+vim.lsp.config('*', { capabilities = MiniCompletion.get_lsp_capabilities() })
