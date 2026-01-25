@@ -83,17 +83,21 @@ vim.pack.add({
   'https://github.com/tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 })
 
--- Motions / Textobjects
-vim.pack.add({ 'https://github.com/folke/flash.nvim' })
-require('flash').setup({
-  opts = {
-    modes = { char = { enabled = false } },
-  },
-})
+vim.pack.add({ 'https://github.com/nvim-mini/mini.extra' })
+require('mini.extra').setup()
 
+-- Motions / Textobjects
 vim.pack.add({ 'https://github.com/nvim-mini/mini.ai' })
 require('mini.ai').setup({
   n_lines = 500,
+})
+
+vim.pack.add({ 'https://github.com/nvim-mini/mini.jump2d' })
+require('mini.jump2d').setup()
+local jump2d = require('mini.jump2d')
+jump2d.setup({
+  labels = 'asdfghjkl;',
+  view = { dim = true, n_steps_ahead = 2 },
 })
 
 -- Commenting
@@ -217,3 +221,37 @@ local ensure_languages = {
 -- if #to_install > 0 then require('nvim-treesitter').install(to_install) end
 --
 -- local filetypes = vim.iter(ensure_languages):map(vim.treesitter.language.get_filetypes):flatten():totable()
+
+-- Mason
+vim.pack.add({ 'https://github.com/mason-org/mason.nvim' })
+require('mason').setup()
+
+-- Conform
+vim.pack.add({ 'https://github.com/stevearc/conform.nvim' })
+require('conform').setup({
+  -- Map of filetype to formatters
+  -- You can use 'stop_after_first' to run the first available formatter from the list
+  formatters_by_ft = {
+    javascript = { 'prettier' },
+    json = { 'prettier' },
+    lua = { 'stylua' },
+    python = { 'pyright', 'black', stop_after_first = true },
+    ruby = { 'rubocop' },
+    typescript = { 'prettier' },
+    typescriptreact = { 'prettier' },
+  },
+  -- notify_on_error = false,
+})
+
+-- LSP
+vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' })
+vim.lsp.enable({
+  'eslint',
+  'lua_ls',
+  'marksman',
+  'pyright',
+  'ruff',
+  'solargraph',
+  'ts_ls',
+  'tailwindcss',
+})

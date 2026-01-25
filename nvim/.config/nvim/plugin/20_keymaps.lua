@@ -12,10 +12,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
-vim.keymap.set('n', '<Esc>', '<CMD>nohlsearch<CR>')
+vim.keymap.set('n', '<Esc>', '<Cmd>nohlsearch<CR>')
 
 -- Themes
-nmap_leader('tc', '<CMD>lua require("onedark").toggle()<CR>', '[T]oggle between theme [C]olors')
+nmap_leader('tc', '<Cmd>lua require("onedark").toggle()<CR>', '[T]oggle between theme [C]olors')
 
 -- Diagnostic keymaps
 nmap_leader('q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
@@ -52,9 +52,15 @@ vim.keymap.set('i', '<C-k>', 'copilot#Next()', { silent = true, expr = true })
 
 
 -- Plugins ===================================================
--- Flash
-vim.keymap.set({ "n", "x", "o" }, 's', function() require("flash").jump() end, { desc = "Flash" })
-vim.keymap.set({ "n", "x", "o" }, 'S', function() require("flash").treesitter() end, { desc = "Flash Treesitter" })
+-- Conform (LSP formatting)
+local conform_format = '<Cmd>lua require("conform").format({ async = true, lsp_format = "fallback" })<CR>'
+nmap_leader('f', conform_format, '[F]ormat Buffer')
+
+-- Jump
+vim.keymap.set({ 'n', 'x', 'o' }, 's', function() MiniJump2d.start(MiniJump2d.builtin_opts.single_character) end, { desc = 'Jump' })
+
+-- LSP
+-- See :help lsp-defaults
 
 -- Mini Pick
 nmap_leader('e', '<Cmd>Pick files<CR>', 'Pick Files')
@@ -66,7 +72,7 @@ nmap_leader('sd','<Cmd>Pick disgnostic scope="current"<CR>', 'Search Buffer [D]i
 nmap_leader('sD','<Cmd>Pick disgnostic scope="all"<CR>', 'Search [D]iagnostics')
 
 -- Oil
--- vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+vim.keymap.set('n', '-', '<Cmd>Oil<CR>', { desc = 'Open parent directory' })
 local explore_at_file = '<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>'
-vim.keymap.set('n', '-', explore_at_file, { desc = 'Explore' })
+vim.keymap.set('n', '<Tab>', explore_at_file, { desc = 'Explore' })
 
