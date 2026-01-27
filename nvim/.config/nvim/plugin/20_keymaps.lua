@@ -66,10 +66,11 @@ vim.keymap.set({ 'n', 'x', 'o' }, 's', function() MiniJump2d.start(MiniJump2d.bu
 nmap_leader('e', '<Cmd>Pick files<CR>', 'Pick Files')
 nmap_leader('<Leader>', '<Cmd>Pick buffers<CR>', 'Pick Buffer')
 nmap_leader('s:', '<Cmd>Pick history scope=":"<CR>', '[S]earch Command History')
+nmap_leader('sh', '<Cmd>Pick help<CR>', '[S]earch Help Tags')
 nmap_leader('sg', '<Cmd>Pick grep_live<CR>', '[S]earch [G]rep')
 nmap_leader('sG', '<Cmd>Pick grep pattern="<cword>"<CR>', '[S]earch for Word')
-nmap_leader('sd','<Cmd>Pick disgnostic scope="current"<CR>', 'Search Buffer [D]iagnostics')
-nmap_leader('sD','<Cmd>Pick disgnostic scope="all"<CR>', 'Search [D]iagnostics')
+nmap_leader('sd', '<Cmd>Pick disgnostic scope="current"<CR>', 'Search Buffer [D]iagnostics')
+nmap_leader('sD', '<Cmd>Pick disgnostic scope="all"<CR>', 'Search [D]iagnostics')
 
 -- Oil
 vim.keymap.set('n', '-', '<Cmd>Oil<CR>', { desc = 'Open parent directory' })
