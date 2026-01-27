@@ -203,19 +203,19 @@ local ensure_languages = {
   'yaml',
 }
 
--- require('nvim-treesitter').setup({
---   ensure_installed = ensure_languages,
---   -- Autoinstall languages that are not installed
---   auto_install = true,
---   highlight = {
---     enable = true,
---     -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
---     --  If you are experiencing weird indenting issues, add the language to
---     --  the list of additional_vim_regex_highlighting and disabled languages for indent.
---     additional_vim_regex_highlighting = { 'ruby' },
---   },
---   indent = { enable = true, disable = { 'ruby' } },
--- })
+require('nvim-treesitter').setup({
+  ensure_installed = ensure_languages,
+  -- Autoinstall languages that are not installed
+  auto_install = true,
+  highlight = {
+    enable = true,
+    -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+    --  If you are experiencing weird indenting issues, add the language to
+    --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+    additional_vim_regex_highlighting = { 'ruby' },
+  },
+  indent = { enable = true, disable = { 'ruby' } },
+})
 -- local isnt_installed = function(lang) return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0 end
 -- local to_install = vim.tbl_filter(isnt_installed, ensure_languages)
 -- if #to_install > 0 then require('nvim-treesitter').install(to_install) end
@@ -267,6 +267,5 @@ require('mini.completion').setup({
 
 -- Set up LSP part of completion
 local on_attach = function(args) vim.bo[args.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp' end
-local gr = vim.api.nvim_create_augroup('custom-config', {});
-vim.api.nvim_create_autocmd('LspAttach', { group = gr, pattern = '*', callback = on_attach, desc = 'Custom `on_attach`' })
+_G.Config.new_autocmd('LspAttach', '*', on_attach, 'Custom `on_attach`')
 vim.lsp.config('*', { capabilities = MiniCompletion.get_lsp_capabilities() })

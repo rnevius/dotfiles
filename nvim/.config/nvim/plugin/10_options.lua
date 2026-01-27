@@ -71,6 +71,7 @@ vim.o.tabstop = 2
 -- Hide intro message and `ins-completion-menu` messages
 vim.opt.shortmess:append 'Ic'
 vim.o.pummaxwidth = 100 -- Limit maximum width of popup menu
+vim.o.completeopt = 'menuone,noinsert,fuzzy,nosort'
 vim.o.completetimeout = 100
 
 vim.o.pumborder = 'bold' -- Use border in built-in completion menu
