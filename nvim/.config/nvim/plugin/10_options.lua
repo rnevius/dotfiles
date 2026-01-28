@@ -10,7 +10,10 @@ vim.o.undofile    = true     -- Save undo history
 -- UI =========================================================================
 
 vim.o.breakindent = true -- Indent wrapped lines to match line start
+vim.o.breakindentopt = 'list:-1'  -- Add padding for lists (if 'wrap' is set)
 vim.o.number = true -- Make line numbers default
+vim.o.formatoptions = 'rqnl1j'-- Improve comment editing
+vim.o.virtualedit   = 'block' -- Allow going past end of line in blockwise mode
 
 
 -- Don't show the mode, since it's already in the status line
@@ -33,7 +36,9 @@ vim.o.foldmethod = 'expr'
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true
+vim.o.infercase     = true    -- Infer case in built-in completion
 vim.o.smartcase = true
+vim.o.smartindent = true
 
 -- Keep signcolumn on by default
 vim.o.signcolumn = 'yes'
@@ -63,15 +68,40 @@ vim.o.scrolloff = 2
 vim.o.confirm = true
 
 -- Indentation defaults
-vim.o.expandtab = true
-vim.o.shiftround = true
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
+vim.o.expandtab = true  -- Convert tabs to spaces
+vim.o.shiftround = true  -- Round indent to multiple of 'shiftwidth'
+vim.o.shiftwidth = 2  -- Use this number of spaces for indentation
+vim.o.tabstop = 2  -- Tab characters visibly take up this much space
 
 -- Hide intro message and `ins-completion-menu` messages
 vim.opt.shortmess:append 'Ic'
+vim.o.pumheight = 10 -- Limit visible height of popup menu
 vim.o.pummaxwidth = 100 -- Limit maximum width of popup menu
 vim.o.completeopt = 'menuone,noinsert,fuzzy,nosort'
 vim.o.completetimeout = 100
 
 vim.o.pumborder = 'bold' -- Use border in built-in completion menu
+
+-- Diagnostics ================================================================
+
+-- Neovim has built-in support for showing diagnostic messages. This configures
+-- a more conservative display while still being useful.
+-- See `:h vim.diagnostic` and `:h vim.diagnostic.config()`.
+local diagnostic_opts = {
+  -- Show signs on top of any other sign, but only for warnings and errors
+  signs = { priority = 9999, severity = { min = 'WARN', max = 'ERROR' } },
+
+  -- Show all diagnostics as underline (for their messages type `<Leader>ld`)
+  underline = { severity = { min = 'HINT', max = 'ERROR' } },
+
+  -- Show more details immediately for errors on the current line
+  virtual_lines = false,
+  virtual_text = {
+    current_line = true,
+    severity = { min = 'ERROR', max = 'ERROR' },
+  },
+
+  -- Don't update diagnostics when typing
+  update_in_insert = false,
+}
+vim.diagnostic.config(diagnostic_opts)
