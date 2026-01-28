@@ -296,6 +296,12 @@ layer-rule {
     block-out-from "screencast"
 }
 
+// Set the overview wallpaper on the backdrop.
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
+
 // Animation settings.
 // The wiki explains how to configure individual animations:
 // https://yalter.github.io/niri/Configuration:-Animations
@@ -356,7 +362,8 @@ binds {
     Mod+Backspace hotkey-overlay-title=null { close-window; }
     // https://ghostty.org/docs/linux/systemd#scripting-new-windows
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty" "+new-window"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Ctrl+Period hotkey-overlay-title="Pick an Emoji" { spawn-sh "qs -c noctalia-shell ipc call launcher emoji"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.

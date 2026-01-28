@@ -111,6 +111,13 @@
                     "id": "plugin:screen-recorder"
                 },
                 {
+                    "defaultSettings": {
+                        "hideInactive": false,
+                        "removeMargins": false
+                    },
+                    "id": "plugin:privacy-indicator"
+                },
+                {
                     "compactMode": false,
                     "diskPath": "/",
                     "id": "SystemMonitor",
@@ -129,14 +136,18 @@
                 {
                     "characterCount": 2,
                     "colorizeIcons": false,
+                    "emptyColor": "secondary",
                     "enableScrollWheel": true,
+                    "focusedColor": "primary",
                     "followFocusedScreen": false,
                     "groupedBorderOpacity": 1,
                     "hideUnoccupied": false,
                     "iconScale": 0.8,
                     "id": "Workspace",
                     "labelMode": "index",
+                    "occupiedColor": "secondary",
                     "showApplications": false,
+                    "showBadge": true,
                     "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
                 },
@@ -318,6 +329,7 @@
         "allowPanelsOnScreenWithoutBar": true,
         "animationDisabled": false,
         "animationSpeed": 1,
+        "autoStartAuth": false,
         "avatarImage": "/home/rnevius/.face",
         "boxRadiusRatio": 1,
         "compactLockScreen": true,
@@ -367,7 +379,7 @@
         "weatherShowEffects": true
     },
     "network": {
-        "bluetoothDetailsViewMode": "list",
+        "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
         "bluetoothRssiPollIntervalMs": 10000,
         "bluetoothRssiPollingEnabled": false,
@@ -549,7 +561,7 @@
         "hideWallpaperFilenames": false,
         "monitorDirectories": [
         ],
-        "overviewEnabled": false,
+        "overviewEnabled": true,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 300,
         "setWallpaperOnAllMonitors": true,
