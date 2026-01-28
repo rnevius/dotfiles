@@ -229,6 +229,10 @@ require('mason').setup()
 -- Conform
 vim.pack.add({ 'https://github.com/stevearc/conform.nvim' })
 require('conform').setup({
+  default_format_opts = {
+    -- Allow formatting from LSP server if no dedicated formatter is available
+    lsp_format = 'fallback',
+  },
   -- Map of filetype to formatters
   -- You can use 'stop_after_first' to run the first available formatter from the list
   formatters_by_ft = {
