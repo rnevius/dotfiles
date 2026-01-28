@@ -1,4 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "model": "google/gemini-3-pro-preview"
+  "permission": {
+    "bash": {
+      "gh *": "ask",
+      "gh pr checkout *": "allow",
+      "gh pr view *": "allow",
+      "git commit *": "deny",
+      "git push *": "deny"
+    }
+  }
 }
