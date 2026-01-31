@@ -1,3 +1,4 @@
+-- DRY vim.pack.add for GitHub sources
 local function pack(...)
   local args = { ... }
   local plugins_to_process = {}
@@ -18,6 +19,8 @@ local function pack(...)
   vim.pack.add(plugins)
 end
 
+-- local now_if_args, later = _G.Config.now_if_args, MiniDeps.later
+
 -- UI ==================================================
 -- Colorscheme
 pack('navarasu/onedark.nvim')
@@ -31,8 +34,6 @@ colorscheme.setup({
     CodeCompanionChatAgent = { fg = '$bg0', bg = '$orange' },
     CodeCompanionChatTool = { fg = '$bg0', bg = '$green' },
     CodeCompanionChatVariable = { fg = '$bg0', bg = '$blue' },
-
-    -- MiniStatuslineInactive = { fg = '$grey', bg = '$bg1' }, -- Temporary until PR is merged
   },
 })
 colorscheme.load()
@@ -273,6 +274,15 @@ require('conform').setup({
 
 -- LSP
 pack('neovim/nvim-lspconfig')
+
+-- Tailwind is slow to start
+vim.lsp.config('tailwindcss', {
+  filetypes = {
+    "django-html", "htmldjango", "erb", "haml", "html",
+    "css", "postcss", "scss", "javascriptreact", "typescriptreact"
+  }
+})
+
 vim.lsp.enable({
   'eslint',
   'lua_ls',
@@ -284,6 +294,7 @@ vim.lsp.enable({
   'tailwindcss',
 })
 
+-- Completion
 pack('nvim-mini/mini.completion')
 local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
 local process_items = function(items, base)
