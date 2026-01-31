@@ -94,6 +94,9 @@ statusline.section_location = function()
 end
 statusline.setup(opts)
 
+pack('j-hui/fidget.nvim')
+require('fidget').setup()
+
 -- Editor Utilities ===================================================
 -- tpope!
 pack({
