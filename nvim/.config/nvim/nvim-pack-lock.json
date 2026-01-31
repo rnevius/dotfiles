@@ -12,6 +12,10 @@
       "rev": "9eae720f2b20f6ad28cbfa0ddc524e10dc2c3201",
       "src": "https://github.com/nvim-mini/mini.ai"
     },
+    "mini.align": {
+      "rev": "6d8a6ca3a0fd313938374abccb50cad026229db3",
+      "src": "https://github.com/nvim-mini/mini.align"
+    },
     "mini.animate": {
       "rev": "0365de8b69331c25d0d0d7573407a7dc7719e578",
       "src": "https://github.com/nvim-mini/mini.animate"
@@ -65,15 +69,15 @@
       "src": "https://github.com/nvim-mini/mini.statusline"
     },
     "nvim-lspconfig": {
-      "rev": "419b082102fa813739588dd82e19a8b6b2442855",
+      "rev": "3f58aeca0c6ece8a9fb8782ea3fcb6024f285be3",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "275b9fe801d56d5fea6d34f5bfea8bb24887b805",
+      "rev": "19c729dae6e0eeb79423df0cf37780aa9a7cc3b7",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
-      "rev": "52bda74e087034408e2d563cb4499c1601038f9d",
+      "rev": "a0e182ae21fda68c59d1f36c9ed45600aef50311",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
       "version": "'main'"
     },

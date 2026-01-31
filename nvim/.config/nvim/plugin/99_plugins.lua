@@ -1,6 +1,26 @@
--- UI ================================================== 
+local function pack(...)
+  local args = { ... }
+  local plugins_to_process = {}
+  if #args == 1 and type(args[1]) == 'table' then
+    plugins_to_process = args[1]
+  else
+    plugins_to_process = args
+  end
+
+  local plugins = {}
+  for _, plugin in ipairs(plugins_to_process) do
+    if type(plugin) == 'string' then
+      table.insert(plugins, 'https://github.com/' .. plugin)
+    else
+      table.insert(plugins, plugin)
+    end
+  end
+  vim.pack.add(plugins)
+end
+
+-- UI ==================================================
 -- Colorscheme
-vim.pack.add({ 'https://github.com/navarasu/onedark.nvim' })
+pack('navarasu/onedark.nvim')
 local colorscheme = require('onedark')
 colorscheme.setup({
   style = 'cool', -- or 'dark'
@@ -18,7 +38,7 @@ colorscheme.setup({
 colorscheme.load()
 
 -- Animations
-vim.pack.add({ 'https://github.com/nvim-mini/mini.animate' })
+pack('nvim-mini/mini.animate')
 require('mini.animate').setup({
   cursor = {
     enable = false
@@ -26,7 +46,7 @@ require('mini.animate').setup({
 })
 
 -- Highlights
-vim.pack.add({ 'https://github.com/nvim-mini/mini.hipatterns' })
+pack('nvim-mini/mini.hipatterns')
 local hipatterns = require('mini.hipatterns')
 hipatterns.setup({
   highlighters = {
@@ -41,7 +61,7 @@ hipatterns.setup({
   },
 })
 
-vim.pack.add({ 'https://github.com/nvim-mini/mini.indentscope' })
+pack('nvim-mini/mini.indentscope')
 local indentscope = require('mini.indentscope')
 indentscope.setup({
   draw = {
@@ -51,13 +71,13 @@ indentscope.setup({
 })
 
 -- Icons
-vim.pack.add({ 'https://github.com/nvim-mini/mini.icons' })
+pack('nvim-mini/mini.icons')
 require('mini.icons').setup()
 
 
 -- Statusline
 -- Make it a little less noisy
-vim.pack.add({ 'https://github.com/nvim-mini/mini.statusline' });
+pack('nvim-mini/mini.statusline')
 local statusline = require('mini.statusline')
 statusline.section_diff = function()
   return ''
@@ -75,24 +95,24 @@ statusline.setup(opts)
 
 -- Editor Utilities ===================================================
 -- tpope!
-vim.pack.add({
-  'https://github.com/tpope/vim-endwise',
-  'https://github.com/tpope/vim-surround',
-  'https://github.com/tpope/vim-rails',
-  'https://github.com/tpope/vim-repeat',
-  'https://github.com/tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+pack({
+  'tpope/vim-endwise',
+  'tpope/vim-surround',
+  'tpope/vim-rails',
+  'tpope/vim-repeat',
+  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 })
 
-vim.pack.add({ 'https://github.com/nvim-mini/mini.extra' })
+pack('nvim-mini/mini.extra')
 require('mini.extra').setup()
 
 -- Motions / Textobjects
-vim.pack.add({ 'https://github.com/nvim-mini/mini.ai' })
+pack('nvim-mini/mini.ai')
 require('mini.ai').setup({
   n_lines = 500,
 })
 
-vim.pack.add({ 'https://github.com/nvim-mini/mini.jump2d' })
+pack('nvim-mini/mini.jump2d')
 require('mini.jump2d').setup()
 local jump2d = require('mini.jump2d')
 jump2d.setup({
@@ -100,12 +120,16 @@ jump2d.setup({
   view = { dim = true, n_steps_ahead = 2 },
 })
 
+-- Alignment
+pack('nvim-mini/mini.align')
+require('mini.align').setup()
+
 -- Commenting
-vim.pack.add({ 'https://github.com/nvim-mini/mini.comment' })
+pack('nvim-mini/mini.comment')
 require('mini.comment').setup()
 
 -- Keymap
-vim.pack.add({ 'https://github.com/nvim-mini/mini.clue' })
+pack('nvim-mini/mini.clue')
 local miniclue = require('mini.clue')
 miniclue.setup({
   triggers = {
@@ -149,12 +173,12 @@ miniclue.setup({
 })
 
 -- Git ===================================================
-vim.pack.add({
-  'https://github.com/tpope/vim-fugitive',
-  'https://github.com/tpope/vim-rhubarb',
+pack({
+  'tpope/vim-fugitive',
+  'tpope/vim-rhubarb',
 })
 
-vim.pack.add({ 'https://github.com/nvim-mini/mini.diff' })
+pack('nvim-mini/mini.diff')
 require('mini.diff').setup({
   view = {
     style = 'sign',
@@ -162,19 +186,19 @@ require('mini.diff').setup({
   },
 })
 
--- Navigation ================================================== 
-vim.pack.add({ 'https://github.com/stevearc/oil.nvim' })
+-- Navigation ==================================================
+pack('stevearc/oil.nvim')
 require('oil').setup()
 
-vim.pack.add({ 'https://github.com/nvim-mini/mini.pick' })
+pack('nvim-mini/mini.pick')
 require('mini.pick').setup()
 
-vim.pack.add({ 'https://github.com/nvim-mini/mini.files' })
+pack('nvim-mini/mini.files')
 require('mini.files').setup();
 
 -- Treesitter ===================================================
-vim.pack.add({
-  'https://github.com/nvim-treesitter/nvim-treesitter',
+pack({
+  'nvim-treesitter/nvim-treesitter',
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter-textobjects', version = 'main' }
 })
 local ensure_languages = {
@@ -223,11 +247,11 @@ require('nvim-treesitter').setup({
 -- local filetypes = vim.iter(ensure_languages):map(vim.treesitter.language.get_filetypes):flatten():totable()
 
 -- Mason
-vim.pack.add({ 'https://github.com/mason-org/mason.nvim' })
+pack('mason-org/mason.nvim')
 require('mason').setup()
 
 -- Conform
-vim.pack.add({ 'https://github.com/stevearc/conform.nvim' })
+pack('stevearc/conform.nvim')
 require('conform').setup({
   default_format_opts = {
     -- Allow formatting from LSP server if no dedicated formatter is available
@@ -248,7 +272,7 @@ require('conform').setup({
 })
 
 -- LSP
-vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' })
+pack('neovim/nvim-lspconfig')
 vim.lsp.enable({
   'eslint',
   'lua_ls',
@@ -260,7 +284,7 @@ vim.lsp.enable({
   'tailwindcss',
 })
 
-vim.pack.add({ 'https://github.com/nvim-mini/mini.completion' })
+pack('nvim-mini/mini.completion')
 local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
 local process_items = function(items, base)
   return MiniCompletion.default_process_items(items, base, process_items_opts)
