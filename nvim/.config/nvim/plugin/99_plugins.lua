@@ -278,14 +278,6 @@ require('conform').setup({
 -- LSP
 pack('neovim/nvim-lspconfig')
 
--- Tailwind is slow to start
-vim.lsp.config('tailwindcss', {
-  filetypes = {
-    "django-html", "htmldjango", "erb", "haml", "html",
-    "css", "postcss", "scss", "javascriptreact", "typescriptreact"
-  }
-})
-
 vim.lsp.enable({
   'eslint',
   'lua_ls',
