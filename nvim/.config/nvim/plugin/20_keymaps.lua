@@ -76,4 +76,5 @@ nmap_leader('sD', '<Cmd>Pick disgnostic scope="all"<CR>', 'Search [D]iagnostics'
 vim.keymap.set('n', '-', '<Cmd>Oil<CR>', { desc = 'Open parent directory' })
 local explore_at_file = '<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>'
 vim.keymap.set('n', '<Tab>', explore_at_file, { desc = 'Explore' })
+vim.keymap.set('n', '<C-I>', '<C-I>') -- Restore `<C-I>` default jump behavior
 

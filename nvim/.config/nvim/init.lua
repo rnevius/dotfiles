@@ -1,5 +1,10 @@
 -- Main entry point for Neovim configuration
 
+
+-- Set up 'mini.deps' immediately to have its `now()` and `later()` helpers
+-- vim.pack.add({ 'https://github.com/nvim-mini/mini.deps' })
+-- require('mini.deps').setup()
+
 -- Define config table to be able to pass data between scripts
 _G.Config = {}
 

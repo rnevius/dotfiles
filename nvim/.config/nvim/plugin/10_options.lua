@@ -4,6 +4,7 @@ vim.g.mapleader      = ' ' -- Use `<Space>` as the leader key
 vim.g.maplocalleader = ' '
 
 vim.o.mouse       = 'a'      -- Enable mouse mode, can be useful for resizing splits for example!
+vim.o.mousescroll = 'ver:10,hor:6'
 vim.o.switchbuf   = 'usetab' -- Use already opened buffers when switching
 vim.o.undofile    = true     -- Save undo history
 

@@ -79,20 +79,13 @@ require('mini.icons').setup()
 -- Statusline
 -- Make it a little less noisy
 pack('nvim-mini/mini.statusline')
+local hidden = function() return '' end
 local statusline = require('mini.statusline')
-statusline.section_diff = function()
-  return ''
-end
-statusline.section_diagnostics = function()
-  return ''
-end
-statusline.section_lsp = function()
-  return ''
-end
-statusline.section_location = function()
-  return '%2l:%-2v'
-end
-statusline.setup(opts)
+statusline.section_diff = hidden
+statusline.section_diagnostics = hidden
+statusline.section_lsp = hidden
+statusline.section_location = function() return '%2l:%-2v' end
+statusline.setup()
 
 pack('j-hui/fidget.nvim')
 require('fidget').setup()
@@ -291,7 +284,7 @@ vim.lsp.enable({
 
 -- Completion
 pack('nvim-mini/mini.completion')
-local process_items_opts = { kind_priority = { Text = -1, Snippet = 99 } }
+local process_items_opts = { kind_priority = { Text = -1 } }
 local process_items = function(items, base)
   return MiniCompletion.default_process_items(items, base, process_items_opts)
 end
