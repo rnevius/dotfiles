@@ -72,7 +72,7 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "HDMI-A-3" {
+/-output "HDMI-A-2" {
     // Uncomment this line to disable this output.
     // off
 
@@ -315,7 +315,7 @@ animations {
 
 gestures {
     hot-corners {
-        off
+        bottom-right
     }
 }
 
