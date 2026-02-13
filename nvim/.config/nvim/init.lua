@@ -1,18 +1,20 @@
 -- Main entry point for Neovim configuration
 
--- Load core configuration
-require 'core'
 
--- Load plugins
-require 'plugins'
+-- Set up 'mini.deps' immediately to have its `now()` and `later()` helpers
+-- vim.pack.add({ 'https://github.com/nvim-mini/mini.deps' })
+-- require('mini.deps').setup()
 
--- Neovide specific settings
-if vim.g.neovide then
-  vim.o.guifont = 'MesloLGS NF:h13.5'
-  vim.o.guifontwide = 'MesloLGS NF:h13.5'
-  vim.o.linespace = 2
+-- Define config table to be able to pass data between scripts
+_G.Config = {}
 
-  vim.g.neovide_cursor_animation_length = 0.03
+-- Define custom autocommand group and helper to create an autocommand.
+local gr = vim.api.nvim_create_augroup('custom-config', {})
+_G.Config.new_autocmd = function(event, pattern, callback, desc)
+  local opts = { group = gr, pattern = pattern, callback = callback, desc = desc }
+  vim.api.nvim_create_autocmd(event, opts)
 end
 
--- vim: ts=2 sts=2 sw=2 et
+-- Some plugins only need setup during startup if Neovim
+-- is started like `nvim -- path/to/file`, otherwise delaying setup is fine
+-- _G.Config.now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or MiniDeps.later
