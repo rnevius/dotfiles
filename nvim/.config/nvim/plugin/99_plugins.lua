@@ -100,6 +100,8 @@ pack({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 })
 
+pack({ 'github/copilot.vim' })
+
 pack('nvim-mini/mini.extra')
 require('mini.extra').setup()
 
@@ -109,13 +111,8 @@ require('mini.ai').setup({
   n_lines = 500,
 })
 
-pack('nvim-mini/mini.jump2d')
-require('mini.jump2d').setup()
-local jump2d = require('mini.jump2d')
-jump2d.setup({
-  labels = 'asdfghjkl;',
-  view = { dim = true, n_steps_ahead = 2 },
-})
+pack('folke/flash.nvim')
+require('flash').setup({ modes = { char = { enabled = false } } })
 
 -- Alignment
 pack('nvim-mini/mini.align')

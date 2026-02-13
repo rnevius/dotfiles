@@ -57,7 +57,8 @@ local conform_format = '<Cmd>lua require("conform").format({ async = true, lsp_f
 nmap_leader('f', conform_format, '[F]ormat Buffer')
 
 -- Jump
-vim.keymap.set({ 'n', 'x', 'o' }, 's', function() MiniJump2d.start(MiniJump2d.builtin_opts.single_character) end, { desc = 'Jump' })
+vim.keymap.set({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end, { desc = 'Jump' })
+vim.keymap.set({ 'n', 'x', 'o' }, 'S', function() require('flash').treesitter() end, { desc = 'Jump' })
 
 -- LSP
 -- See :help lsp-defaults
