@@ -363,6 +363,7 @@ binds {
     // https://ghostty.org/docs/linux/systemd#scripting-new-windows
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty" "+new-window"; }
     Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+Shift+F { spawn-sh "nautilus --new-window ~/Downloads"; }
     Ctrl+Period hotkey-overlay-title="Pick an Emoji" { spawn-sh "qs -c noctalia-shell ipc call launcher emoji"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
 
@@ -555,7 +556,6 @@ binds {
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
