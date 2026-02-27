@@ -269,9 +269,7 @@ layout {
 // Startup
 // https://github.com/imvaskel/soteria/issues/23#issuecomment-3753238556
 spawn-at-startup "/usr/lib/soteria-polkit/soteria"
-
-// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+spawn-sh-at-startup "qs -c noctalia-shell --no-duplicate"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
