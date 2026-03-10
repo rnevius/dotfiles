@@ -7,12 +7,12 @@
         }
     ],
     "states": {
-        "keybind-cheatsheet": {
+        "mini-docker": {
             "enabled": false,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
-        "mini-docker": {
-            "enabled": false,
+        "polkit-agent": {
+            "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
         "privacy-indicator": {
