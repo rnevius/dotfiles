@@ -29,11 +29,13 @@ image/x-qoi=org.gnome.Loupe.desktop;
 image/x-tga=org.gnome.Loupe.desktop;
 inode/directory=org.gnome.Nautilus.desktop;
 text/html=firefox.desktop;
-x-scheme-handler/bruno=bruno.desktop;
+x-scheme-handler/bruno=bruno.desktop
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/zoommtg=zoom-webapp.desktop;
 x-scheme-handler/zoomus=zoom-webapp.desktop;
+x-scheme-handler/sgnl=signal.desktop
+x-scheme-handler/signalcaptcha=signal.desktop
 
 [Added Associations]
 application/pdf=org.gnome.Papers.desktop;
