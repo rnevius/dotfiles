@@ -36,6 +36,7 @@ x-scheme-handler/zoommtg=zoom-webapp.desktop;
 x-scheme-handler/zoomus=zoom-webapp.desktop;
 x-scheme-handler/sgnl=signal.desktop
 x-scheme-handler/signalcaptcha=signal.desktop
+x-scheme-handler/slack=slack.desktop
 
 [Added Associations]
 application/pdf=org.gnome.Papers.desktop;
