@@ -1,0 +1,4 @@
+interface:
+  display_name: "PR"
+  short_description: "Open or update a GitHub pull request"
+  default_prompt: "Use $pr to inspect the current branch, draft a focused GitHub pull request, and open or update it with gh."
