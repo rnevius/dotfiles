@@ -268,8 +268,7 @@ layout {
 
 // Startup
 // https://github.com/imvaskel/soteria/issues/23#issuecomment-3753238556
-// spawn-at-startup "/usr/lib/soteria-polkit/soteria"
-spawn-sh-at-startup "qs -c noctalia-shell --no-duplicate"
+spawn-at-startup "noctalia"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -360,10 +359,10 @@ binds {
     Mod+Backspace hotkey-overlay-title=null { close-window; }
     // https://ghostty.org/docs/linux/systemd#scripting-new-windows
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty" "+new-window"; }
-    Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+Shift+F { spawn-sh "nautilus --new-window ~/Downloads"; }
-    Ctrl+Period hotkey-overlay-title="Pick an Emoji" { spawn-sh "qs -c noctalia-shell ipc call launcher emoji"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+    Ctrl+Period hotkey-overlay-title="Pick an Emoji" { spawn-sh "noctalia msg panel-toggle launcher /emo"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "noctalia msg session lock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
@@ -381,9 +380,9 @@ binds {
 
     // Example media keys mapping using playerctl.
     // This will work with any MPRIS-enabled media player.
-    XF86AudioPlay        allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
-    XF86AudioPrev        allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
-    XF86AudioNext        allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media next"; }
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "noctalia msg media previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "noctalia msg media next"; }
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
@@ -618,4 +617,5 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
-include "./noctalia.kdl"
+
+include "noctalia.kdl"
