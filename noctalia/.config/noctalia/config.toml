@@ -1,0 +1,63 @@
+config_version = 14
+
+[bar.default]
+background_opacity = 0.9
+end = [ "tray", "notifications", "network", "bluetooth", "volume", "control-center", "session" ]
+start = [ "launcher", "summary", "workspaces", "media" ]
+widget_spacing = 10
+
+    [bar.default.monitor.HDMI-A-1]
+    enabled = false
+
+[backdrop]
+enabled = true
+blur_intensity = 0.5
+tint_intensity = 0.3
+
+[dock]
+active_monitor_only = true
+concave_edge_corners = false
+enabled = true
+icon_size = 42
+layer = "overlay"
+magnification_scale = 1.15
+margin_edge = 8
+reserve_space = false
+smart_auto_hide = true
+
+[location]
+address = "Perchtoldsdorf, Austria"
+
+[nightlight]
+enabled = true
+
+[plugins]
+enabled = [ "noctalia/screen_recorder", "apex077/eyecare", "tmelik/system-monitor" ]
+
+[shell]
+font_family = "Liberation Mono"
+polkit_agent = true
+
+[theme]
+builtin = "Ayu"
+
+    [theme.templates]
+    builtin_ids = [ "niri" ]
+
+[widget.clock]
+format = "{:%H:%M | %d}"
+
+[widget.media]
+hide_when_no_media = true
+
+[widget.network]
+show_label = false
+
+[widget.summary]
+hide_unavailable = true
+show_disk = false
+show_download = false
+show_gpu_temperature = "off"
+show_swap = false
+show_upload = false
+type = "tmelik/system-monitor:summary"

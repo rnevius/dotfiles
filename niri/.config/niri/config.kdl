@@ -267,7 +267,6 @@ layout {
 // See the binds section below for more spawn examples.
 
 // Startup
-// https://github.com/imvaskel/soteria/issues/23#issuecomment-3753238556
 spawn-at-startup "noctalia"
 
 hotkey-overlay {
@@ -295,7 +294,7 @@ layer-rule {
 
 // Set the overview wallpaper on the backdrop.
 layer-rule {
-  match namespace="^noctalia-overview*"
+  match namespace="^noctalia-backdrop"
   place-within-backdrop true
 }
 
