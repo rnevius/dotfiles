@@ -80,6 +80,11 @@ if status is-interactive
 
     alias grep='grep --color=auto'
 
+    # Bitwarden
+    if type -q flatpak; and flatpak info com.bitwarden.desktop >/dev/null 2>&1
+        alias bw='flatpak run --command=bw com.bitwarden.desktop'
+    end
+
     # Bluetooth
     abbr -a bt bluetoothctl
 
