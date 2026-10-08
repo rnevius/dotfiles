@@ -5,7 +5,7 @@
 Generate symlinks with stow:
 
 ```bash
-❯ stow bat fastfetch fish ghostty git nvim paru share
+❯ stow bat fastfetch fish ghostty git nvim share
 ```
 
 Add environment variables to `~/.config/fish/conf.d/env.fish`.
@@ -18,21 +18,21 @@ Installed brew packages are occasionally exported to [brew-packages.txt](./brew-
 ❯ xargs brew install < brew-packages.txt
 ```
 
-## Paru
+## Shelly
 
-Installed pacman packages are occasionally exported to [paru-packages.txt](./paru-packages.txt) with:
-
-```bash
-❯ pacman -Qqe > paru-packages.txt
-```
-
-Install them with `paru`:
+Explicitly installed standard packages, AUR packages, and Flatpaks are occasionally exported to `cachyos-packages.toml` with:
 
 ```bash
-❯ paru -S --needed - < paru-packages.txt
+❯ shelly backup --export --directory . --name cachyos-packages
 ```
 
-## GNOME Shell Extensions
+Restore them with:
+
+```bash
+❯ shelly backup --import --directory . --name cachyos-packages
+```
+
+## GNOME Shell Extensions (Legacy)
 
 This could be automatically updated on a schedule, but for now:
 
