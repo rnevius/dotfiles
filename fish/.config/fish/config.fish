@@ -7,6 +7,7 @@ set -x MANROFFOPT -c
 set -gx MANPAGER 'nvim +Man!'
 
 ## Path
+fish_add_path ~/.docker/sbx/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.opencode/bin
 
@@ -136,6 +137,22 @@ if status is-interactive
     # Pacman
     if type -q pacman
         abbr -a cleanup 'sudo pacman -Rns (pacman -Qtdq)'
+    end
+
+    # Robots
+    if command -q sbx
+        alias codex='sbx run codex'
+        alias claude='sbx run claude'
+    else
+        function codex --description 'Warn when sbx is unavailable'
+            echo 'warning: sbx is not installed; codex was not run.' >&2
+            return 127
+        end
+
+        function claude --description 'Warn when sbx is unavailable'
+            echo 'warning: sbx is not installed; claude was not run.' >&2
+            return 127
+        end
     end
 
     starship init fish | source
